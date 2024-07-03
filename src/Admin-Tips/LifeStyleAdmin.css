@@ -1,0 +1,226 @@
+.admin-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 85vh;
+  padding: 20px;
+  background-color: #f0f0f0;
+}
+
+.admin-container .admin {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  transition: all 0.5s ease-in-out;
+}
+
+.admin .tip-group {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px; /* Fixed width for each card */
+  padding: 30px;
+  text-align: center;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 1;
+  transform: translateY(0);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Ensure space between elements */
+  height: 100%; /* Ensure the card takes full height */
+  margin-top: 5px;
+}
+
+.admin .tip-group:hover {
+  transform: scale(1.05);
+}
+
+.admin .new-tip-group {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px; /* Fixed width for the new tip card */
+  padding: 30px;
+  text-align: center;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 1;
+  transform: translateY(0);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Ensure space between elements */
+  height: auto; /* Auto height for dynamic content */
+  margin-top: 5px;
+}
+
+.admin .new-tip-group:hover {
+  transform: scale(1.05);
+}
+
+.admin .tip-img {
+  max-width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.admin .tip-text {
+  margin-top: 10px;
+  font-size: 1em;
+  color: #333;
+  flex-grow: 1; /* Make description take remaining space */
+  text-align: left;
+  overflow-y: auto; /* Enable vertical scrolling */
+  max-height: 150px; /* Set a max height to control the size of the card content */
+  padding-right: 10px; /* Add some padding to avoid text touching the scrollbar */
+  white-space: normal; /* Allow text to wrap to the next line */
+}
+
+.admin .add-tip-text {
+  width: 100%;
+  height: 150px; /* Initial height for text area */
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding: 10px;
+  resize: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.new-tip-group .savey {
+  margin-top: 20px;
+  padding: 10px 20px;
+  width: auto;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+
+.admin-container .morey {
+  margin-top: 20px;
+  padding: 10px 20px;
+  width: 120%;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+
+.admin-container .morey:hover,
+.new-tip-group .savey:hover {
+  background-color: #45a049;
+}
+
+.buttons-grg .addd-new-tips{
+  margin-top: 20px;
+  padding: 10px 20px;
+  width: 20%;
+  height: 400%;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+
+.buttons-grg .addd-new-tips:hover{
+  background-color: #45a049;
+}
+
+.buttons-g .edite,
+.buttons-g .deletee {
+  position: absolute; /* Position buttons absolutely within .tip-card */
+  bottom: 10px; /* Adjust vertical position as needed */
+  width: 45%; /* Set width to 45% for each button */
+  padding: 10px 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+  margin: auto;
+  transition: background-color 0.3s ease;
+}
+
+.buttons-g .edite {
+  left: 10px; /* Position edit button to the left */
+  background-color: #2196f3;
+  color:#f0f0f0;;
+}
+
+.buttons-g .deletee {
+  right: 10px; /* Position delete button to the right */
+  background-color: #f44336;
+  margin-left: 10px; /* Add margin between buttons */
+  color: #f0f0f0;
+}
+
+.buttons-g .edite:hover {
+  background-color: #1976d2;
+}
+
+.buttons-g .deletee:hover {
+  background-color: #d32f2f;
+}
+
+.admin .buttons-g {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px; /* Space between description and buttons */
+}
+
+.input-errory {
+  border: 1px solid red;
+}
+
+.errory {
+  color: red;
+  font-size: 0.875em;
+  margin-top: 5px;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.tip-group.slide-in {
+  animation: slideIn 0.5s ease-in-out;
+}
+
+@media (max-width: 600px) {
+  .title {
+    font-size: 2em;
+  }
+
+  .tip-group {
+    width: 100%;
+  }
+
+  .new-tip-group {
+    width: 100%; /* Adjust width for responsiveness */
+  }
+}
+
+.buttons-grg {
+  display: flex;
+  gap: 400px;
+  margin-top: 30px;
+}

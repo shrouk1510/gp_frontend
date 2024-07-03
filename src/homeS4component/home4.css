@@ -1,0 +1,128 @@
+    /* functions */
+    .home4functions{
+        padding: 80px 0;   
+
+    }
+    .home4functions .home4container{
+        width: 80%; 
+        padding-bottom: 80px ;
+        margin: auto;
+        
+    }
+    .home4functions .text h2{
+        color: #000;
+        font-size: 48px;
+        font-weight: 700;
+        line-height: 1;
+        font-family: "Josefin Sans",sans-serif;
+        margin-bottom: 0.5rem;
+        text-align: center;
+    }
+    .home4functions .text{
+        
+        margin: auto;
+        margin-bottom: 80px;
+        text-align: center;
+    }
+    .home4functions .text p{
+        font-family: "Roboto",sans-serif;
+        color: #777;
+        font-size: 16px;
+        line-height: 30px;
+        margin-bottom: 15px;
+        
+        
+    }
+    .home4functions .card-body p{
+        color: black;
+        font-weight: 600;
+        text-align: center;
+        
+    }
+    .home4functions .card-body a{
+        color: #000;
+        font-size: 20px;
+        
+    }
+    .home4functions .card-body h3{
+        text-align: center;
+    }
+ 
+    .home4functions .card .img{
+        position: relative;
+        border-bottom: 3px solid red;
+    }
+    .home4functions .img i{
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        color: red;
+        font-size: 30px; 
+        opacity: 0;
+        transition: 0.5s all;
+    
+    }
+    .home4functions .card:hover i{
+        opacity: 1;
+    }
+    .home4functions  .hover1{
+        position: absolute;
+        background-color: red;
+        color: white;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 0;
+        font-size: 1rem;
+        transition: 0.5s all;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        visibility: hidden;
+
+        
+
+    }
+    .home4functions .link .product{
+        background: red;
+        font-family: "Josefin Sans",sans-serif;
+        text-transform: uppercase;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: .03em;
+        padding: 25px 28px;
+        position: relative;
+        opacity: 1;
+        transition: 0.5s all;   
+        
+       
+    }
+  
+    .home4functions .product:hover .box{
+        width:100%;
+        z-index: 1;
+    }
+    .home4functions .link{
+        text-align: center;
+        margin-top: 80px;
+        transition: 0.5s all;
+    }
+
+    .home4functions .card:hover .hover1{
+        height: 18%;
+        visibility: visible;
+    }
+    .home4functions .link a:hover{
+        background-color: #444;
+    }
+    .home4functions .img2{
+        height: 47vh;
+    }
+    .home4functions .img4{
+        height: 47vh;
+        width: 99%;
+    }
+
+
+    /* functions */

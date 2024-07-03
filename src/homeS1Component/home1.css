@@ -1,0 +1,56 @@
+    .main2{
+        background-color: #f0f0f2;
+        overflow: hidden;
+        }
+    .main2 .text h1{
+        font-size: 96px;
+        font-weight: 900;
+        line-height: 1.2;
+        margin-bottom: 26px;
+        font-family: "Josefin Sans",sans-serif;
+        color: #0b1c39;
+    }
+    .main2 .text p{
+        font-size: 17px;
+        line-height: 1.6;
+        font-weight: 450;
+        color: #212025;
+        margin-bottom: 60px;
+        padding-right: 50px;
+    }
+
+    a:hover{
+        text-decoration: none;
+    }
+
+    .main2 .text a{
+        
+        padding: 25px 29px;
+        background: #4a4a4b; 
+        font-family: "Josefin Sans",sans-serif;
+        text-transform: uppercase;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 400;
+        letter-spacing: .03;
+        transition: 0.4s all;
+
+    
+    }
+    .main2 .text a:hover{
+        background-color: green;
+    }
+    .main2 .img{
+        animation-name: identifier ;
+        animation-duration: 2.5s;
+        animation-iteration-count: infinite;
+        transform: scale(1.05);
+
+    
+        
+    }
+    @keyframes identifier {
+        0%{transform: scale(1.05)}
+        75%{transform: scale(1)}
+        100%{transform: scale(1.05);}   
+    }

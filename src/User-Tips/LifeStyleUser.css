@@ -1,0 +1,100 @@
+.user-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 85vh;
+  padding: 20px;
+  background-color: #f0f0f0;
+}
+
+.user {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  transition: all 0.5s ease-in-out;
+}
+
+.user .card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px; /* Fixed width for each card */
+  padding: 30px;
+  text-align: center;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 1;
+  transform: translateY(0);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Ensure space between elements */
+  height: 100%; /* Ensure the card takes full height */
+  margin-top: 5px;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.user .img {
+  max-width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.descripe {
+  margin-top: 10px;
+  font-size: 1em;
+  color: #333;
+  flex-grow: 1; /* Make description take remaining space */
+  text-align: left;
+  overflow-y: auto; /* Enable vertical scrolling */
+  max-height: 150px; /* Set a max height to control the size of the card content */
+  padding-right: 10px; /* Add some padding to avoid text touching the scrollbar */
+  white-space: normal; /* Allow text to wrap to the next line */
+}
+
+.user .view-more-button {
+  margin-top: 45px;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 2px ;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+
+.user .view-more-button:hover {
+  background-color: #45a049;
+}
+
+
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.card.slide-in {
+  animation: slideIn 0.5s ease-in-out;
+}
+
+@media (max-width: 600px) {
+  .title {
+    font-size: 2em;
+  }
+
+  .card {
+    width: 100%;
+  }
+}

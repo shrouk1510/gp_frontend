@@ -1,0 +1,40 @@
+.mainWelcomemain{
+    background-color: #d0d0d0;
+    overflow: hidden;
+    font-family:"Bona Nova", serif;
+    justify-content: center;
+    align-items: center;
+}
+.mainWelcomemain .maintext{
+    padding-top: 150px;
+    padding-left: 40px;
+    width: 80%;
+}
+.mainWelcomemain .img{
+    height: 84vh;
+    width: 35vw;
+    display: block;
+    
+}
+
+.mainWelcomemain .maintext h1{
+    font-size: 64px;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 26px;
+    font-family: "Bona Nova", serif;
+    color: #0B1C39;
+}
+.mainWelcomemain .maintext p{
+    font-size: 17px;
+    line-height: 1.6;
+    font-weight: 450;
+    color: #212025;
+    margin-bottom: 60px;
+}
+
+.mainWelcomemaina :hover{
+    text-decoration: none;
+
+}
+

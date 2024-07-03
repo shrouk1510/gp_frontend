@@ -1,0 +1,50 @@
+/* shop */
+.home5shop{
+    padding-bottom: 80px;
+}
+.home5shop .home5container{
+    width: 80%;
+    background-color: rgb(77, 170, 33);
+    margin: auto;
+    padding: 50px 40px;
+    
+}
+.home5shop .text{
+    width: 80%
+}
+.home5shop .text h6{
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    font-family: "Roboto",sans-serif;
+}
+.home5shop .text p{
+    font-size: 16px;
+    color: #d3d1d1;
+    line-height: 30px;
+    margin-bottom: 15px;
+}
+.home5shop .text i{
+    font-size: 40px;
+    margin-bottom: 30px;
+    color: #fff;
+
+    
+}
+.home5shop .text .bi{
+    width: 45px;
+    height: 45px;
+    margin-bottom: 30px;
+}
+.contact{
+    padding: 50px 0 ;
+}
+.contact .container{
+    width: 80%;
+}
+.contact .bi{
+    color: white;
+}
+/* shop */

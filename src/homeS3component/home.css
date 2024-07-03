@@ -1,0 +1,57 @@
+
+img{
+    width: 100%;
+    height: 100%;
+}
+
+/* Locations */
+.Location .cover1 , .Location .cover2{
+    height: 100%;
+
+}
+.Location{
+    padding-bottom: 50px;
+    overflow: hidden;
+}
+.Location .cover3{
+    margin-bottom: 20px;
+}
+.Location .cover1,.Location .cover2,
+.Location .cover3 , .Location .cover4{
+    position: relative;
+    overflow: hidden;
+    transition: 0.5s;
+}
+.Location img{
+    height: 100%;
+    transform: scale(1.1);
+    transition: 0.5s all;
+}
+.Location .cover1:hover img,
+.Location .cover2:hover img,
+.Location .cover3:hover img,
+.Location .cover4:hover img{
+    transform: scale(1);
+}
+.Location .cover1::after,
+.Location .cover2::after,
+.Location .cover3::after,
+.Location .cover4::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;  
+    background-color: rgba(1,10,28,.3);
+    opacity: 0;
+    transition: 0.5s;    
+}
+.Location .cover1:hover::after,
+.Location .cover2:hover::after,
+.Location .cover3:hover::after,
+.Location .cover4:hover::after{
+    opacity: 1;
+}
+
+/* Locations */

@@ -1,0 +1,141 @@
+
+.todo-form-container {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 25px;
+    width: 420px;
+    background-color: whitesmoke;
+    padding-bottom: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    align-items: center;
+    justify-content: center; 
+    border-radius: 10px;
+}
+
+.todo-form-container .headeer {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.todo-form-container .texxt {
+    color: #4CAF50;
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.todo-form-container .underliney {
+    width: 61px;
+    height: 6px;
+    background-color: #4CAF50;
+    border-radius: 9px;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.todo-form-container .form-groupy, .todo-form-container .form-g, .todo-form-container .form-gr, .todo-form-container .form-gro {
+    margin-bottom: 20px;
+}
+
+.form-g label {
+    font-weight: bold;
+}
+
+select,
+.form-gro input[type="date"] {
+    width: 100%; 
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    margin-top: 5px;
+}
+
+.form-g input[type="text"]{
+    width:97%;
+    margin-left: 2px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    margin-top: 5px;
+}
+
+textarea {
+    width: 100%; 
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    margin-top: 5px;
+    background-color: rgba(52, 196, 8, 0.311);
+    height: 100px;
+    resize: none;
+}
+
+.note-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 107%;
+}
+
+
+.remove-note-button {
+    font-size: 30px;
+    padding: 0; 
+    margin-left: 2px; 
+    width:auto;
+    background-color: aliceblue;
+    border: none;
+    
+}
+
+.remove-note-button:hover {
+    background-color: aliceblue;
+    transform: scale(1.1);
+}
+
+
+.add-note-button{
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 99%;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-left: 2px;
+    transition: transform 0.3s ease;
+}
+
+.add-note-button:hover {
+    background-color: #45a049;
+    transform: scale(1.1);
+}
+
+.submit-record {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-left: 1px;
+    transition: transform 0.3s ease;
+}
+
+.submit-record:hover {
+    background-color:#45a049;
+    transform: scale(1.1);
+}

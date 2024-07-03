@@ -1,0 +1,37 @@
+.home6footer{
+    padding: 50px 0 0 0;
+
+}
+.home6footer .home7container{
+    width: 90%;
+    padding-bottom: 25px;
+    margin: auto;
+
+}
+.home6footer .home6text p{
+    color: #888888;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 2;
+    margin-bottom: 20px;
+}
+.home6footer .home6text a{
+    color: #ea0000;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+.home6footer .home6text i{
+    color: #ea0000;
+}
+.home6footer .icons i{
+    color: #222222;  
+    transition: 0.5s all;
+    font-size: 14px;
+    padding: 5px 10px;
+    
+}
+.home6footer .icons i:hover{
+    color: #ea0000;
+    transform: rotateY(180deg)  
+}
+/* footer */
