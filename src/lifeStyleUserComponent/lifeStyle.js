@@ -1,13 +1,13 @@
 import UserTips from "../User-Tips/UserTips";
-import RegisteredNav from "../RegisteredNavComponent/RegisteredNav";
+// import RegisteredNav from "../RegisteredNavComponent/RegisteredNav";
 import Header from "../headerComponent/header";
 
 
 
-const Lifestyle=()=>{
-    return(
+const Lifestyle = () => {
+    return (
         <div>
-            <Header/>
+            <Header />
             <UserTips></UserTips>
         </div>
     )
