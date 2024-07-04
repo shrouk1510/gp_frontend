@@ -47,7 +47,7 @@ const SigninForm = () => {
         await loginUser(username, password);
         navigate("/Registered");
       } catch (error) {
-        // alert(error);
+        alert(error);
       }
     }
   };

@@ -1,25 +1,25 @@
-import React, { useState } from 'react';
-import './medication.css';
+import React, { useState } from "react";
+import "./medication.css";
 
 const MedicationForm = ({ setMedications, setViewTable }) => {
   const [formData, setFormData] = useState({
-    name: '',
-    dose: '',
-    time: ''
+    name: "",
+    dose: "",
+    time: "",
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setMedications(prevMedications => [...prevMedications, formData]);
-    setFormData({ name: '', dose: '', time: '' });
+    setMedications((prevMedications) => [...prevMedications, formData]);
+    setFormData({ name: "", dose: "", time: "" });
   };
 
   const handleViewSchedule = () => {
@@ -27,7 +27,7 @@ const MedicationForm = ({ setMedications, setViewTable }) => {
   };
 
   return (
-    <div className='medicationContainer'>
+    <div className="medicationContainer">
       <form onSubmit={handleSubmit} className="medication-form">
         <div className="form-group">
           <div className="header">
@@ -68,10 +68,14 @@ const MedicationForm = ({ setMedications, setViewTable }) => {
             />
           </div>
         </div>
-        <button type="submit" className="subb-button">Submit</button>
+        <button type="submit" className="subb-button">
+          Submit
+        </button>
       </form>
-      <div className='medicalSchedule'>
-        <button className="see" onClick={handleViewSchedule}>View Your Schedule</button>
+      <div className="medicalSchedule">
+        <button className="see" onClick={handleViewSchedule}>
+          View Your Schedule
+        </button>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import RegisteredNav from "../RegisteredNavComponent/RegisteredNav";
-import MedicationForm from "../MedicationFormComponent/Mediction";
+import MedicationForm from "../MedicationFormComponent/mediction";
 import MedicationTable from "../MedicationFormComponent/MedicationTable";
 
 const Medical = () => {
@@ -11,8 +11,12 @@ const Medical = () => {
     <div>
       <RegisteredNav />
       {viewMedicationTable ? (
-        <MedicationTable medications={medications} setViewTable={setViewMedicationTable} />
+        <MedicationTable
+          medications={medications}
+          setViewTable={setViewMedicationTable}
+        />
       ) : (
+      
         <MedicationForm setMedications={setMedications} setViewTable={setViewMedicationTable} />
       )}
     </div>
