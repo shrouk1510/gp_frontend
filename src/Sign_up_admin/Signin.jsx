@@ -110,9 +110,7 @@ const Signin = () => {
                                 Sign In
                             </Link>
                         </div>
-                        <div className="link-container">
-                            <Link to="/signup" className="link">Don't have an account? Sign Up</Link>
-                        </div>
+                       
                     </>
                 )}
             </div>

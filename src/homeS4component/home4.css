@@ -9,7 +9,7 @@
         margin: auto;
         
     }
-    .home4functions .text h2{
+    .home4functions .home4container .text h2{
         color: #000;
         font-size: 48px;
         font-weight: 700;
@@ -18,13 +18,13 @@
         margin-bottom: 0.5rem;
         text-align: center;
     }
-    .home4functions .text{
+    .home4functions .home4container .text{
         
         margin: auto;
         margin-bottom: 80px;
         text-align: center;
     }
-    .home4functions .text p{
+    .home4functions .home4container .text p{
         font-family: "Roboto",sans-serif;
         color: #777;
         font-size: 16px;
@@ -33,26 +33,26 @@
         
         
     }
-    .home4functions .card-body p{
+    .home4functions .home4container .card-body p{
         color: black;
         font-weight: 600;
         text-align: center;
         
     }
-    .home4functions .card-body a{
+    .home4functions .home4container .card-body a{
         color: #000;
         font-size: 20px;
         
     }
-    .home4functions .card-body h3{
+    .home4functions .home4container .card-body h3{
         text-align: center;
     }
- 
-    .home4functions .card .img{
+/*  
+    .home4functions .home4container .card .img{
         position: relative;
         border-bottom: 3px solid red;
-    }
-    .home4functions .img i{
+    } */
+    .home4functions .home4container .img i{
         position: absolute;
         top: 20px;
         right: 20px;
@@ -62,10 +62,16 @@
         transition: 0.5s all;
     
     }
-    .home4functions .card:hover i{
-        opacity: 1;
+    .home4functions .home4container .allcard{
+        margin-bottom: 30px;
+        
+      
     }
-    .home4functions  .hover1{
+
+    /* .home4functions .home4container .card:hover i{
+        opacity: 1;
+    } */
+    /* .home4functions  .home4container .hover1{
         position: absolute;
         background-color: red;
         color: white;
@@ -82,8 +88,8 @@
 
         
 
-    }
-    .home4functions .link .product{
+    } */
+    /* .home4functions .home4container .link .product{
         background: red;
         font-family: "Josefin Sans",sans-serif;
         text-transform: uppercase;
@@ -98,28 +104,28 @@
         
        
     }
-  
-    .home4functions .product:hover .box{
+   */
+    /* .home4functions .home4container .product:hover .box{
         width:100%;
         z-index: 1;
-    }
-    .home4functions .link{
+    } */
+    /* .home4functions .home4container .link{
         text-align: center;
         margin-top: 80px;
         transition: 0.5s all;
-    }
+    } */
 
-    .home4functions .card:hover .hover1{
+    .home4functions .home4container .card:hover .hover1{
         height: 18%;
         visibility: visible;
     }
-    .home4functions .link a:hover{
+    .home4functions .home4container .link a:hover{
         background-color: #444;
     }
     .home4functions .img2{
-        height: 47vh;
+        height: 40vh;
     }
-    .home4functions .img4{
+    .home4functions .home4container .img4{
         height: 47vh;
         width: 99%;
     }

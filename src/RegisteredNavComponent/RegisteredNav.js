@@ -18,7 +18,7 @@ function RegisteredNav() {
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
    
                   <li className="nav-item">
-                    <a  className="nav-link" href="#">Reviews</a>
+                    <Link  to='/reviewsB' className="nav-link" href="#">Reviews</Link>
                   </li>
                   <li className="nav-item dropdown nature">
                     <a className="nav-link" href="#">
@@ -30,12 +30,18 @@ function RegisteredNav() {
                     </ul>
                   </li>
                   <li className="nav-item dropdown nature">
+                    <Link to='/UploadData' className="nav-link" href="#">
+                      Records
+                    </Link>
+                  </li>
+                  <li className="nav-item dropdown nature">
                     <a className="nav-link" href="#">
-                      Health List
+                      Health Lists
                     </a>
-                    <ul className="item-menu">
-                      <Link to='/UploadData' href="#"><li>Upload Data</li></Link>
-                      <Link to='/viewData'  href="#"><li>View Data</li></Link>
+                    <ul className="item-menu newList">
+                      <Link  to='/MedicationL'href="#"><li>Medication Schedule</li></Link>
+                      <Link  to='/excercize' href="#"><li>Exercise Schedule</li></Link>
+                      <Link to='/meal'  href="#"><li>Meal Schedule </li></Link>
                     </ul>
                   </li>
                   <li className="nav-item">
@@ -50,7 +56,7 @@ function RegisteredNav() {
                 </ul>
               </div>
               <div className="icons">
-                <Link to="" className="icon1" href="Sign-up.html"><span class="material-symbols-outlined">person</span></Link>
+                <Link to="/userprofile" className="icon1" href="Sign-up.html"><span class="material-symbols-outlined">person</span></Link>
                 <Link to="/logout" className="icon2" href="Sign-in.html"><span class="material-symbols-outlined">logout</span></Link>
               </div>
             </div>

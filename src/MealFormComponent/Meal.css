@@ -1,116 +1,164 @@
-.mealContainer{
-    height: 82vh;
-}
+/* Form styling similar to Exercise form */ 
+.mealContainer { 
+    height: 82vh; 
+    margin-top: 120px; 
 
-.mealContainer .header {
-    text-align: center;
-    margin-top: 0%;
-
-}
-.mealContainer .text {
-    color: #34495e;
-    font-size: 35px;
-    font-weight: 700;
-
-}
-
-.mealContainer .underline {
-    width: 60px;
-    height: 6px;
-    background-color: #34495e;
-    border-radius: 9px;
-    margin: auto;
-    margin-top: 10px;
-
-}
-
-.mealContainer .meal-form {
-    font-family: 'Source Sans Pro', Arial, sans-serif;
-    background-color: #f9f9f9;
-    margin: 0;
-    margin-bottom: 60px;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    flex-direction: column;
-    flex-wrap: wrap;
-}
-
-.mealContainer .meal-form form {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    width: 100%;
-}
-
-.mealContainer .meal-form h1 {
-    color: #2c3e50;
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 24px;
-}
-
-.mealContainer .form-group {
-    margin-bottom: 15px;
-}
-
-.mealContainer .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    color: #34495e;
-    font-weight: bold;
-}
-
-.mealContainer .form-group input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-}
-
-.mealContainer .form-group input:focus {
-    border-color: #2980b9;
-    outline: none;
-}
-
-.mealContainer .submit-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #2980b9;
-    color: #ffffff;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.submit-button:hover {
-    background-color: #3498db;
-}
-
-
-.mealSchedule {
-    position: absolute; /* Position absolutely */
-    top: 100%; /* Place below the form */
-    right: 420px; /* Align to the right */
-    background-color: green;
-    padding: 10px 13px;
-    border-radius: 4px;
-    margin-top: -60px; /* Adjust spacing */
-    
-
-}
-.mealSchedule a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 16px;
-}
-.mealSchedule:hover {
-    background-color: darkgreen;
+} 
+ 
+.mealContainer .header { 
+    text-align: center; 
+    margin-top: 0%; 
+    margin-left: 95px; 
+} 
+ 
+.mealContainer .text { 
+    color: #34495e; 
+    font-size: 35px; 
+    font-weight: 700; 
+} 
+ 
+.mealContainer .underline { 
+    width: 60px; 
+    height: 6px; 
+    background-color: #34495e; 
+    border-radius: 9px; 
+    margin: auto; 
+    margin-top: 10px; 
+} 
+ 
+.mealContainer .meal-form { 
+    font-family: 'Source Sans Pro', Arial, sans-serif; 
+    background-color: white; 
+    margin-bottom: 60px; 
+    padding: 0; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 50%; 
+    width: 27%; 
+    flex-direction: column; 
+    flex-wrap: wrap; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    margin-left:500px; 
+    border-radius: 6px; 
+} 
+ 
+ 
+ 
+.mealContainer .form-group { 
+    margin-bottom: 15px; 
+    margin-left: 10px;
+} 
+ 
+.mealContainer .form-group label { 
+    display: block; 
+    margin-bottom: 5px; 
+    color: #34495e; 
+    font-weight: bold; 
+} 
+ 
+.mealContainer .form-group input { 
+    width: 100%; 
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    font-size: 16px; 
+} 
+ 
+ .mealContainer .mealSchedule button{ 
+    position: absolute;  
+    top: 100%;  
+    right: 498px;  
+    background-color: #4CAF50; 
+    padding: 10px 13px; 
+    border-radius: 4px; 
+    margin-top: -190px; /* Adjust spacing */ 
+    color: white; 
+    border: none; 
+    margin-right: 190px;
+} 
+ 
+.mealContainer .mealSchedule button:hover { 
+    background-color: green; 
+} 
+ 
+.mealContainer .submit-button { 
+    margin-top: 56px; 
+    padding: 10px 20px; 
+    background-color: #4CAF50; 
+    color: white; 
+    border: none; 
+    cursor: pointer; 
+    width: auto !important;
+} 
+ 
+.mealContainer .submit-button:hover { 
+    background-color: green; 
+} 
+/* Table styling similar to Exercise table */ 
+ 
+.tableeContainer { 
+    margin-top: 80px; 
+    margin-left: 620px; 
+} 
+ 
+.tableeContainer h2 { 
+    margin-left: 40px; 
+    font-weight: 600; 
+    font-family: 'Source Sans Pro', Arial, sans-serif; 
+    color: #2a3845; 
+} 
+ 
+.tableeContainer .meal-table { 
+    border-collapse: collapse; 
+    margin: 20px 0; 
+    font-size: 15px; 
+    width: 100%; 
+} 
+ 
+.tableeContainer .meal-table th, .meal-table td { 
+    border: 1px solid #afacac; 
+    padding: 10px; 
+    text-align: center; 
+    width: 150px; 
+} 
+ 
+.tableeContainer .meal-table th { 
+    background-color: #4CAF50; 
+    color: white; 
+    text-transform: uppercase; 
+} 
+ 
+.tableeContainer .meal-table tr:nth-child(even) { 
+    background-color: #f9f9f9; 
+} 
+ 
+.tableeContainer .meal-table tr:hover { 
+    background-color: #bae7c8; /* Softer hover effect */ 
+    cursor: pointer; 
+} 
+ 
+.tableeContainer .meal-table tr td { 
+    border: none; 
+    border-bottom: 1px solid #2a3845; 
+} 
+ 
+.tableeContainer .meal-table tr:last-child td { 
+    border-bottom: none; 
+} 
+ 
+.tableeContainer .mealButtonContainer .mealBack{ 
+    position: absolute;  
+    top: 100%;  
+    left: 480px; 
+    background-color: #4CAF50; 
+    padding: 10px 13px; 
+    border-radius: 4px; 
+    margin-top: -270px; /* Adjust spacing */ 
+    color: white; 
+    border: none; 
+} 
+ 
+.tableeContainer .mealButtonContainer .mealBack:hover { 
+    background-color: green; 
 }

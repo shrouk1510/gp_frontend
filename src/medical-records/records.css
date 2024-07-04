@@ -139,3 +139,45 @@ textarea {
     background-color:#45a049;
     transform: scale(1.1);
 }
+
+.table-container table {
+    width: 80%;
+    border-collapse: collapse;
+    margin: auto;
+    margin-top: 25px;
+}
+
+.table-container h2{
+    text-align: center;
+    color: #34495e; 
+    font-size: 35px; 
+    font-weight: 700; 
+    margin-top: 30px;
+
+}
+
+.table-container th, .table-container td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.table-container th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.table-container .back-button{
+    margin-left: 16px;
+    position: absolute;  
+    background-color: #4CAF50; 
+    padding: 10px 13px; 
+    border-radius: 4px; 
+    color: white; 
+    border: none; 
+}
+
+.table-container .back-button:hover{
+    background-color: green;
+    
+}

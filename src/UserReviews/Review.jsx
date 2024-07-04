@@ -63,11 +63,11 @@ const Review = ({ review, user, initialRating, reviewId, likes, handleLike, like
                 </svg>
                 Like
             </button>
-            <button onClick={() => setIsReplying(!isReplying)}>Reply</button>
+            <button className="ss"onClick={() => setIsReplying(!isReplying)}>Reply</button>
             {isReplying && (
                 <div className="reply-input">
                     <textarea value={replyText} onChange={handleReplyChange}></textarea>
-                    <button onClick={handleReplySubmit}>Submit Reply</button>
+                    <button className="hhh" onClick={handleReplySubmit}>Submit Reply</button>
                 </div>
             )}
             {replies.length > 0 && (

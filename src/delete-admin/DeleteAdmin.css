@@ -1,0 +1,96 @@
+/* Container styling */
+.admin-delete-admin-container {
+    max-width: 800px;
+    margin: 300px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header styling */
+.admin-delete-admin-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Form styling */
+.admin-delete-admin-form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Label styling */
+.admin-delete-admin-form label {
+    margin-bottom: 5px;
+    color: #555;
+}
+
+/* Input field styling */
+.admin-delete-admin-form input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Button styling */
+.admin-delete-admin-form button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #d9534f;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Button hover effect */
+.admin-delete-admin-form button:hover {
+    background-color: #c9302c;
+}
+
+/* Confirm message styling */
+.admin-confirm-message {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff3cd;
+    color: #856404;
+    text-align: center;
+}
+
+/* Confirm message button styling */
+.admin-confirm-message button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Yes button styling */
+.admin-confirm-message button:first-of-type {
+    background-color: #d9534f;
+    color: #fff;
+}
+
+.admin-confirm-message button:first-of-type:hover {
+    background-color: #c9302c;
+}
+
+/* No button styling */
+.admin-confirm-message button:last-of-type {
+    background-color: #ccc;
+    color: #333;
+}
+
+.admin-confirm-message button:last-of-type:hover {
+    background-color: #999;
+}

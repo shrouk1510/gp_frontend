@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './records.css';
 
-const TodoForm = () => {
+const TodoForm = ({ setRecords, setViewTable }) => {
     const [type, setType] = useState('');
     const [measurement, setMeasurement] = useState('');
     const [notes, setNotes] = useState(['']);
@@ -9,13 +9,14 @@ const TodoForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Handle form submission here, e.g., sending data to backend or saving it locally
-        console.log('Form submitted:', { type, measurement, notes, date });
+        const newRecord = { type, measurement, notes, date };
+        setRecords(prevRecords => [...prevRecords, newRecord]);
         // Reset form fields
         setType('');
         setMeasurement('');
         setNotes(['']);
         setDate('');
+        setViewTable(true); // Switch to table view after submission
     };
 
     const handleNoteChange = (index, value) => {
@@ -34,21 +35,19 @@ const TodoForm = () => {
     };
 
     return (
-      
         <div className="todo-form-container">
             <div className="headeer">
                 <div className="texxt">Upload Medical Record</div>
                 <div className="underliney"></div>
             </div>
-
             <form onSubmit={handleSubmit}>
                 <div className="form-groupy">
                     <label htmlFor="type">Type:</label>
                     <select id="type" value={type} onChange={(e) => setType(e.target.value)} style={{ width: '97%' }} >
                         <option value="" disabled hidden>Select type</option>
-                        <option value="work">Glucose Measures</option>
-                        <option value="personal">Insuline Levels</option>
-                        <option value="study">Carbohydrate</option>
+                        <option value="Glucose Measures">Glucose Measures</option>
+                        <option value="Insuline Levels">Insuline Levels</option>
+                        <option value="Carbohydrate">Carbohydrate</option>
                     </select>
                 </div>
                 <div className="form-g">
@@ -64,7 +63,7 @@ const TodoForm = () => {
                                 value={note}
                                 onChange={(e) => handleNoteChange(index, e.target.value)}
                             />
-                            <button type="button1" onClick={() => removeNoteField(index)} className="remove-note-button"><span role ="img" aria-label="bin">🗑️</span></button>
+                            <button type="button" onClick={() => removeNoteField(index)} className="remove-note-button"><span role="img" aria-label="bin">🗑️</span></button>
                         </div>
                     ))}
                     <button type="button" onClick={addNoteField} className="add-note-button">+ Add Note</button>

@@ -1,0 +1,159 @@
+.exerciseContainer { 
+    height: 82vh; 
+    margin-top: 120px; 
+} 
+ 
+.exerciseContainer .header { 
+    text-align: center; 
+    margin-top: 0%; 
+    margin-left: 95px; 
+} 
+ 
+.exerciseContainer .text { 
+    color: #34495e; 
+    font-size: 35px; 
+    font-weight: 700; 
+} 
+ 
+.exerciseContainer .underline { 
+    width: 60px; 
+    height: 6px; 
+    background-color: #34495e; 
+    border-radius: 9px; 
+    margin: auto; 
+    margin-top: 10px; 
+} 
+ 
+.exerciseContainer .exercise-form { 
+    font-family: 'Source Sans Pro', Arial, sans-serif; 
+    background-color: white; 
+    margin-bottom: 60px; 
+    padding: 0; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 50%; 
+    width: 30%; 
+    flex-direction: column; 
+    flex-wrap: wrap; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    margin-left:500px; 
+    border-radius: 6px; 
+} 
+ 
+ 
+.exerciseContainer .form-group { 
+    margin-bottom: 15px; 
+} 
+ 
+.exerciseContainer .form-group label { 
+    display: block; 
+    margin-bottom: 5px; 
+    color: #34495e; 
+    font-weight: bold; 
+} 
+ 
+.exerciseContainer .form-group input { 
+    width: 100%; 
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    font-size: 16px; 
+} 
+ 
+ 
+.exerciseContainer .exerciseSchedule .view { 
+    position: absolute;  
+    top: 100%;  
+    right: 498px;  
+    background-color: #4CAF50; 
+    padding: 10px 13px; 
+    border-radius: 4px; 
+    margin-top: -190px; /* Adjust spacing */ 
+    color: white; 
+    border: none; 
+    margin-right: 180px;
+} 
+ 
+.exerciseContainer .exerciseSchedule .view:hover { 
+    background-color: green; 
+} 
+.exerciseContainer .sub-button { 
+    margin-top: 50px; 
+    padding: 10px 20px; 
+    background-color: #4CAF50; 
+    color: white; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer; 
+} 
+ 
+.exerciseContainer .sub-button:hover { 
+    background-color: green; 
+} 
+ 
+.tableContainer { 
+    margin-top: 80px; 
+    margin-left: 620px; 
+} 
+ 
+.tableContainer h2 { 
+    margin-left: 11px; 
+    font-weight: 600; 
+    font-family: 'Source Sans Pro', Arial, sans-serif; 
+    color: #2a3845; 
+} 
+ 
+.tableContainer .exercise-table { 
+    border-collapse: collapse; 
+    margin: 20px 0; 
+    font-size: 15px; 
+    width: 100%; 
+} 
+ 
+.tableContainer .exercise-table th, .exercise-table td { 
+    border: 1px solid #afacac; 
+    padding: 10px; 
+    text-align: center; 
+    width: 150px; 
+} 
+ 
+.tableContainer .exercise-table th { 
+    background-color: #4CAF50; 
+    color: white; 
+    text-transform: uppercase; 
+} 
+ 
+.tableContainer .exercise-table tr:nth-child(even) { 
+    background-color: #f9f9f9; 
+} 
+ 
+.tableContainer .exercise-table tr:hover { 
+    background-color: #bae7c8; /* Softer hover effect */ 
+    cursor: pointer; 
+} 
+ 
+.tableContainer .exercise-table tr td { 
+    border: none; 
+    border-bottom: 1px solid #2a3845; 
+} 
+ 
+.tableContainer .exercise-table tr:last-child td { 
+    border-bottom: none; 
+} 
+ 
+.tableContainer .exerciseButtonContainer .exerciseBack{ 
+    position: absolute;  
+    top: 100%;  
+    left: 480px; 
+    background-color: #4CAF50; 
+    padding: 10px 13px; 
+    border-radius: 4px; 
+    margin-top: -270px; /* Adjust spacing */ 
+    color: white; 
+    border: none; 
+} 
+ 
+.tableContainer .exerciseButtonContainer .exerciseBack:hover{ 
+    background-color: green; 
+}
