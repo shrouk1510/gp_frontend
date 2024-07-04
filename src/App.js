@@ -33,7 +33,7 @@ import Natural from './finalNatComponent/naturalTips.js';
 import UnReNature from './UnRegisteredComponent/UnRegisteredNat.js';
 import ViewData from './finalViewDataComponent/ViewData.js';
 import Medical from './FinalMedicalComponent/medical.js'
-import ReviewsB from './ReviewsComponent/ReviewB.js';
+
 import ReviewsAdmin from './finalAgmin RevComponent/AdminR.js';
 import Graph from './finalGraphComponent/finalGraph.js';
 
@@ -77,8 +77,8 @@ function App() {
         <Route path="/NewNat" element={<Natural />} />
         <Route path="/UrgentSign" element={<ParentComponent />} />
         <Route path="/MedicationL" element={<Medical />} />
-        <Route path="/reviewsB" element={<ReviewsB />} />
-        <Route path="/Submit" element={<ReviewsB />} />
+        <Route path="/reviewsB" element={<PrivateRoute><UserRev /></PrivateRoute>} />
+        <Route path="/Submit" element={<PrivateRoute><UserRev /></PrivateRoute>} />
         <Route path="/AdminSignIn" element={<PrivateRoute><ReviewsAdmin /></PrivateRoute>} />
         <Route path="/ProfileLogout" element={<Welcome />} />
         <Route path="/AdminLogout" element={<Welcome />} />
