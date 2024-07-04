@@ -16,11 +16,9 @@ function AdminNav() {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <div className="links collapse_ul bg-success">
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li className="nav-item home space">
-                    <Link to="/addAdmin" className="nav-link" >Add Admin</Link>
-                  </li>
+                  
                   <li className="nav-item space">
-                    <a className="nav-link" href="diabetes-level-reports.html">Reviews</a>
+                    <Link to='/AdminReview' className="nav-link" href="#">Reviews</Link>
                   </li>
                   <li className="nav-item dropdown nature space">
                     <a className="nav-link" href="#">
@@ -32,10 +30,16 @@ function AdminNav() {
                      
                     </ul>
                   </li>
+                  <li className="nav-item home space">
+                    <Link to="/addAdmin" className="nav-link" >Add Admin</Link>
+                  </li>
+                  <li className="nav-item space">
+                    <Link to='/delete' className="nav-link" href="#">Delete Admin</Link>
+                  </li>
                 </ul>
               </div>
               <div className="icons">
-                <Link to="" className="icon1" href="Sign-up.html"><span class="material-symbols-outlined">person</span></Link>
+                <Link to="/profile" className="icon1" href="Sign-up.html"><span class="material-symbols-outlined">person</span></Link>
                 <Link to="" className="icon2" href="Sign-in.html"><span class="material-symbols-outlined">logout</span></Link>
               </div>
             </div>

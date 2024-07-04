@@ -14,14 +14,12 @@
 .headersign {
     text-align: center;
     margin-top: 30px;
-
 }
 
 .textsign {
     color: blue;
     font-size: 48px;
     font-weight: 700;
-
 }
 
 .underlinesign {
@@ -31,14 +29,13 @@
     border-radius: 9px;
     margin: auto;
     margin-top: 10px;
-
 }
 
 .inputssign {
     margin-top: 40px;
     display: flex;
     flex-direction: column;
-    gap: 15px
+    gap: 15px;
 }
 
 .inputsign {
@@ -49,7 +46,6 @@
     height: 50px;
     background-color: #eaeaea;
     border-radius: 6px;
-
 }
 
 .inputsign img {
@@ -58,15 +54,25 @@
     height: 20px;
 }
 
-.inputsign input {
+.inputsign input, .inputsign select {
     flex: 1;
-    height: 100px;
-    width: 100px;
+    height: 100%;
     background: transparent;
     border: none;
     outline: none;
     color: #797979;
     font-size: 16px;
+    padding: 0 15px;
+}
+
+.inputsign select {
+    -webkit-appearance: none;  /* Remove default arrow in Chrome, Safari, Opera */
+    -moz-appearance: none;     /* Remove default arrow in Firefox */
+    appearance: none;          /* Remove default arrow in other browsers */
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iOCIgdmlld0JveD0iMCAwIDEyIDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTUuNTYxNzUgNy4wMTc1TDExLjc0NDIgMC4zMzg1NzRMMS4yNDQyIDAuMzcwMjg5TDcuNDE3NDIgNy4wMTc1SDBWOC4zNzA0NEgxMlY3LjAxNzVIMTAuNjgzOEw1LjU2MTc1IDcuMDE3NVoiIGZpbGw9ImJsYWNrIi8+PC9zdmc+'); /* Custom arrow icon */
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 12px 8px;
 }
 
 .forgot-passwordsign {
@@ -77,12 +83,12 @@
 }
 
 .forgot-passwordsign span {
-    color:red;
+    color: red;
     cursor: pointer;
 }
 
-.submitsign{
-    margin-top: 20px; 
+.submitsign {
+    margin-top: 20px;
     padding: 10px 20px;
     background-color: blue;
     color: white;
@@ -99,18 +105,17 @@
 
 .submitsign:hover {
     color: white;
-    
     background-color: darkblue;
     transform: scale(1.1);
 }
 
-
 .gray {
-    background-color:#eaeaea;
-    color:#676767;
+    background-color: #eaeaea;
+    color: #676767;
 }
+
 .next-buttonsign {
-    margin-top: 20px; 
+    margin-top: 20px;
     padding: 10px 20px;
     background-color: blue;
     color: white;
@@ -122,22 +127,22 @@
     flex: 1;
     height: 50px;
     transition: transform 0.3s ease;
-  }
-  
-  .next-buttonsign:hover {
+}
+
+.next-buttonsign:hover {
     background-color: darkblue;
     transform: scale(1.1);
-  }
-  
-  .buttons-containersign {
+}
+
+.buttons-containersign {
     display: flex;
     justify-content: space-between;
     width: 70%;
-    margin-top: 20px; 
-  }
-  
-  .previous-buttonsign,
-  .submit-buttonsign {
+    margin-top: 20px;
+}
+
+.previous-buttonsign,
+.submit-buttonsign {
     padding: 10px 20px;
     background-color: blue;
     color: white;
@@ -146,15 +151,15 @@
     font-size: 16px;
     cursor: pointer;
     transition: transform 0.3s ease;
-  }
-  
-  .previous-buttonsign:hover,
-  .submit-buttonsign:hover {
+}
+
+.previous-buttonsign:hover,
+.submit-buttonsign:hover {
     background-color: darkblue;
     transform: scale(1.1);
-  }
-  
-  .container1sign{
+}
+
+.container1sign {
     display: flex;
     flex-direction: column;
     margin: auto;
@@ -164,10 +169,12 @@
     padding-bottom: 30px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     align-items: center;
-    border-radius: 10px; 
-    
+    border-radius: 10px;
 }
 
-.inputsig ::placeholder{
+.inputsig ::placeholder {
     padding: 20px;
+}
+.buttons-containersign .submit-buttonsign:hover{
+    color: white;
 }

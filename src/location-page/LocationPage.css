@@ -1,0 +1,46 @@
+/* src/components/location/LocationPage.css */
+
+.location-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f4f4f9;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.title {
+  font-size: 36px;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+.button-container {
+  display: flex;
+  gap: 20px;
+}
+
+.location-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 15px 30px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.location-btn .icon {
+  margin-right: 10px;
+  font-size: 24px;
+}
+
+.location-btn:hover {
+  background-color: #0056b3;
+}

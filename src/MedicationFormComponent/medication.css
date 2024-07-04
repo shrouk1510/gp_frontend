@@ -1,139 +1,160 @@
-.medicationContainer{
-    height: 82vh;
-}
-
-.medicationContainer .header {
-    text-align: center;
-    margin-top: 0%;
-
-}
-
-.medicationContainer .text {
-    color: #34495e;
-    font-size: 35px;
-    font-weight: 700;
-
-}
-
-.medicationContainer .underline {
-    width: 60px;
-    height: 6px;
-    background-color: #34495e;
-    border-radius: 9px;
-    margin: auto;
-    margin-top: 10px;
-
-}
-
-.medicationContainer .medication-form {
-    font-family: 'Source Sans Pro', Arial, sans-serif;
-    background-color: #f9f9f9;
-    margin: 0;
-    margin-bottom: 60px;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    flex-direction: column;
-    flex-wrap: wrap;
-}
-
-.medicationContainer .medication-form form {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    width: 100%;
-}
-
-.medicationContainer .medication-form h1 {
-    color: #2c3e50;
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 24px;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    color: #34495e;
-    font-weight: bold;
-}
-
-.form-group input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-}
-
-.form-group input:focus {
-    border-color: #2980b9;
-    outline: none;
-}
-
-.submit-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #2980b9;
-    color: #ffffff;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.submit-button:hover {
-    background-color: #3498db;
-}
-/* .medicalSchedule {
-    align-items: flex-end;
-    background-color: #34495e;
-    padding: 10px 13px;
-
-
-
-
-}
-
-.medicalSchedule a {
-    color: #2980b9;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 16px;
-}
-
-.medicalSchedule a:hover {
-    color: #3498db;
-} */
-
-.medicalSchedule {
-    position: absolute; /* Position absolutely */
-    top: 100%; /* Place below the form */
-    right: 420px; /* Align to the right */
-    background-color: green;
-    padding: 10px 13px;
-    border-radius: 4px;
-    margin-top: -60px; /* Adjust spacing */
-    
-
-}
-    
-
-.medicalSchedule a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 16px;
-}
-
-.medicalSchedule:hover {
-    background-color: darkgreen;
+/* Form styling similar to Exercise form */ 
+.medicationContainer { 
+    height: 82vh; 
+    margin-top: 120px; 
+} 
+ 
+.medicationContainer .header { 
+    text-align: center; 
+    margin-top: 0%; 
+    margin-left: 95px; 
+} 
+ 
+.medicationContainer .text { 
+    color: #34495e; 
+    font-size: 35px; 
+    font-weight: 700; 
+} 
+ 
+.medicationContainer .underline { 
+    width: 60px; 
+    height: 6px; 
+    background-color: #34495e; 
+    border-radius: 9px; 
+    margin: auto; 
+    margin-top: 10px; 
+} 
+ 
+.medicationContainer .medication-form { 
+    font-family: 'Source Sans Pro', Arial, sans-serif; 
+    background-color: white; 
+    margin-bottom: 60px; 
+    padding: 0; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 65%; 
+    width: 34%; 
+    flex-direction: column; 
+    flex-wrap: wrap; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    margin-left:500px; 
+    border-radius: 6px; 
+} 
+ 
+.medicationContainer .form-group { 
+    margin-bottom: 15px; 
+} 
+ 
+.medicationContainer .form-group label { 
+    display: block; 
+    margin-bottom: 5px; 
+    color: #34495e; 
+    font-weight: bold; 
+} 
+ 
+.medicationContainer .form-group input { 
+    width: 100%; 
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    font-size: 16px; 
+} 
+ 
+.medicationContainer .subb-button { 
+    margin-top: 70px; 
+    padding: 10px 20px; 
+    background-color: #4CAF50; 
+    color: white; 
+    border: none; 
+    cursor: pointer; 
+    border-radius: 4px; 
+} 
+ 
+.medicationContainer .subb-button:hover { 
+    background-color: green; 
+} 
+ 
+.medicationContainer  .see{ 
+    position: absolute;  
+    top: 100%;  
+    right: 400px;  
+    background-color: #4CAF50; 
+    padding: 10px 13px; 
+    border-radius: 4px; 
+    margin-top: -100px; /* Adjust spacing */ 
+    color: white; 
+    border: none; 
+    margin-right: 230px;
+} 
+ 
+.medicationContainer .see:hover{ 
+    background-color: green; 
+ 
+} 
+ 
+.tableeeContainer { 
+    margin-top: 80px; 
+    margin-left: 620px; 
+} 
+ 
+.tableeeContainer h2 { 
+    margin-left: 11px; 
+    font-weight: 600; 
+    font-family: 'Source Sans Pro', Arial, sans-serif; 
+    color: #2a3845; 
+} 
+ 
+.tableeeContainer .medication-table { 
+    border-collapse: collapse; 
+    margin: 20px 0; 
+    font-size: 15px; 
+    width: 60%; 
+    margin-left: -100px; 
+} 
+ 
+.tableeeContainer .medication-table th, .medication-table td { 
+    border: 1px solid #afacac; 
+    padding: 10px; 
+    text-align: center; 
+} 
+ 
+.tableeeContainer .medication-table th { 
+    background-color: #4CAF50; 
+    color: white; 
+    text-transform: uppercase; 
+} 
+ 
+.tableeeContainer .medication-table tr:nth-child(even) { 
+    background-color: #f9f9f9; 
+} 
+ 
+.tableeeContainer .medication-table tr:hover { 
+    background-color: #bae7c8; 
+    cursor: pointer; 
+} 
+ 
+.tableeeContainer .medication-table tr td { 
+    border: none; 
+    border-bottom: 1px solid #2a3845; 
+} 
+ 
+.tableeeContainer .medication-table tr:last-child td { 
+    border-bottom: none; 
+} 
+ 
+.tableeeContainer .medicalbuttonContainer .medicalBack{ 
+    position: absolute;  
+    top: 100%;  
+    left: 380px; 
+    background-color: #4CAF50; 
+    padding: 10px 13px; 
+    border-radius: 4px; 
+    margin-top: -270px; /* Adjust spacing */ 
+    color: white; 
+    border: none; 
+} 
+ 
+.tableeeContainer .medicalbuttonContainer .medicalBack:hover{ 
+    background-color: green; 
 }

@@ -3,6 +3,7 @@ import './SignupForm.css';
 import user_icon from './Assets/person.png';
 import email_icon from './Assets/email.png';
 import password_icon from './Assets/password.png';
+import {Link} from 'react-router-dom'
 
 const Tooltip = ({ message }) => {
     const [isActive, setIsActive] = useState(false);
@@ -97,9 +98,9 @@ const SignupForm = () => {
                     </div>
                 </div>
                 <div className="SignupForm-submit-container">
-                    <div className="SignupForm-submit" onClick={handleSignup}>
+                    <Link to='/AdminSign' className="SignupForm-submit" onClick={handleSignup}>
                         Sign Up
-                    </div>
+                    </Link>
                 </div>
             </div>
         </div>

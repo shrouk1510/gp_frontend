@@ -12,8 +12,8 @@ function MainSection() {
             <div className="text">
               <h1>Select Your New Perfect Life</h1>
               <p>Its your time to manage your Health using your Assistant GlucoGuide Application.</p>
-              <p>Sign Up to see more <FontAwesomeIcon icon={faArrowDown} /></p>
-              <a className="shop" href="#"><span>Sign Up</span></a>
+              <p>Sign Up to see more </p>
+              
             </div>
           </div>
           <div className="col-lg-4">

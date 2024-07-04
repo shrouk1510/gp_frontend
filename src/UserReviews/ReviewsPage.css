@@ -48,8 +48,8 @@
     overflow: hidden;
 }
 
-.review button , .like-button{
-    background-color: blue;
+.review .like-button {
+    background-color: #007bff;
     color: white;
     border: none;
     padding: 10px 20px; /* Control the size of the buttons */
@@ -57,13 +57,43 @@
     margin-right: 10px; /* Adjust margin between buttons */
     border-radius: 5px; /* Optional: round the corners */
     cursor: pointer; /* Change cursor to pointer on hover */
-    transition: transform 0.3s ease;
     width: auto;
 }
 
-.review button:hover {
-    background-color: darkblue;
-    transform: scale(1.1);
+.review .like-button:hover{
+    background-color: #0056b3;
+}
+
+.review .hhh:hover{
+    background-color: #0056b3;
+}
+
+.review .ss:hover{
+    background-color: #0056b3;
+}
+
+.review .hhh{
+    background-color:#007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px; /* Control the size of the buttons */
+    font-size: 14px; /* Adjust font size */
+    margin-right: 10px; /* Adjust margin between buttons */
+    border-radius: 5px; /* Optional: round the corners */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    width: auto;
+}
+
+.review .ss{
+    background-color:#007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px; /* Control the size of the buttons */
+    font-size: 14px; /* Adjust font size */
+    margin-right: 10px; /* Adjust margin between buttons */
+    border-radius: 5px; /* Optional: round the corners */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    width: auto;
 }
 
 .replies {

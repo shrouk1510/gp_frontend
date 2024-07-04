@@ -137,3 +137,6 @@
     visibility: visible;
     opacity: 1;
 }
+.submit:hover{
+    color: white ;
+}
