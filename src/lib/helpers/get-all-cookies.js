@@ -4,8 +4,10 @@ export function getAllCookies() {
   const cookiePairs = documentCookie.split(";");
 
   for (const cookiePair of cookiePairs) {
-    const [key, value] = cookiePair.trim().split("=");
-    cookies[key] = value;
+    if (cookiePair.includes('=')) {
+      const [key, value] = cookiePair.trim().split("=");
+      cookies[key] = value;
+    }
   }
 
   return cookies;

@@ -49,7 +49,7 @@
 }
 
 .review button , .like-button{
-    background-color: blue;
+    background-color: #007bff;
     color: white;
     border: none;
     padding: 10px 20px; /* Control the size of the buttons */
@@ -62,7 +62,7 @@
 }
 
 .review button:hover {
-    background-color: darkblue;
+    background-color: #0056b3;
     transform: scale(1.1);
 }
 
@@ -235,10 +235,10 @@
 }
 
 .review .dd{
-    background-color: #f44336;
+    background-color: rgb(226, 18, 18);
 }
 
 .review .dd:hover{
-    background-color: #d32f2f;
+    background-color: #ce2929;
 }
 

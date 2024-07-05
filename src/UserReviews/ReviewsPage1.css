@@ -1,0 +1,170 @@
+.pages-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin-left: 30px;
+}
+
+.pages-container .reviews-container {
+    padding: 20px;
+    text-align: center;
+    flex-grow: 1; 
+    max-width: 40%; 
+    margin-right: 80px;
+}
+
+.pages-container .header-container {
+    width: 30%;
+    height: 180px;
+    text-align: center;
+    margin-right: 20px;
+    margin-left: 100px;
+    margin-top: 120px;
+    padding: 40px;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.pages-container .header-container:hover {
+    background-color: #f1f1f1;
+    transform: scale(1.1);
+}
+
+.pages-container .header-container p {
+    margin-top: 80px;
+    margin-right: auto;
+}
+
+.Ureview {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: left;
+   
+    width:95%;
+}
+
+.pages-container .new-review-form {
+    margin-top: 10px;
+}
+
+.pages-container .new-review-form textarea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+.pages-container .plus-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 40px;
+}
+
+.pages-container .seee-more-container {
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 520px;
+    width: 70%;
+}
+
+.pages-container .seee-more-button {
+    background-color: #504e4e;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    margin-top: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.pages-container .seee-more-button svg {
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+}
+
+.pages-container .seee-more-button:hover svg {
+    transform: translateY(5px);
+}
+
+.rating svg {
+    fill: #ccc;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.rating svg.active {
+    fill: gold;
+}
+
+.Ureview .review-actions .hedit {
+    background-color:  #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-right: 10px;
+  
+}
+
+.Ureview .review-actions .hedit:hover{
+    background-color: #0056b3;
+}
+
+.Ureview .review-actions .hdelete {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.Ureview .review-actions .hdelete:hover{
+    background-color: #e22424;;
+}
+
+.Ureview .review-actions .saved{
+    background-color:  #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.Ureview .review-actions .saved:hover{
+    background-color: #0056b3;
+}
+.Ureview .review-actions .like-button {
+    background-color:#007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.Ureview .review-actions .like-button.liked {
+    background-color:#ff6b6b; /* Adjusted color for liked state */
+}

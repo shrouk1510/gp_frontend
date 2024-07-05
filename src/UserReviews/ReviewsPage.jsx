@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Review from './Review';
-import './ReviewsPage.css';
+import './ReviewsPage1.css';
 
 const allReviewsData = [
     { id: 1, user: 'Alice', review: 'This website is amazing!', rating: 0 },
@@ -17,14 +17,30 @@ const allReviewsData = [
 const ReviewsPage = () => {
     const [visibleReviews, setVisibleReviews] = useState(4);
     const [isAddingReview, setIsAddingReview] = useState(false);
+    const [showAllReviews, setShowAllReviews] = useState(false);
     const [newReviewText, setNewReviewText] = useState('');
     const [newReviewRating, setNewReviewRating] = useState(0);
     const [newReviewUser, setNewReviewUser] = useState('');
     const [reviews, setReviews] = useState(allReviewsData);
-    const [likedReviews, setLikedReviews] = useState([]);
+    const [currentUser, setCurrentUser] = useState('');
+
+    useEffect(() => {
+        // Fetch the current user from the backend
+        const getCurrentUser = async () => {
+            // Replace with actual backend call
+            const user = 'Bob'; // Example user
+            setCurrentUser(user);
+        };
+        getCurrentUser();
+    }, []);
 
     const handleSeeMore = () => {
         setVisibleReviews(prevVisibleReviews => prevVisibleReviews + 4);
+    };
+
+    const handleSeeLess = () => {
+        setVisibleReviews(4); // Reset to initial number of visible reviews
+        setShowAllReviews(false); // Toggle to show fewer reviews
     };
 
     const handleNewReviewTextChange = (e) => {
@@ -55,18 +71,26 @@ const ReviewsPage = () => {
         }
     };
 
-    const handleLike = (reviewId) => {
-        if (likedReviews.includes(reviewId)) {
-            setReviews(reviews.map(review => 
-                review.id === reviewId ? { ...review, likes: (review.likes || 0) - 1 } : review
-            ));
-            setLikedReviews(likedReviews.filter(id => id !== reviewId));
-        } else {
-            setReviews(reviews.map(review => 
-                review.id === reviewId ? { ...review, likes: (review.likes || 0) + 1 } : review
-            ));
-            setLikedReviews([...likedReviews, reviewId]);
-        }
+    const handleEditReview = (reviewId, newReviewText) => {
+        setReviews(reviews.map(review =>
+            review.id === reviewId ? { ...review, review: newReviewText } : review
+        ));
+    };
+
+    const handleEditRating = (reviewId, newRating) => {
+        setReviews(reviews.map(review =>
+            review.id === reviewId ? { ...review, rating: newRating } : review
+        ));
+    };
+
+    const handleDeleteReview = (reviewId) => {
+        setReviews(reviews.filter(review => review.id !== reviewId));
+    };
+
+    const handleLikeReview = (reviewId) => {
+        setReviews(reviews.map(review =>
+            review.id === reviewId ? { ...review, liked: !review.liked } : review
+        ));
     };
 
     const renderNewReviewStars = () => {
@@ -88,10 +112,10 @@ const ReviewsPage = () => {
     };
 
     return (
-        <div className="page-container">
+        <div className="pages-container">
             <div className="header-container">
                 <h1>What Our Happy Users Say!</h1>
-                <p><b>Sign up to be able to see more features of our GlucoGuide App.</b></p> 
+                <p><b>Sign up to be able to see more features of our GlucoGuide App.</b></p>
                 <button className="plus-button" onClick={() => setIsAddingReview(!isAddingReview)}>+</button>
                 {isAddingReview && (
                     <div className="new-review-form">
@@ -99,7 +123,7 @@ const ReviewsPage = () => {
                             type="text"
                             value={newReviewUser}
                             onChange={handleNewReviewUserChange}
-                            placeholder="Your Name"></input> 
+                            placeholder="Your Name"></input>
                         <textarea
                             value={newReviewText}
                             onChange={handleNewReviewTextChange}
@@ -111,27 +135,38 @@ const ReviewsPage = () => {
                 )}
             </div>
             <div className="reviews-container">
-                
-                {reviews.slice(0, visibleReviews).map((data, index) => (
-                    <Review 
-                        key={index} 
-                        review={data.review} 
-                        user={data.user} 
-                        initialRating={data.rating} 
-                        reviewId={data.id}
-                        likes={data.likes || 0}
-                        handleLike={handleLike}
-                        likedReviews={likedReviews}
+                {reviews.slice(0, visibleReviews).map((review) => (
+                    <Review
+                        key={review.id}
+                        review={review.review}
+                        user={review.user}
+                        initialRating={review.rating}
+                        reviewId={review.id}
+                        handleEditReview={handleEditReview}
+                        handleEditRating={handleEditRating}
+                        handleDeleteReview={handleDeleteReview}
+                        handleLikeReview={handleLikeReview}
+                        currentUser={currentUser}
                     />
                 ))}
                 {visibleReviews < reviews.length && (
-                    <div className="see-more-container">
-                        <button className="see-more-button" onClick={handleSeeMore}>
-                            See More
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
-                                <path d="M12 16.5l6-6-1.41-1.42L12 13.67l-4.59-4.59L6 10.5z" />
-                            </svg>
-                        </button>
+                    <div className="seee-more-container">
+                        {showAllReviews ? (
+                            <button className="seee-less" onClick={handleSeeLess}>
+                                See Less
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+                                    <path d="M12 16.5l6-6-1.41-1.42L12 13.67l-4.59-4.59L6 10.5z" />
+                                </svg>
+                            </button>
+                        ) : (
+                            <button className="seee-more-button" onClick={handleSeeMore}>
+                                See More
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+                                    <path d="M12 16.5l6-6-1.41-1.42L12 13.67l-4.59-4.59L6 10.5z" />
+                                </svg>
+                            </button>
+                        )}
+
                     </div>
                 )}
             </div>

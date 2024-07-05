@@ -1,38 +1,15 @@
 import React, { useState } from 'react';
 import './ReviewsPage.css';
 
-const Review = ({ review, user, initialRating, reviewId, likes, handleLike, likedReviews, handleDeleteReview }) => {
-    const [rating, setRating] = useState(initialRating);
+const Review = ({ review, user, reviewId, likes, handleLike, likedReviews, handleDeleteReview }) => {
     const isLiked = likedReviews.includes(reviewId);
 
-    const handleRatingClick = (newRating) => {
-        setRating(newRating);
-    };
-
-    const renderRatingStars = () => {
-        const stars = [];
-        for (let i = 1; i <= 5; i++) {
-            stars.push(
-                <svg
-                    key={i}
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    className={i <= rating ? "active" : ""}
-                    onClick={() => handleRatingClick(i)}
-                >
-                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                </svg>
-            );
-        }
-        return stars;
-    };
-
+ 
     return (
         <div className="review">
             <p>
                 <strong>{user}:</strong>
                 <span>{review}</span>
-                <span className="rating">{renderRatingStars()}</span>
             </p>
             <div className="review-actions">
                 <button

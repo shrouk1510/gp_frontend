@@ -79,9 +79,9 @@ export const AuthContextProvider = ({ children }) => {
             // }
             const response = await api_root.api.post(`/user/signin?username=${username}&password=${password}`);
             console.log('User data submitted:', response.data);
-            if (response.status !== 200) {
-                throw new Error(response.statusText)
-            }
+            // if (response.status !== 200) {
+            //     throw new Error(response.statusText)
+            // }
             setIspotentiallogin(true)
             setIsLoading(true)
             // setUserCookies(() => getAllCookies())
@@ -97,9 +97,9 @@ export const AuthContextProvider = ({ children }) => {
         try {
             const response = await api_root.api.post(`/admin/signin?username=${username}&password=${password}`);
             console.log('User data submitted:', response.data);
-            if (response.status !== 200) {
-                throw new Error(response.statusText)
-            }
+            // if (response.status !== 200) {
+            //     throw new Error(response.statusText)
+            // }
             setIspotentiallogin(true)
             setIsLoading(true)
             // setUserCookies(() => getAllCookies())
@@ -172,16 +172,16 @@ export const AuthContextProvider = ({ children }) => {
     const createUserData = async (userData) => {
         try {
             // console.log(userData)
-            const response = await api_root.api.post('/user/signup', userData);
+            await api_root.api.post('/user/signup', userData);
             // console.log('User data submitted:', response.data);
-            if (![200, 201].includes(response.status)) {
-                throw Error(response.statusText)
-            }
+            // if (![200, 201].includes(response.status)) {
+            //     throw Error(response.statusText)
+            // }
 
             toast.success("User created successfully !")
         } catch (error) {
-            // console.error('There was an error!', error);
-            throw error.response?.data
+            console.error('There was an error!', error);
+            throw typeof error.response?.data === "string" ? error.response?.data : error.response?.data["error"]
         }
     };
 
@@ -203,7 +203,7 @@ export const AuthContextProvider = ({ children }) => {
             // const data = await response.json()
 
             // console.log(response)
-            const response = await api_root.apiToken.get('/user/profile');
+            const response = await api_root.api.get('/user/profile');
             const data = await response.data
             //console.log('User data submitted:', response.data);
             dispatch("SET_USER", { payload: { ...data, ...data.details }, role: "USER" })
@@ -218,7 +218,7 @@ export const AuthContextProvider = ({ children }) => {
         // const keyValueString = urlParams.toString();
 
         try {
-            const response = await api_root.apiToken.get('/admin/profile');
+            const response = await api_root.api.get('/admin/profile');
             // console.log('User data submitted:', response.data);
             const data = await response.data
             dispatch("SET_USER", { payload: { ...data }, role: "ADMIN" })
@@ -237,9 +237,10 @@ export const AuthContextProvider = ({ children }) => {
         const fetchData = async () => {
             // const activeSession = Cookies.get(SESSION_KEY) || null
             const activeSession = getAllCookies()
+            // console.log(activeSession, Object.keys(activeSession).length)
             try {
 
-                if (Object.keys(activeSession).length >= 0) {
+                if (Object.keys(activeSession).length > 0) {
                     await getActiveUserData()
                     await getActiveAdminData()
                 }

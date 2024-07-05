@@ -42,6 +42,7 @@ import Graph from './finalGraphComponent/finalGraph.js';
 import PrivateRoute from './routes/private-route.jsx';
 import BlockedRoute from './routes/blocked-route.jsx';
 import AdminRoute from './routes/admin-route.jsx'
+import Reviews from './ReviewsPageComponent/Review.js';
 
 function App() {
 
@@ -55,7 +56,7 @@ function App() {
         <Route path="/Sign-Up" element={<BlockedRoute><ParentComponent /></BlockedRoute>} />
         <Route path="/user" element={<BlockedRoute><SigninForm /></BlockedRoute>} />
 
-        <Route path="/Reviews" element={<ReviewsPage />} />
+        <Route path="/Reviews" element={<Reviews />} />
         <Route path="/Registered" element={<PrivateRoute><UserRev /></PrivateRoute>} />
         <Route path="/NaturalTips" element={<UnReNature />} />
         <Route path="/admin" element={<Signin />} />

@@ -16,14 +16,14 @@ export const backendAPI = backendBaseURL;
 
 const apiToken = axios.create({
     baseURL: backendAPI,
-    withCredentials: true
+    // withCredentials: true
 });
 
-apiToken.defaults.headers.post['Access-Control-Allow-Origin'] = "*"
-apiToken.defaults.headers.post['Access-Control-Allow-Credentials'] = "true"
-apiToken.defaults.headers.post['Access-Control-Allow-Headers'] = "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization"
-apiToken.defaults.headers.post['Access-Control-Allow-Methods'] = "GET,POST,PUT,DELETE,OPTIONS"
-apiToken.defaults.headers.post['Content-Type'] = 'multipart/form-data,application/json'
+// apiToken.defaults.headers.post['Access-Control-Allow-Origin'] = "*"
+// apiToken.defaults.headers.post['Access-Control-Allow-Credentials'] = "true"
+// apiToken.defaults.headers.post['Access-Control-Allow-Headers'] = "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization"
+// apiToken.defaults.headers.post['Access-Control-Allow-Methods'] = "GET,POST,PUT,DELETE,OPTIONS"
+// apiToken.defaults.headers.post['Content-Type'] = 'multipart/form-data,application/json'
 // if (token) {
 //     apiToken.defaults.headers.post['Authorization'] = `Bearer ` + token;
 //     apiToken.defaults.headers.get['Authorization'] = `Bearer ` + token;
@@ -41,8 +41,8 @@ const api = axios.create({
 api.defaults.headers.post['Access-Control-Allow-Origin'] = `*`
 api.defaults.headers.post['Access-Control-Allow-Credentials'] = "true"
 api.defaults.headers.post['Access-Control-Allow-Headers'] = "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization,Cookie"
-api.defaults.headers.post['Access-Control-Allow-Methods'] = "GET,POST,PUT,DELETE,OPTIONS"
-api.defaults.headers.post['Content-Type'] = 'multipart/form-data,application/json'
+api.defaults.headers.post['Access-Control-Allow-Methods'] = "GET,POST,PUT,PATCH,DELETE,OPTIONS"
+api.defaults.headers.post['Content-Type'] = 'application/json'
 // api.headers
 
 // const keyValuePairs = Object.entries(getAllCookies()).map(
