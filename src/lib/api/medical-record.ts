@@ -1,4 +1,4 @@
-import api_root from "@/axios";
+import api_root from "../../axios";
 
 export const getAllUserMedicalRecordsRequest = async () => {
   try {

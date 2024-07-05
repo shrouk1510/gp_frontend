@@ -62,7 +62,7 @@ export type MedicationType = {
 };
 
 export type DailyListType = {
-  id: 1;
+  id: number;
   date: string;
   medications: MedicationType[];
   meals: MealType[];

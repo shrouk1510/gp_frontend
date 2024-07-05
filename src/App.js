@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { lazy, Suspense, useState } from 'react';
 import { BrowserRouter, Navigate, Route, RouterProvider, Routes } from "react-router-dom";
 import { Toaster } from 'react-hot-toast';
 import SigninForm from '../src/components/signup-login-forms-User/SigninForm.jsx'
@@ -44,11 +44,18 @@ import BlockedRoute from './routes/blocked-route.jsx';
 import AdminRoute from './routes/admin-route.jsx'
 import Reviews from './ReviewsPageComponent/Review.js';
 
+const ModalProvider = lazy(() => import("./providers/modal-provider"))
+const ToasterProvider = lazy(() => import("./providers/toaster-provider"))
+
 function App() {
 
   return (
+
     <BrowserRouter>
-      <Toaster />
+      <Suspense fallback={<>loading...</>}>
+        <ToasterProvider />
+        <ModalProvider />
+      </Suspense>
       <Routes>
         <Route path="/" element={<Welcome />} />
         <Route path="/Home" element={<Home />} />
@@ -84,8 +91,8 @@ function App() {
         <Route path="/reviewsB" element={<PrivateRoute><UserRev /></PrivateRoute>} />
         {/* <Route path="/Submit" element={<PrivateRoute><UserRev /></PrivateRoute>} /> */}
         <Route path="/AdminSignIn" element={<PrivateRoute><ReviewsAdmin /></PrivateRoute>} />
-        <Route path="/ProfileLogout" element={<Welcome />} />
-        <Route path="/AdminLogout" element={<Welcome />} />
+        {/* <Route path="/ProfileLogout" element={<Welcome />} /> */}
+        {/* <Route path="/AdminLogout" element={<Welcome />} /> */}
         <Route path="/AdminSign" element={<ReviewsAdmin />} />
         <Route path="/graph" element={<Graph />} />
 
@@ -95,6 +102,7 @@ function App() {
 
       </Routes>
     </BrowserRouter>
+
   )
 }
 

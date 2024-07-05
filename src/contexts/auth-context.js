@@ -144,6 +144,8 @@ export const AuthContextProvider = ({ children }) => {
         }
     }
 
+
+
     const updateState = useCallback((action) => {
         dispatch(action);
     }, []);
