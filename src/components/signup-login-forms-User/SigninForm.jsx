@@ -5,6 +5,7 @@ import user_icon from "../Assets/person.png";
 import password_icon from "../Assets/password.png";
 import { Link, useNavigate } from "react-router-dom"; // Import Link
 import { useAuthContext } from "../../contexts/auth-context";
+import toast from "react-hot-toast";
 
 const Tooltip = ({ message }) => {
   const [isActive, setIsActive] = useState(false);
@@ -17,11 +18,11 @@ const Tooltip = ({ message }) => {
 };
 
 const SigninForm = () => {
-  const { loginUser } = useAuthContext();
+  const { loginUser, activeUser } = useAuthContext();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState({ username: "", password: "" });
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(Boolean(activeUser));
 
   const navigate = useNavigate();
 
@@ -42,12 +43,12 @@ const SigninForm = () => {
     setError(errorObj);
 
     if (valid) {
-      setIsLoggedIn(true);
+      // setIsLoggedIn(true);
       try {
         await loginUser(username, password);
         navigate("/Registered");
       } catch (error) {
-        alert(error);
+        typeof error === "string" ? toast.error(error) : alert(error);
       }
     }
   };
@@ -70,7 +71,7 @@ const SigninForm = () => {
 
   return (
     <div className="container">
-      <form className="form-container" onSubmit={handleSignIn}>
+      <div className="form-container">
         <div className="header">
           <div className="text">Sign In</div>
           <div className="underline"></div>
@@ -105,7 +106,7 @@ const SigninForm = () => {
         </div>
 
         <div className="submit-container">
-          <button className="submit" type="submit">
+          <button className="submit" onClick={handleSignIn}>
             Sign In
           </button>
         </div>
@@ -116,7 +117,7 @@ const SigninForm = () => {
             Sign Up
           </Link>
         </div>
-      </form>
+      </div>
     </div>
   );
 };

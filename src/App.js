@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Navigate, Route, RouterProvider, Routes } from "react-router-dom";
+import { Toaster } from 'react-hot-toast';
 import SigninForm from '../src/components/signup-login-forms-User/SigninForm.jsx'
 import ParentComponent from '../src/components/signup-login-forms-User/ParentComponent.jsx'
 import Welcome from './firstpageComponent/Welcome';
@@ -40,11 +41,13 @@ import Graph from './finalGraphComponent/finalGraph.js';
 
 import PrivateRoute from './routes/private-route.jsx';
 import BlockedRoute from './routes/blocked-route.jsx';
+import AdminRoute from './routes/admin-route.jsx'
 
 function App() {
 
   return (
     <BrowserRouter>
+      <Toaster />
       <Routes>
         <Route path="/" element={<Welcome />} />
         <Route path="/Home" element={<Home />} />
@@ -64,12 +67,12 @@ function App() {
         <Route path="/logout" element={<Welcome />} />
         <Route path="/AdminLifestyle" element={<AdminLife />} />
         <Route path="/NatTips" element={<NatTips />} />
-        <Route path="/addAdmin" element={<SignupForm />} />
+        <Route path="/addAdmin" element={<AdminRoute><SignupForm /></AdminRoute>} />
         <Route path="/predict" element={<DiabetesPrediction />} />
         <Route path="/excercize" element={<Excer />} />
         <Route path="/meal" element={<MealFinal />} />
         <Route path="/Location" element={<Locations />} />
-        <Route path="/userprofile" element={<UserProfile />} />
+        <Route path="/userprofile" element={<PrivateRoute><UserProfile /></PrivateRoute>} />
         <Route path="/AdminReview" element={<ReviewsAdmin />} />
         <Route path="/delete" element={<DeleteAdmin />} />
         <Route path="/profile" element={<AdminProfile />} />
@@ -78,7 +81,7 @@ function App() {
         <Route path="/UrgentSign" element={<ParentComponent />} />
         <Route path="/MedicationL" element={<Medical />} />
         <Route path="/reviewsB" element={<PrivateRoute><UserRev /></PrivateRoute>} />
-        <Route path="/Submit" element={<PrivateRoute><UserRev /></PrivateRoute>} />
+        {/* <Route path="/Submit" element={<PrivateRoute><UserRev /></PrivateRoute>} /> */}
         <Route path="/AdminSignIn" element={<PrivateRoute><ReviewsAdmin /></PrivateRoute>} />
         <Route path="/ProfileLogout" element={<Welcome />} />
         <Route path="/AdminLogout" element={<Welcome />} />

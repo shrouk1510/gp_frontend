@@ -4,6 +4,8 @@ import StepOne from "./StepOne";
 import StepTwo from "./StepTwo";
 import "./signup.css";
 import { useAuthContext } from "../../contexts/auth-context";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const ParentComponent = () => {
   const { createUserData } = useAuthContext();
@@ -13,11 +15,20 @@ const ParentComponent = () => {
     username: "",
     email: "",
     password: "",
-    additionalInfo: "",
+    firstname: "",
+    lastname: "",
+    gender: undefined,
+    age: undefined,
   });
 
+  const navigate = useNavigate();
   const handleNext = () => {
-    setStep(step + 1);
+    if (userData.username && userData.email && userData.password) {
+      setStep(step + 1);
+    } else {
+      // Notify user to fill in all required fields
+      toast.error("Please fill in all required fields.");
+    }
   };
 
   const handlePrevious = () => {
@@ -33,16 +44,31 @@ const ParentComponent = () => {
       userData.age
     ) {
       // Logic to submit user data
-      console.log("User data submitted:", userData);
+      // console.log("User data submitted:", userData);
 
       try {
-        await createUserData(userData);
+        const formattedValues = {
+          username: userData.username,
+          email: userData.email,
+          password: userData.password,
+          details: {
+            firstname: userData.firstname,
+            lastname: userData.lastname,
+            age: Number(userData.age),
+            gender: userData.gender,
+          },
+        };
+
+        console.log("User data submitted:", formattedValues);
+        await createUserData(formattedValues);
+
+        navigate("/Sign-In");
       } catch (error) {
-        alert(error);
+        typeof error === "string" ? toast.error(error) : alert(error);
       }
     } else {
       // Notify user to fill in all required fields
-      alert("Please fill in all required fields.");
+      toast.error("Please fill in all required fields.");
     }
   };
 

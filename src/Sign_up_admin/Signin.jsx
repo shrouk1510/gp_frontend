@@ -4,6 +4,7 @@ import user_icon from "./Assets/person.png";
 import password_icon from "./Assets/password.png";
 import { Link, useNavigate } from "react-router-dom"; // Import Link
 import { useAuthContext } from "../contexts/auth-context";
+import toast from "react-hot-toast";
 
 const Tooltip = ({ message }) => {
   const [isActive, setIsActive] = useState(false);
@@ -46,7 +47,7 @@ const Signin = () => {
         await loginAdmin(username, password);
         navigate("/AdminSignIn");
       } catch (error) {
-        alert(error);
+        typeof error === "string" ? toast.error(error) : alert(error);
       }
     }
   };
@@ -117,11 +118,11 @@ const Signin = () => {
                 Sign In
               </button>
             </div>
-            <div className="link-container">
+            {/* <div className="link-container">
               <Link to="/signup" className="link">
                 Don't have an account? Sign Up
               </Link>
-            </div>
+            </div> */}
           </>
         )}
       </div>

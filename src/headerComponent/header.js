@@ -97,8 +97,8 @@ function Header() {
                       Articles
                     </a>
                     <ul className="item-menu">
-                        <Link to='/NaturalTips' href="#"><li>Natural Tips</li></Link>
-                        <Link to='/lifestyle' href="#"><li>Lifestyle Tips</li></Link>
+                        <Link to='/NaturalTips'><li>Natural Tips</li></Link>
+                        <Link to='/lifestyle'><li>Lifestyle Tips</li></Link>
                     </ul>
                   </li>
                 </ul>
