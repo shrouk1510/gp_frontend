@@ -8,19 +8,20 @@
     background-color: #f5f7fa;
     padding: 20px;
     box-sizing: border-box;
+    margin-top: -60px;
 }
 
 /* Styling the title */
-.title {
+.graph-container .title {
     font-size: 2.5em;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     color: #2c3e50;
     font-weight: 700;
     text-align: center;
 }
 
 /* Styling the form */
-.graph-form {
+.graph-container .graph-form {
     display: flex;
     flex-direction: column;
     background-color: #ffffff;
@@ -33,12 +34,12 @@
     margin-top: -20px;
 }
 
-.graph-form:hover {
+.graph-container .graph-form:hover {
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
 }
 
 /* Styling form labels */
-.form-label {
+.graph-container .form-label {
     margin-bottom: 20px;
     color: #34495e;
     font-size: 1em;
@@ -48,7 +49,7 @@
 }
 
 /* Styling form inputs */
-.form-input {
+.graph-container .form-input {
     width: 100%;
     padding: 10px;
     margin-top: 5px;
@@ -59,12 +60,12 @@
     transition: border-color 0.3s ease;
 }
 
-.form-input:focus {
+.graph-container .form-input:focus {
     border-color: #3498db;
 }
 
 /* Styling the button */
-.submit-button {
+.graph-container .submit-button {
     margin-top: 20px;
     padding: 12px 20px;
     background-color: #3498db;
@@ -78,7 +79,7 @@
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.submit-button:hover {
+.graph-container .submit-button:hover {
     background-color: #2980b9;
     transform: translateY(-2px);
 }

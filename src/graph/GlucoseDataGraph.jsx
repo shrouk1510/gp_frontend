@@ -4,30 +4,57 @@ import 'chart.js/auto'; // Import Chart.js directly for auto-registration of com
 import './GlucoseDataGraph.css';
 
 const GlucoseDataGraph = () => {
-  const [recordType, setRecordType] = useState('');
   const [startDate, setStartDate] = useState('');
   const [data, setData] = useState(null);
 
   const handleGenerateGraph = () => {
     // Sample data generation for demonstration. Replace with actual data collection logic.
-    const generatedData = {
-      labels: ['2023-07-01', '2023-07-02', '2023-07-03', '2023-07-04'],
+    const generatedData = generateData(startDate);
+
+    setData(generatedData);
+  };
+
+  const generateData = (startDate) => {
+    // Calculate current date and time
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    const currentMonth = ('0' + (currentDate.getMonth() + 1)).slice(-2); // Month is zero-indexed
+    const currentDay = ('0' + currentDate.getDate()).slice(-2);
+    const currentTime = `${currentYear}-${currentMonth}-${currentDay}`;
+
+    // Generate labels and data from start date to current time
+    const labels = [];
+    const dataValues = [];
+    let currentDateIter = new Date(startDate);
+
+    while (currentDateIter <= currentDate) {
+      const formattedDate = currentDateIter.toISOString().slice(0, 10); // Format as YYYY-MM-DD
+      labels.push(formattedDate);
+
+      // Replace with actual data retrieval logic based on date
+      const randomValue = Math.floor(Math.random() * 150) + 50; // Example random data
+      dataValues.push(randomValue);
+
+      currentDateIter.setDate(currentDateIter.getDate() + 1); // Move to next day
+    }
+
+    return {
+      labels: labels,
       datasets: [
         {
-          label: recordType,
-          data: [75, 80, 65, 90], // Replace with actual data
+          
+          data: dataValues,
           fill: false,
           backgroundColor: 'rgba(75, 192, 192, 0.6)',
           borderColor: 'rgba(75, 192, 192, 1)',
         },
       ],
     };
-    setData(generatedData);
   };
 
   return (
     <div className="graph-container">
-      <h1 className="title">Data Graph</h1>
+      <h1 className="title">Glucose Data Graph</h1>
       <form
         className="graph-form"
         onSubmit={(e) => {
@@ -35,22 +62,6 @@ const GlucoseDataGraph = () => {
           handleGenerateGraph();
         }}
       >
-        <label className="form-label">
-          Record Type:
-          <select
-            required
-            className="form-input"
-            value={recordType}
-            onChange={(e) => setRecordType(e.target.value)}
-          >
-            <option value="" disabled>
-              Select a type
-            </option>
-            <option value="Glucose Measures">Glucose Measures</option>
-            <option value="Insulin Levels">Insulin Levels</option>
-            <option value="Carbohydrates">Carbohydrates</option>
-          </select>
-        </label>
         <label className="form-label">
           Start Date:
           <input
