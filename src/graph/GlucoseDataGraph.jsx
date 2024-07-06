@@ -6,6 +6,7 @@ import {
   getAllMedicalRecordTypesRequest,
   getGraphDataRequest,
 } from "../lib/api/medical-record";
+import toast from "react-hot-toast";
 
 const GlucoseDataGraph = () => {
   const [recordTypes, setRecordTypes] = useState([]);
@@ -24,8 +25,8 @@ const GlucoseDataGraph = () => {
     // Calculate current date and time
     const currentDate = new Date();
     const currentYear = currentDate.getFullYear();
-    const currentMonth = ('0' + (currentDate.getMonth() + 1)).slice(-2); // Month is zero-indexed
-    const currentDay = ('0' + currentDate.getDate()).slice(-2);
+    const currentMonth = ("0" + (currentDate.getMonth() + 1)).slice(-2); // Month is zero-indexed
+    const currentDay = ("0" + currentDate.getDate()).slice(-2);
     const currentTime = `${currentYear}-${currentMonth}-${currentDay}`;
 
     // Generate labels and data from start date to current time
@@ -48,7 +49,6 @@ const GlucoseDataGraph = () => {
       labels: labels,
       datasets: [
         {
-          
           data: dataValues,
           fill: false,
           backgroundColor: "rgba(75, 192, 192, 0.6)",
@@ -65,8 +65,10 @@ const GlucoseDataGraph = () => {
         recordTypeId: recordType,
         startDate,
       });
-      
-    } catch (error) {}
+    } catch (error) {
+      typeof error === "string" ? toast.error(error) : alert(error);
+    }
+
     handleGenerateGraph();
   };
 
@@ -81,13 +83,7 @@ const GlucoseDataGraph = () => {
   return (
     <div className="graph-container">
       <h1 className="title">Data Graph</h1>
-      <form
-        className="graph-form"
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleGenerateGraph();
-        }}
-      >
+      <form className="graph-form" onSubmit={handleSubmit}>
         <label className="form-label">
           Record Type:
           <select
@@ -99,9 +95,11 @@ const GlucoseDataGraph = () => {
             <option value="" disabled>
               Select a type
             </option>
-            <option value="Glucose Measures">Glucose Measures</option>
-            <option value="Insulin Levels">Insulin Levels</option>
-            <option value="Carbohydrates">Carbohydrates</option>
+            {recordTypes.map((type) => (
+              <option key={type.typeId} value={type.typeId}>
+                {type.type}
+              </option>
+            ))}
           </select>
         </label>
         <label className="form-label">
