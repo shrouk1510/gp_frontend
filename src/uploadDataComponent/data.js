@@ -7,16 +7,17 @@ const UploadData = () => {
 
     const [records, setRecords] = useState([]);
     const [viewTable, setViewTable] = useState(false);
+    const [warningMessage, setWarningMessage] = useState('');
     return (
         <div>
             <RegisteredNav></RegisteredNav>
-            {/* <div className="app-container"> */}
-                {viewTable ? (
-                    <TodoTable records={records} setViewTable={setViewTable} />
-                ) : (
-                    <TodoForm setRecords={setRecords} setViewTable={setViewTable} />
-                )}
-            {/* </div> */}
+            
+            {viewTable ? (
+                <TodoTable records={records} setViewTable={setViewTable} warningMessage={warningMessage} />
+            ) : (
+                <TodoForm setRecords={setRecords} setViewTable={setViewTable} setWarningMessage={setWarningMessage} />
+            )}
+        
             
 
         </div>

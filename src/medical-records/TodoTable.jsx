@@ -1,14 +1,20 @@
 import React from 'react';
 import './records.css';
 
-const TodoTable = ({ records, setViewTable }) => {
+const TodoTable = ({ records, setViewTable, warningMessage }) => {
+    const isNormalRange = warningMessage && warningMessage.includes("within the normal range");
+    
     return (
         <div className="table-container">
             <h2>Medical Records</h2>
+            {warningMessage && (
+                <div className={`glucose-message ${isNormalRange ? 'normal-range' : 'abnormal-range'}`}>
+                    {warningMessage}
+                </div>
+            )}
             <table>
                 <thead>
                     <tr>
-                        <th>Type</th>
                         <th>Measurement</th>
                         <th>Notes</th>
                         <th>Date</th>
@@ -17,7 +23,6 @@ const TodoTable = ({ records, setViewTable }) => {
                 <tbody>
                     {records.map((record, index) => (
                         <tr key={index}>
-                            <td>{record.type}</td>
                             <td>{record.measurement}</td>
                             <td>
                                 <ul>
