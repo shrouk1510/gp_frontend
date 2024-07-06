@@ -57,14 +57,10 @@ function RegisteredNav() {
                   </Link>
                 </li>
                 <li className="nav-item dropdown nature">
-                  <a className="nav-link" href="#">
+                  <Link to='/MedicationL' className="nav-link" href="#">
                     Health Lists
-                  </a>
-                  <ul className="item-menu newList">
-                    <Link to='/MedicationL' href="#"><li>Medication Schedule</li></Link>
-                    <Link to='/excercize' href="#"><li>Exercise Schedule</li></Link>
-                    <Link to='/meal' href="#"><li>Meal Schedule </li></Link>
-                  </ul>
+                  </Link>
+                  
                 </li>
                 <li className="nav-item">
                   <Link to='/predict' className="nav-link" href="diabetes-level-reports.html">Predict diabetes</Link>

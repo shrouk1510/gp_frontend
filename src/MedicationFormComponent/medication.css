@@ -1,7 +1,7 @@
 /* Form styling similar to Exercise form */ 
 .medicationContainer { 
     height: 82vh; 
-    margin-top: 120px; 
+    /* margin-top: 90px; */
 } 
  
 .medicationContainer .header { 
@@ -40,6 +40,7 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
     margin-left:500px; 
     border-radius: 6px; 
+    margin-top: 60px;
 } 
  
 .medicationContainer .form-group { 
@@ -77,15 +78,16 @@
  
 .medicationContainer  .see{ 
     position: absolute;  
-    top: 100%;  
-    right: 400px;  
+    right: 406px;  
     background-color: #4CAF50; 
     padding: 10px 13px; 
     border-radius: 4px; 
     margin-top: -100px; /* Adjust spacing */ 
     color: white; 
     border: none; 
-    margin-right: 230px;
+    margin-right: 270px;
+    margin-top: -30px;
+    
 } 
  
 .medicationContainer .see:hover{ 
@@ -93,68 +95,3 @@
  
 } 
  
-.tableeeContainer { 
-    margin-top: 80px; 
-    margin-left: 620px; 
-} 
- 
-.tableeeContainer h2 { 
-    margin-left: 11px; 
-    font-weight: 600; 
-    font-family: 'Source Sans Pro', Arial, sans-serif; 
-    color: #2a3845; 
-} 
- 
-.tableeeContainer .medication-table { 
-    border-collapse: collapse; 
-    margin: 20px 0; 
-    font-size: 15px; 
-    width: 60%; 
-    margin-left: -100px; 
-} 
- 
-.tableeeContainer .medication-table th, .medication-table td { 
-    border: 1px solid #afacac; 
-    padding: 10px; 
-    text-align: center; 
-} 
- 
-.tableeeContainer .medication-table th { 
-    background-color: #4CAF50; 
-    color: white; 
-    text-transform: uppercase; 
-} 
- 
-.tableeeContainer .medication-table tr:nth-child(even) { 
-    background-color: #f9f9f9; 
-} 
- 
-.tableeeContainer .medication-table tr:hover { 
-    background-color: #bae7c8; 
-    cursor: pointer; 
-} 
- 
-.tableeeContainer .medication-table tr td { 
-    border: none; 
-    border-bottom: 1px solid #2a3845; 
-} 
- 
-.tableeeContainer .medication-table tr:last-child td { 
-    border-bottom: none; 
-} 
- 
-.tableeeContainer .medicalbuttonContainer .medicalBack{ 
-    position: absolute;  
-    top: 100%;  
-    left: 380px; 
-    background-color: #4CAF50; 
-    padding: 10px 13px; 
-    border-radius: 4px; 
-    margin-top: -270px; /* Adjust spacing */ 
-    color: white; 
-    border: none; 
-} 
- 
-.tableeeContainer .medicalbuttonContainer .medicalBack:hover{ 
-    background-color: green; 
-}

@@ -64,7 +64,7 @@ const UnregisteredReviews = () => {
     const fetchReviews = async () => {
       const fetchedReviews = await getAllReviewsRequest();
 
-      setReviews(fetchedReviews || allReviewsData);
+      setReviews( allReviewsData);
     };
 
     fetchReviews();

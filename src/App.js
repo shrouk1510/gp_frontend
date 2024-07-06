@@ -22,18 +22,17 @@ import AdminLife from './adminLifeComponent/AdminLife.js';
 import NatTips from './NatAdminComponent/NatTip.js';
 import SignupForm from './Sign_up_admin/SignupForm.jsx';
 import DiabetesPrediction from './FinalPredictComponent/Diabetes.js';
-import Excer from './finalExcerComponent/excer.js';
-import MealFinal from './finalMealComponent/mealfinal.js';
+
+
 import Locations from './finalLoccationComponent/locations.js';
 import AdminReviewsPage from './AdminReviews/ReviewsPage.jsx';
 import DeleteAdmin from './delete-admin/DeleteAdmin.jsx';
 import AdminProfile from './admin-profile/AdminProfile.jsx';
-import MedicationTable from './MedicationFormComponent/MedicationTable.js';
 import UserProfile from './user-profile/UserProfile.jsx';
 import Natural from './finalNatComponent/naturalTips.js';
 import UnReNature from './UnRegisteredComponent/UnRegisteredNat.js';
 import ViewData from './finalViewDataComponent/ViewData.js';
-import Medical from './FinalMedicalComponent/medical.js'
+
 
 import ReviewsAdmin from './finalAgmin RevComponent/AdminR.js';
 import Graph from './finalGraphComponent/finalGraph.js';
@@ -43,6 +42,7 @@ import PrivateRoute from './routes/private-route.jsx';
 import BlockedRoute from './routes/blocked-route.jsx';
 import AdminRoute from './routes/admin-route.jsx'
 import Reviews from './ReviewsPageComponent/Review.js';
+import MultiStepForm from './multistepComponent/MultiStepForm.js';
 
 const ModalProvider = lazy(() => import("./providers/modal-provider"))
 const ToasterProvider = lazy(() => import("./providers/toaster-provider"))
@@ -77,17 +77,17 @@ function App() {
         <Route path="/NatTips" element={<NatTips />} />
         <Route path="/addAdmin" element={<AdminRoute><SignupForm /></AdminRoute>} />
         <Route path="/predict" element={<DiabetesPrediction />} />
-        <Route path="/excercize" element={<Excer />} />
-        <Route path="/meal" element={<MealFinal />} />
+        
+        
         <Route path="/Location" element={<Locations />} />
         <Route path="/userprofile" element={<PrivateRoute><UserProfile /></PrivateRoute>} />
         <Route path="/AdminReview" element={<AdminRoute><ReviewsAdmin /></AdminRoute>} />
         <Route path="/delete" element={<DeleteAdmin />} />
         <Route path="/profile" element={<AdminProfile />} />
-        <Route path="/medication-table" element={<MedicationTable />} />
+        
         <Route path="/NewNat" element={<Natural />} />
         <Route path="/UrgentSign" element={<ParentComponent />} />
-        <Route path="/MedicationL" element={<Medical />} />
+        <Route path="/MedicationL" element={<MultiStepForm/>} />
         <Route path="/reviewsB" element={<PrivateRoute><UserRev /></PrivateRoute>} />
         {/* <Route path="/Submit" element={<PrivateRoute><UserRev /></PrivateRoute>} /> */}
         <Route path="/AdminSignIn" element={<AdminRoute><ReviewsAdmin /></AdminRoute>} />

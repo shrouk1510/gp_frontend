@@ -63,7 +63,7 @@ const UserProfile = () => {
 
   const handleReadAllNotifications = async () => {
     try {
-      await markAllNotificationsReadRequest();
+      // await markAllNotificationsReadRequest();
       markAllNotificationAsRead();
       toast.success("All notifications marked as read");
     } catch (error) {
@@ -73,7 +73,7 @@ const UserProfile = () => {
 
   const handleReadNotification = async (notificationId) => {
     try {
-      await markNotificationReadByIdRequest(notificationId);
+      // await markNotificationReadByIdRequest(notificationId);
       markNotificationAsRead(notificationId);
       toast.success("notification marked as read");
     } catch (error) {
@@ -82,27 +82,27 @@ const UserProfile = () => {
   };
   useEffect(() => {
     const fetchNotifications = async () => {
-      const fetchedNotifications = await getAllUserNotificationsRequest();
-      // const fetchedNotifications = [
-      //   {
-      //     id: 1,
-      //     message: "User profile updated.",
-      //     date: "12-21-2001",
-      //     readFlag: true,
-      //   },
-      //   {
-      //     id: 2,
-      //     message: "Password changed successfully.",
-      //     date: "12-21-2001",
-      //     readFlag: false,
-      //   },
-      //   {
-      //     id: 3,
-      //     message: "New login from unrecognized device.",
-      //     date: "12-21-2001",
-      //     readFlag: true,
-      //   },
-      // ];
+      // const fetchedNotifications = await getAllUserNotificationsRequest();
+      const fetchedNotifications = [
+        {
+          id: 1,
+          message: "User profile updated.",
+          date: "12-21-2001",
+          readFlag: true,
+        },
+        {
+          id: 2,
+          message: "Password changed successfully.",
+          date: "12-21-2001",
+          readFlag: false,
+        },
+        {
+          id: 3,
+          message: "New login from unrecognized device.",
+          date: "12-21-2001",
+          readFlag: true,
+        },
+      ];
       setNotifications(fetchedNotifications);
     };
 

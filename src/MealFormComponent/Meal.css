@@ -95,70 +95,18 @@
 .mealContainer .submit-button:hover { 
     background-color: green; 
 } 
-/* Table styling similar to Exercise table */ 
  
-.tableeContainer { 
-    margin-top: 80px; 
-    margin-left: 620px; 
-} 
- 
-.tableeContainer h2 { 
-    margin-left: 40px; 
-    font-weight: 600; 
-    font-family: 'Source Sans Pro', Arial, sans-serif; 
-    color: #2a3845; 
-} 
- 
-.tableeContainer .meal-table { 
-    border-collapse: collapse; 
-    margin: 20px 0; 
-    font-size: 15px; 
-    width: 100%; 
-} 
- 
-.tableeContainer .meal-table th, .meal-table td { 
-    border: 1px solid #afacac; 
-    padding: 10px; 
-    text-align: center; 
-    width: 150px; 
-} 
- 
-.tableeContainer .meal-table th { 
-    background-color: #4CAF50; 
-    color: white; 
-    text-transform: uppercase; 
-} 
- 
-.tableeContainer .meal-table tr:nth-child(even) { 
-    background-color: #f9f9f9; 
-} 
- 
-.tableeContainer .meal-table tr:hover { 
-    background-color: #bae7c8; /* Softer hover effect */ 
-    cursor: pointer; 
-} 
- 
-.tableeContainer .meal-table tr td { 
-    border: none; 
-    border-bottom: 1px solid #2a3845; 
-} 
- 
-.tableeContainer .meal-table tr:last-child td { 
-    border-bottom: none; 
-} 
- 
-.tableeContainer .mealButtonContainer .mealBack{ 
-    position: absolute;  
-    top: 100%;  
-    left: 480px; 
-    background-color: #4CAF50; 
-    padding: 10px 13px; 
-    border-radius: 4px; 
-    margin-top: -270px; /* Adjust spacing */ 
-    color: white; 
-    border: none; 
-} 
- 
-.tableeContainer .mealButtonContainer .mealBack:hover { 
-    background-color: green; 
+.mealContainer .mealback-button{
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+    width: 23%;
+}
+
+.mealContainer .mealback-button:hover{
+    background-color: green;
+
 }

@@ -1,0 +1,38 @@
+.tableContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+  }
+  
+  .unified-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .unified-table th, .unified-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .unified-table th {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .buttonContainer {
+    margin-top: 20px;
+  }
+  
+  .backButton {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  .backButton:hover{
+  background-color: green;
+  }
+  

@@ -92,68 +92,17 @@
     background-color: green; 
 } 
  
-.tableContainer { 
-    margin-top: 80px; 
-    margin-left: 620px; 
-} 
- 
-.tableContainer h2 { 
-    margin-left: 11px; 
-    font-weight: 600; 
-    font-family: 'Source Sans Pro', Arial, sans-serif; 
-    color: #2a3845; 
-} 
- 
-.tableContainer .exercise-table { 
-    border-collapse: collapse; 
-    margin: 20px 0; 
-    font-size: 15px; 
-    width: 100%; 
-} 
- 
-.tableContainer .exercise-table th, .exercise-table td { 
-    border: 1px solid #afacac; 
-    padding: 10px; 
-    text-align: center; 
-    width: 150px; 
-} 
- 
-.tableContainer .exercise-table th { 
-    background-color: #4CAF50; 
-    color: white; 
-    text-transform: uppercase; 
-} 
- 
-.tableContainer .exercise-table tr:nth-child(even) { 
-    background-color: #f9f9f9; 
-} 
- 
-.tableContainer .exercise-table tr:hover { 
-    background-color: #bae7c8; /* Softer hover effect */ 
-    cursor: pointer; 
-} 
- 
-.tableContainer .exercise-table tr td { 
-    border: none; 
-    border-bottom: 1px solid #2a3845; 
-} 
- 
-.tableContainer .exercise-table tr:last-child td { 
-    border-bottom: none; 
-} 
- 
-.tableContainer .exerciseButtonContainer .exerciseBack{ 
-    position: absolute;  
-    top: 100%;  
-    left: 480px; 
-    background-color: #4CAF50; 
-    padding: 10px 13px; 
-    border-radius: 4px; 
-    margin-top: -270px; /* Adjust spacing */ 
-    color: white; 
-    border: none; 
-} 
- 
-.tableContainer .exerciseButtonContainer .exerciseBack:hover{ 
-    background-color: green; 
+.exerciseContainer .Exerback-button{
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
 }
+
+.exerciseContainer .Exerback-button:hover{
+    background-color: green;
+
+}
+
