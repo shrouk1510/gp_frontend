@@ -6,7 +6,7 @@ const PrivateRoute = (props) => {
   const { children } = props;
   const { activeUser } = useAuthContext();
 
-  if (activeUser) {
+  if (!activeUser) {
     return <>{children}</>;
   }
 
