@@ -29,6 +29,6 @@ export const predictDiabetesRequest = async (values: {
     return response;
   } catch (error) {
     console.log(error);
-    return [];
+    return null;
   }
 };

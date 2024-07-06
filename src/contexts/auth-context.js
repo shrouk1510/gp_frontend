@@ -47,8 +47,11 @@ export const AuthContextProvider = ({ children }) => {
             }
         },
         {
-            activeUser: null,
-            role: undefined
+            activeUser: {
+                id: 1,
+                username: "ahmed"
+            },
+            role: "ADMIN"
         }
     );
 

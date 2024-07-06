@@ -1,24 +1,26 @@
 import React, { useState } from 'react';
 import './predict.css';
+import toast from 'react-hot-toast';
+import { predictDiabetesRequest } from '../lib/api/predication';
 
 const DiabetesPredictionForm = () => {
     const [formData, setFormData] = useState({
-        Age: '',
-        Gender: '',
-        Polyuria: '',
-        Polydipsia: '',
+        age: '',
+        gender: '',
+        polyuria: '',
+        polydipsia: '',
         suddenWeightLoss: '',
-        Weakness: '',
-        Polyphagia: '',
-        GenitalThrush: '',
-        VisualBlurring: '',
-        Itching: '',
-        Irritability: '',
-        DelayedHealing: '',
-        PartialParesis: '',
-        MuscleStiffness: '',
-        Alopecia: '',
-        Obesity: ''
+        weakness: '',
+        polyphagia: '',
+        genitalThrush: '',
+        visualBlurring: '',
+        itching: '',
+        irritability: '',
+        delayedHealing: '',
+        partialParesis: '',
+        muscleStiffness: '',
+        alopecia: '',
+        obesity: ''
     });
 
     const [prediction, setPrediction] = useState(null);
@@ -31,12 +33,24 @@ const DiabetesPredictionForm = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         // Here you can make an API call to get the prediction
         // For now, we will just log the form data and set a dummy prediction
-        console.log(formData);
-        setPrediction('Prediction result here'); // Replace with actual prediction result from API
+        // console.log(formData);
+        try {
+
+            const result = await predictDiabetesRequest(formData)
+
+            if (!result) {
+                throw "something went wrong"
+            }
+
+            setPrediction(result?.prediction); // Replace with actual prediction result from API
+            toast.success("Prediction completed");
+        } catch (error) {
+            typeof error === "string" ? toast.error(error) : alert(error);
+        }
     };
 
     return (
@@ -52,8 +66,9 @@ const DiabetesPredictionForm = () => {
                             name="Age"
                             min="20"
                             max="65"
-                            value={formData.Age}
+                            value={formData.age}
                             onChange={handleChange}
+                            inputMode="numeric"
                             required
                         />
                     </div>
@@ -62,13 +77,13 @@ const DiabetesPredictionForm = () => {
                         <select
                             id="Gender"
                             name="Gender"
-                            value={formData.Gender}
+                            value={formData.egnder}
                             onChange={handleChange}
                             required
                         >
-                            <option value="">Select</option>
-                            <option value="0">Male</option>
-                            <option value="1">Female</option>
+                            <option value={''}>Select</option>
+                            <option value={0}>Male</option>
+                            <option value={1}>Female</option>
                         </select>
                     </div>
                     <div className="form-group">
@@ -76,13 +91,13 @@ const DiabetesPredictionForm = () => {
                         <select
                             id="Polyuria"
                             name="Polyuria"
-                            value={formData.Polyuria}
+                            value={formData.polyuria}
                             onChange={handleChange}
                             required
                         >
                             <option value="">Select</option>
-                            <option value="0">No</option>
-                            <option value="1">Yes</option>
+                            <option value={0}>No</option>
+                            <option value={1}>Yes</option>
                         </select>
                     </div>
                     <div className="form-group">
@@ -90,13 +105,13 @@ const DiabetesPredictionForm = () => {
                         <select
                             id="Polydipsia"
                             name="Polydipsia"
-                            value={formData.Polydipsia}
+                            value={formData.polydipsia}
                             onChange={handleChange}
                             required
                         >
                             <option value="">Select</option>
-                            <option value="0">No</option>
-                            <option value="1">Yes</option>
+                            <option value={0}>No</option>
+                            <option value={1}>Yes</option>
                         </select>
                     </div>
                     <div className="form-group">
@@ -109,8 +124,8 @@ const DiabetesPredictionForm = () => {
                             required
                         >
                             <option value="">Select</option>
-                            <option value="0">No</option>
-                            <option value="1">Yes</option>
+                            <option value={0}>No</option>
+                            <option value={1}>Yes</option>
                         </select>
                     </div>
                     <div className="form-group">
@@ -118,13 +133,13 @@ const DiabetesPredictionForm = () => {
                         <select
                             id="Weakness"
                             name="Weakness"
-                            value={formData.Weakness}
+                            value={formData.weakness}
                             onChange={handleChange}
                             required
                         >
                             <option value="">Select</option>
-                            <option value="0">No</option>
-                            <option value="1">Yes</option>
+                            <option value={0}>No</option>
+                            <option value={1}>Yes</option>
                         </select>
                     </div>
                     <div className="form-group">
@@ -132,13 +147,13 @@ const DiabetesPredictionForm = () => {
                         <select
                             id="Polyphagia"
                             name="Polyphagia"
-                            value={formData.Polyphagia}
+                            value={formData.polyphagia}
                             onChange={handleChange}
                             required
                         >
                             <option value="">Select</option>
-                            <option value="0">No</option>
-                            <option value="1">Yes</option>
+                            <option value={0}>No</option>
+                            <option value={1}>Yes</option>
                         </select>
                     </div>
                     <div className="form-group">
@@ -146,13 +161,13 @@ const DiabetesPredictionForm = () => {
                         <select
                             id="GenitalThrush"
                             name="GenitalThrush"
-                            value={formData.GenitalThrush}
+                            value={formData.genitalThrush}
                             onChange={handleChange}
                             required
                         >
                             <option value="">Select</option>
-                            <option value="0">No</option>
-                            <option value="1">Yes</option>
+                            <option value={0}>No</option>
+                            <option value={1}>Yes</option>
                         </select>
                     </div>
                     <div className="form-group">
@@ -160,13 +175,13 @@ const DiabetesPredictionForm = () => {
                         <select
                             id="VisualBlurring"
                             name="VisualBlurring"
-                            value={formData.VisualBlurring}
+                            value={formData.visualBlurring}
                             onChange={handleChange}
                             required
                         >
                             <option value="">Select</option>
-                            <option value="0">No</option>
-                            <option value="1">Yes</option>
+                            <option value={0}>No</option>
+                            <option value={1}>Yes</option>
                         </select>
                     </div>
                     <div className="form-group">
@@ -174,13 +189,13 @@ const DiabetesPredictionForm = () => {
                         <select
                             id="Itching"
                             name="Itching"
-                            value={formData.Itching}
+                            value={formData.itching}
                             onChange={handleChange}
                             required
                         >
                             <option value="">Select</option>
-                            <option value="0">No</option>
-                            <option value="1">Yes</option>
+                            <option value={0}>No</option>
+                            <option value={1}>Yes</option>
                         </select>
                     </div>
                     <div className="form-group">
@@ -188,13 +203,13 @@ const DiabetesPredictionForm = () => {
                         <select
                             id="Irritability"
                             name="Irritability"
-                            value={formData.Irritability}
+                            value={formData.irritability}
                             onChange={handleChange}
                             required
                         >
                             <option value="">Select</option>
-                            <option value="0">No</option>
-                            <option value="1">Yes</option>
+                            <option value={0}>No</option>
+                            <option value={1}>Yes</option>
                         </select>
                     </div>
                     <div className="form-group">
@@ -202,13 +217,13 @@ const DiabetesPredictionForm = () => {
                         <select
                             id="DelayedHealing"
                             name="DelayedHealing"
-                            value={formData.DelayedHealing}
+                            value={formData.delayedHealing}
                             onChange={handleChange}
                             required
                         >
                             <option value="">Select</option>
-                            <option value="0">No</option>
-                            <option value="1">Yes</option>
+                            <option value={0}>No</option>
+                            <option value={1}>Yes</option>
                         </select>
                     </div>
                     <div className="form-group">
@@ -216,13 +231,13 @@ const DiabetesPredictionForm = () => {
                         <select
                             id="PartialParesis"
                             name="PartialParesis"
-                            value={formData.PartialParesis}
+                            value={formData.partialParesis}
                             onChange={handleChange}
                             required
                         >
                             <option value="">Select</option>
-                            <option value="0">No</option>
-                            <option value="1">Yes</option>
+                            <option value={0}>No</option>
+                            <option value={1}>Yes</option>
                         </select>
                     </div>
                     <div className="form-group">
@@ -230,13 +245,13 @@ const DiabetesPredictionForm = () => {
                         <select
                             id="MuscleStiffness"
                             name="MuscleStiffness"
-                            value={formData.MuscleStiffness}
+                            value={formData.muscleStiffness}
                             onChange={handleChange}
                             required
                         >
                             <option value="">Select</option>
-                            <option value="0">No</option>
-                            <option value="1">Yes</option>
+                            <option value={0}>No</option>
+                            <option value={1}>Yes</option>
                         </select>
                     </div>
                     <div className="form-group">
@@ -244,13 +259,13 @@ const DiabetesPredictionForm = () => {
                         <select
                             id="Alopecia"
                             name="Alopecia"
-                            value={formData.Alopecia}
+                            value={formData.alopecia}
                             onChange={handleChange}
                             required
                         >
                             <option value="">Select</option>
-                            <option value="0">No</option>
-                            <option value="1">Yes</option>
+                            <option value={0}>No</option>
+                            <option value={1}>Yes</option>
                         </select>
                     </div>
                     <div className="form-group">
@@ -258,13 +273,13 @@ const DiabetesPredictionForm = () => {
                         <select
                             id="Obesity"
                             name="Obesity"
-                            value={formData.Obesity}
+                            value={formData.obesity}
                             onChange={handleChange}
                             required
                         >
                             <option value="">Select</option>
-                            <option value="0">No</option>
-                            <option value="1">Yes</option>
+                            <option value={0}>No</option>
+                            <option value={1}>Yes</option>
                         </select>
                     </div>
                     <div className="form-group">

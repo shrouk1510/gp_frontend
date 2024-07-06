@@ -20,7 +20,7 @@ export const addReviewRequest = async (
   values: { value: number; feedback: string },
   role: "ADMIN" | "USER"
 ) => {
-  const url = role === "ADMIN" ? "/reviews/admin/add" : "/reviews/add";
+  const url = role === "ADMIN" ? "/reviews/admin/add?" : "/reviews/add?";
 
   const keyValuePairs = Object.entries(values).map(
     ([key, value]) => `${key}=${value}`

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './ReviewsPage.css';
 
 const Review = ({ review, user, reviewId, likes, handleLike, likedReviews, handleDeleteReview }) => {
-    const isLiked = likedReviews.includes(reviewId);
+    const isLiked = likedReviews?.includes(reviewId);
 
  
     return (

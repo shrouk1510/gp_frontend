@@ -6,7 +6,7 @@ const AdminRoute = (props) => {
   const { children } = props;
   const { activeUser, role } = useAuthContext();
 
-  if (!activeUser && role  !== "ADMIN") {
+  if (activeUser && role === "ADMIN") {
     return <>{children}</>;
   }
 
