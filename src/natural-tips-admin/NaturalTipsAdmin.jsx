@@ -284,7 +284,7 @@ const NaturalTipsAdmin = () => {
         )}
       </div>
       <div className="Adminbuttons-container">
-        {visibleTips.length > 3 && (
+        {articles?.length > 3 && (
           <button className="Naturalview-more-button" onClick={handleShowMore}>
             {showMore
               ? "View Less Natural Effects"

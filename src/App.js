@@ -82,7 +82,7 @@ function App() {
         <Route path="/Location" element={<Locations />} />
         <Route path="/userprofile" element={<PrivateRoute><UserProfile /></PrivateRoute>} />
         <Route path="/AdminReview" element={<AdminRoute><ReviewsAdmin /></AdminRoute>} />
-        <Route path="/delete" element={<DeleteAdmin />} />
+        <Route path="/delete" element={<AdminRoute><DeleteAdmin /></AdminRoute>} />
         <Route path="/profile" element={<AdminRoute><AdminProfile /></AdminRoute>} />
 
         <Route path="/NewNat" element={<Natural />} />
