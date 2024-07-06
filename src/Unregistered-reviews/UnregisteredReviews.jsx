@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Review from './Review';
-import './ReviewsPage.css';
+import Review from './UnReview';
+import './UnReviewsPage.css';
 
 const allReviewsData = [
     { id: 1, user: 'Alice', review: 'This website is amazing!', rating: 0 },
@@ -14,9 +14,9 @@ const allReviewsData = [
     // Add more reviews as needed
 ];
 
-const ReviewsPage = () => {
+const UnregisteredReviews = () => {
     const [visibleReviews, setVisibleReviews] = useState(4);
-    const [isAddingReview, setIsAddingReview] = useState(false);
+   // const [isAddingReview, setIsAddingReview] = useState(false);
     const [newReviewText, setNewReviewText] = useState('');
     const [newReviewRating, setNewReviewRating] = useState(0);
     const [newReviewUser, setNewReviewUser] = useState('');
@@ -25,29 +25,6 @@ const ReviewsPage = () => {
 
     const handleSeeMore = () => {
         setVisibleReviews(prevVisibleReviews => prevVisibleReviews + 4);
-    };
-
-    const handleNewReviewTextChange = (e) => {
-        setNewReviewText(e.target.value);
-    };
-
-    const handleNewReviewUserChange = (e) => {
-        setNewReviewUser(e.target.value);
-    };
-
-    const handleNewReviewSubmit = () => {
-        if (newReviewText.trim() && newReviewUser.trim()) {
-            const newReview = {
-                id: reviews.length + 1,
-                user: newReviewUser,
-                review: newReviewText,
-                rating: newReviewRating,
-            };
-            setReviews([...reviews, newReview]);
-            setIsAddingReview(false);
-            setNewReviewText('');
-            setNewReviewUser('');
-        }
     };
 
     const handleLike = (reviewId) => {
@@ -64,44 +41,24 @@ const ReviewsPage = () => {
         }
     };
 
-    const handleDeleteReview = (reviewId) => {
-        setReviews(reviews.filter(review => review.id !== reviewId));
-    };
-
     return (
         <div className="page-container">
             <div className="header-container">
                 <h1>What Our Happy Users Say!</h1>
                 <p><b>Sign up to be able to see more features of our GlucoGuide App.</b></p> 
-                <button className="plus-button" onClick={() => setIsAddingReview(!isAddingReview)}>+</button>
-                {isAddingReview && (
-                    <div className="new-review-form">
-                        <input
-                            type="text"
-                            value={newReviewUser}
-                            onChange={handleNewReviewUserChange}
-                            placeholder="Your Name"></input> 
-                        <textarea
-                            value={newReviewText}
-                            onChange={handleNewReviewTextChange}
-                            placeholder="Write your own review here..."
-                        ></textarea>
-                        <button onClick={handleNewReviewSubmit}>Submit Review</button>
-                    </div>
-                )}
+
             </div>
             <div className="reviews-container">
-                {reviews.slice(0, visibleReviews).map((review) => (
+                {reviews.slice(0, visibleReviews).map((data, index) => (
                     <Review 
-                        key={review.id} 
-                        review={review.review} 
-                        user={review.user} 
-                        initialRating={review.rating} 
-                        reviewId={review.id}
-                        likes={review.likes || 0}
+                        key={index} 
+                        review={data.review} 
+                        user={data.user} 
+                        initialRating={data.rating} 
+                        reviewId={data.id}
+                        likes={data.likes || 0}
                         handleLike={handleLike}
                         likedReviews={likedReviews}
-                        handleDeleteReview={handleDeleteReview}
                     />
                 ))}
                 {visibleReviews < reviews.length && (
@@ -119,4 +76,4 @@ const ReviewsPage = () => {
     );
 };
 
-export default ReviewsPage;
+export default UnregisteredReviews;

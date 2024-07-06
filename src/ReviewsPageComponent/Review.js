@@ -1,15 +1,14 @@
 import Header from "../headerComponent/header";
-import ReviewsPage from "../UserReviews/ReviewsPage";
+import UnregisteredReviews from '../Unregistered-reviews/UnregisteredReviews';
 
 
 const Reviews=()=>{
     return(
         <div>
             <Header/>
-            <ReviewsPage/>
+            <UnregisteredReviews/>
         </div>
     )
 }
-
 
 export default Reviews;
