@@ -59,11 +59,11 @@ const DiabetesPredictionForm = () => {
                 <h1>Diabetes Prediction</h1>
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
-                        <label htmlFor="Age">Age (20-65) العمر :</label>
+                        <label htmlFor="age">Age (20-65) العمر :</label>
                         <input
                             type="number"
-                            id="Age"
-                            name="Age"
+                            id="age"
+                            name="age"
                             min="20"
                             max="65"
                             value={formData.age}
@@ -73,11 +73,11 @@ const DiabetesPredictionForm = () => {
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="Gender">Gender الجنس:</label>
+                        <label htmlFor="gender">Gender الجنس:</label>
                         <select
-                            id="Gender"
-                            name="Gender"
-                            value={formData.egnder}
+                            id="gender"
+                            name="gender"
+                            value={formData.gender}
                             onChange={handleChange}
                             required
                         >
@@ -87,10 +87,10 @@ const DiabetesPredictionForm = () => {
                         </select>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="Polyuria">Polyuria (Excessive Urination) التبول المفرط:</label>
+                        <label htmlFor="polyuria">Polyuria (Excessive Urination) التبول المفرط:</label>
                         <select
-                            id="Polyuria"
-                            name="Polyuria"
+                            id="polyuria"
+                            name="polyuria"
                             value={formData.polyuria}
                             onChange={handleChange}
                             required
@@ -101,10 +101,10 @@ const DiabetesPredictionForm = () => {
                         </select>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="Polydipsia">Polydipsia (Excessive Thirst) العطش المفرط:</label>
+                        <label htmlFor="polydipsia">Polydipsia (Excessive Thirst) العطش المفرط:</label>
                         <select
-                            id="Polydipsia"
-                            name="Polydipsia"
+                            id="polydipsia"
+                            name="polydipsia"
                             value={formData.polydipsia}
                             onChange={handleChange}
                             required
@@ -129,10 +129,10 @@ const DiabetesPredictionForm = () => {
                         </select>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="Weakness">Weakness الضعف العام:</label>
+                        <label htmlFor="weakness">Weakness الضعف العام:</label>
                         <select
-                            id="Weakness"
-                            name="Weakness"
+                            id="weakness"
+                            name="weakness"
                             value={formData.weakness}
                             onChange={handleChange}
                             required
@@ -143,10 +143,10 @@ const DiabetesPredictionForm = () => {
                         </select>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="Polyphagia">Polyphagia (Excessive Hunger) الشهية المفرطة:</label>
+                        <label htmlFor="polyphagia">Polyphagia (Excessive Hunger) الشهية المفرطة:</label>
                         <select
-                            id="Polyphagia"
-                            name="Polyphagia"
+                            id="polyphagia"
+                            name="polyphagia"
                             value={formData.polyphagia}
                             onChange={handleChange}
                             required
@@ -171,10 +171,10 @@ const DiabetesPredictionForm = () => {
                         </select>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="VisualBlurring">Visual Blurring عدم وضوح الرؤية:</label>
+                        <label htmlFor="visualBlurring">Visual Blurring عدم وضوح الرؤية:</label>
                         <select
-                            id="VisualBlurring"
-                            name="VisualBlurring"
+                            id="visualBlurring"
+                            name="visualBlurring"
                             value={formData.visualBlurring}
                             onChange={handleChange}
                             required
@@ -185,9 +185,9 @@ const DiabetesPredictionForm = () => {
                         </select>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="Itching">Itching حكة:</label>
+                        <label htmlFor="itching">Itching حكة:</label>
                         <select
-                            id="Itching"
+                            id="itching"
                             name="Itching"
                             value={formData.itching}
                             onChange={handleChange}
@@ -199,10 +199,10 @@ const DiabetesPredictionForm = () => {
                         </select>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="Irritability">Irritability التهيج:</label>
+                        <label htmlFor="irritability">Irritability التهيج:</label>
                         <select
-                            id="Irritability"
-                            name="Irritability"
+                            id="irritability"
+                            name="irritability"
                             value={formData.irritability}
                             onChange={handleChange}
                             required
@@ -213,10 +213,10 @@ const DiabetesPredictionForm = () => {
                         </select>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="DelayedHealing">Delayed Healing الشفاء المتأخر:</label>
+                        <label htmlFor="ielayedHealing">Delayed Healing الشفاء المتأخر:</label>
                         <select
-                            id="DelayedHealing"
-                            name="DelayedHealing"
+                            id="delayedHealing"
+                            name="delayedHealing"
                             value={formData.delayedHealing}
                             onChange={handleChange}
                             required
@@ -227,10 +227,10 @@ const DiabetesPredictionForm = () => {
                         </select>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="PartialParesis">Partial Paresis الشلل الجزئي:</label>
+                        <label htmlFor="partialParesis">Partial Paresis الشلل الجزئي:</label>
                         <select
-                            id="PartialParesis"
-                            name="PartialParesis"
+                            id="partialParesis"
+                            name="partialParesis"
                             value={formData.partialParesis}
                             onChange={handleChange}
                             required
@@ -241,10 +241,10 @@ const DiabetesPredictionForm = () => {
                         </select>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="MuscleStiffness">Muscle Stiffness تصلب العضلات:</label>
+                        <label htmlFor="muscleStiffness">Muscle Stiffness تصلب العضلات:</label>
                         <select
-                            id="MuscleStiffness"
-                            name="MuscleStiffness"
+                            id="muscleStiffness"
+                            name="muscleStiffness"
                             value={formData.muscleStiffness}
                             onChange={handleChange}
                             required
@@ -255,10 +255,10 @@ const DiabetesPredictionForm = () => {
                         </select>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="Alopecia">Alopecia (Hair Loss) تساقط الشعر:</label>
+                        <label htmlFor="alopecia">Alopecia (Hair Loss) تساقط الشعر:</label>
                         <select
-                            id="Alopecia"
-                            name="Alopecia"
+                            id="alopecia"
+                            name="alopecia"
                             value={formData.alopecia}
                             onChange={handleChange}
                             required
@@ -269,10 +269,10 @@ const DiabetesPredictionForm = () => {
                         </select>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="Obesity">Obesity السمنة:</label>
+                        <label htmlFor="obesity">Obesity السمنة:</label>
                         <select
-                            id="Obesity"
-                            name="Obesity"
+                            id="obesity"
+                            name="obesity"
                             value={formData.obesity}
                             onChange={handleChange}
                             required
