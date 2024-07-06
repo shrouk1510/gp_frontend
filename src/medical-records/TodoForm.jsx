@@ -35,6 +35,7 @@ const TodoForm = ({ setRecords, setViewTable, setWarningMessage }) => {
             setWarningMessage(warning);
         }
 
+        
         const newRecord = { type, measurement: measurementValue, notes, date };
         setRecords(prevRecords => [...prevRecords, newRecord]);
         // Reset form fields

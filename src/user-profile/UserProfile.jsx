@@ -82,27 +82,27 @@ const UserProfile = () => {
   };
   useEffect(() => {
     const fetchNotifications = async () => {
-      // const fetchedNotifications = await getAllUserNotificationsRequest();
-      const fetchedNotifications = [
-        {
-          id: 1,
-          message: "User profile updated.",
-          date: "12-21-2001",
-          readFlag: true,
-        },
-        {
-          id: 2,
-          message: "Password changed successfully.",
-          date: "12-21-2001",
-          readFlag: false,
-        },
-        {
-          id: 3,
-          message: "New login from unrecognized device.",
-          date: "12-21-2001",
-          readFlag: true,
-        },
-      ];
+      const fetchedNotifications = await getAllUserNotificationsRequest();
+      // const fetchedNotifications = [
+      //   {
+      //     id: 1,
+      //     message: "User profile updated.",
+      //     date: "12-21-2001",
+      //     readFlag: true,
+      //   },
+      //   {
+      //     id: 2,
+      //     message: "Password changed successfully.",
+      //     date: "12-21-2001",
+      //     readFlag: false,
+      //   },
+      //   {
+      //     id: 3,
+      //     message: "New login from unrecognized device.",
+      //     date: "12-21-2001",
+      //     readFlag: true,
+      //   },
+      // ];
       setNotifications(fetchedNotifications);
     };
 
@@ -141,10 +141,10 @@ const UserProfile = () => {
           </div>
           <div className="project-user-profile-profile-section">
             <h3>User Details</h3>
-            <p>First Name: {activeUser?.firstName}</p>
-            <p>Last Name: {activeUser?.lastName}</p>
-            <p>Gender: {activeUser?.gender}</p>
-            <p>Age: {activeUser?.age}</p>
+            <p>First Name: {activeUser?.details?.firstName}</p>
+            <p>Last Name: {activeUser?.details?.lastName}</p>
+            <p>Gender: {activeUser?.details?.gender}</p>
+            <p>Age: {activeUser?.details?.age}</p>
           </div>
           <div className="project-user-profile-profile-section">
             <div

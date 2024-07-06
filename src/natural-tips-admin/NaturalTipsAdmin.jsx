@@ -1,54 +1,97 @@
-import React, { useState } from 'react';
-import './NaturalTipsAdmin.css';
-import aloeVera from './NatAdmin/aloe_vera.jpg';
-import ginger from './NatAdmin/ginger.jpg';
-import fenugreek from './NatAdmin/fenugreek.jpg';
-import appleCiderVinegar from './NatAdmin/apple_cider_vinegar.jpg';
-import magnesium from './NatAdmin/magnesium.jpg';
-import berberine from './NatAdmin/berberine.jpeg';
-import cinnamon from './NatAdmin/cinnamon.jpg';
-import zinc from './NatAdmin/zinc.jpg';
+import React, { useEffect, useState } from "react";
+import "./NaturalTipsAdmin.css";
+import aloeVera from "./NatAdmin/aloe_vera.jpg";
+import ginger from "./NatAdmin/ginger.jpg";
+import fenugreek from "./NatAdmin/fenugreek.jpg";
+import appleCiderVinegar from "./NatAdmin/apple_cider_vinegar.jpg";
+import magnesium from "./NatAdmin/magnesium.jpg";
+import berberine from "./NatAdmin/berberine.jpeg";
+import cinnamon from "./NatAdmin/cinnamon.jpg";
+import zinc from "./NatAdmin/zinc.jpg";
+import toast from "react-hot-toast";
+import { useAuthContext } from "../contexts/auth-context";
+import {
+  addArticleRequest,
+  deleteArticleRequest,
+  getAllArticlesByCatigoryIdRequest,
+  updateArticleRequest,
+  uploadArticlePhotoRequest,
+} from "../lib/api/article";
+import { useArticleStore } from "../hooks/use-article-store";
 
 const tipsData = [
   {
+    articleId: 1,
     image: aloeVera,
-    description: 'Aloe vera may help people with prediabetes or type 2 diabetes lower fasting blood sugar and A1C levels.'
+    name: "aloe",
+    content:
+      "Aloe vera may help people with prediabetes or type 2 diabetes lower fasting blood sugar and A1C levels.",
   },
   {
+    articleId: 2,
     image: ginger,
-    description: 'Ginger improves the body\'s sensitivity to insulin and helps increase insulin secretion.'
+    name: "ginger",
+    content:
+      "Ginger improves the body's sensitivity to insulin and helps increase insulin secretion.",
   },
   {
+    articleId: 3,
     image: fenugreek,
-    description: 'Fenugreek helps in lowering blood sugar and cholesterol levels.'
+    name: "Fenugreek",
+    content: "Fenugreek helps in lowering blood sugar and cholesterol levels.",
   },
   {
+    articleId: 4,
     image: appleCiderVinegar,
-    description: 'Apple cider vinegar can reduce fasting blood sugar levels when taken before meals.'
+    name: "apple",
+    content:
+      "Apple cider vinegar can reduce fasting blood sugar levels when taken before meals.",
   },
   {
+    articleId: 5,
     image: magnesium,
-    description: 'Magnesium improves insulin sensitivity and helps control blood sugar levels.'
+    name: "Magnesium",
+    content:
+      "Magnesium improves insulin sensitivity and helps control blood sugar levels.",
   },
   {
+    articleId: 6,
     image: berberine,
-    description: 'Berberine lowers blood sugar and improves insulin sensitivity.'
+    name: "Berberine",
+    content: "Berberine lowers blood sugar and improves insulin sensitivity.",
   },
   {
+    articleId: 7,
     image: cinnamon,
-    description: 'Cinnamon helps lower blood sugar levels and improves lipid profiles.'
+    name: "Cinnamon",
+    content:
+      "Cinnamon helps lower blood sugar levels and improves lipid profiles.",
   },
   {
+    articleId: 8,
     image: zinc,
-    description: 'Zinc improves glycemic control and promotes healthy triglyceride levels.'
-  }
+    name: "Zinc",
+    content:
+      "Zinc improves glycemic control and promotes healthy triglyceride levels.",
+  },
 ];
 
+const NATURAL_TIPS_ID = 2;
+
 const NaturalTipsAdmin = () => {
+  const { activeUser } = useAuthContext();
+  const { articles, setArticles, addArticle, removeArticle, updateArticle } =
+    useArticleStore();
   const [showMore, setShowMore] = useState(false);
-  const [tips, setTips] = useState(tipsData);
+  // const [tips, setTips] = useState(tipsData);
   const [isAddingTip, setIsAddingTip] = useState(false);
-  const [newTip, setNewTip] = useState({ image: '', description: '' });
+  const [newTip, setNewTip] = useState({
+    name: "",
+    image: "",
+    content: "",
+    hide: false,
+  });
+  const [articlePhoto, setArticlePhoto] = useState(null);
   const [editingIndex, setEditingIndex] = useState(null);
   const [errors, setErrors] = useState({});
 
@@ -59,7 +102,7 @@ const NaturalTipsAdmin = () => {
   const handleAddTipClick = () => {
     setIsAddingTip(true);
     setEditingIndex(null);
-    setNewTip({ image: '', description: '' });
+    setNewTip({ name: "", image: "", content: "", hide: false });
   };
 
   const handleInputChange = (e) => {
@@ -67,91 +110,190 @@ const NaturalTipsAdmin = () => {
     setNewTip({ ...newTip, [name]: value });
   };
 
-  const handleFileChange = (e) => {
+  const handleFileChange = async (e) => {
+    e.preventDefault();
     const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setNewTip({ ...newTip, image: reader.result });
-      };
-      reader.readAsDataURL(file);
+
+    try {
+      if (file) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setArticlePhoto(file);
+          setNewTip({ ...newTip, image: reader.result });
+        };
+        reader.readAsDataURL(file);
+      }
+      toast.success("article image updated");
+    } catch (error) {
+      typeof error === "string" ? toast.error(error) : alert(error);
     }
+    // if (file) {
+    //   const reader = new FileReader();
+    //   reader.onloadend = () => {
+    //     setNewTip({ ...newTip, image: reader.result });
+    //   };
+    //   reader.readAsDataURL(file);
+    // }
   };
 
   const validateForm = () => {
     const newErrors = {};
     if (!newTip.image) {
-      newErrors.image = 'Image is required';
+      newErrors.image = "Image is required";
     }
-    if (!newTip.description.trim()) {
-      newErrors.description = 'Description is required';
+    if (!newTip.content.trim()) {
+      newErrors.content = "Content is required";
     }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSaveTip = () => {
+  const handleSaveTip = async () => {
     if (validateForm()) {
-      if (editingIndex !== null) {
-        const updatedTips = [...tips];
-        updatedTips[editingIndex] = newTip;
-        setTips(updatedTips);
-      } else {
-        setTips([...tips, newTip]);
+      try {
+        if (editingIndex !== null) {
+          // const updatedTips = [...tips];
+          // updatedTips[editingIndex] = newTip;
+          // setTips(updatedTips);
+
+          const updatedArticle = await updateArticleRequest(
+            {
+              name: newTip.name,
+              content: newTip.content,
+              hide: newTip.hide,
+              categoryId: NATURAL_TIPS_ID,
+            },
+            newTip.articleId
+          );
+
+          updateArticle(updatedArticle);
+          toast.success("article updated");
+
+          if (articlePhoto) {
+            await uploadArticlePhotoRequest({ photo: articlePhoto });
+            toast.success("article image updated");
+          }
+        } else {
+          const createdArticle = await addArticleRequest({
+            name: newTip.name,
+            content: newTip.content,
+            categoryId: NATURAL_TIPS_ID,
+          });
+
+          addArticle(createdArticle);
+
+          toast.success("article created");
+        }
+        setNewTip({ name: "", image: "", content: "", hide: false });
+      } catch (error) {
+      } finally {
+        setIsAddingTip(false);
+        setErrors({});
       }
-      setNewTip({ image: '', description: '' });
-      setIsAddingTip(false);
-      setErrors({});
     }
   };
 
   const handleEditTip = (index) => {
     setEditingIndex(index);
-    setNewTip(tips[index]);
+    setNewTip(articles[index]);
     setIsAddingTip(true);
   };
 
-  const handleDeleteTip = (index) => {
-    setTips(tips.filter((_, i) => i !== index));
+  // aproved
+  const handleDeleteTip = async (articleId) => {
+    // console.log(articleId);
+    try {
+      await deleteArticleRequest(articleId);
+
+      removeArticle(articleId);
+
+      toast.success("Tip deleted");
+    } catch (error) {
+      typeof error === "string" ? toast.error(error) : alert(error);
+    }
   };
 
-  const visibleTips = showMore ? tips : tips.slice(0, 3);
+  useEffect(() => {
+    const fetchArticles = async () => {
+      // const fetchedArticles = await getAllArticlesByCatigoryIdRequest(
+      //   NATURAL_TIPS_ID
+      // );
+
+      setArticles(tipsData);
+    };
+    fetchArticles();
+  }, []);
+
+  const visibleTips = showMore ? articles : articles?.slice(0, 3);
 
   return (
     <div className="natural-tips-container">
       <h1 className="title">Natural Tips for Diabetes</h1>
       <div className="tips-grid">
-        {visibleTips.map((tip, index) => (
-          <div key={index} className={`tip-card-admin ${showMore ? 'slide-in' : ''}`}>
-            <img src={tip.image} alt={`Tip ${index + 1}`} className="tip-image" />
-            <p className="tip-description">{tip.description}</p>
+        {visibleTips?.map((tip, index) => (
+          <div
+            key={index}
+            className={`tip-card-admin ${showMore ? "slide-in" : ""}`}
+          >
+            <img
+              src={tip.image}
+              alt={`Tip ${tip.name}`}
+              className="tip-image"
+            />
+            <h2>{tip.name}</h2>
+            <p className="tip-description">{tip.content}</p>
             <div className="button-group">
-              <button className="edit-button" onClick={() => handleEditTip(index)}>Edit</button>
-              <button className="delete-button" onClick={() => handleDeleteTip(index)}>Delete</button>
+              <button
+                className="edit-button"
+                onClick={() => handleEditTip(index)}
+              >
+                Edit
+              </button>
+              <button
+                className="delete-button"
+                onClick={() => handleDeleteTip(tip.articleId)}
+              >
+                Delete
+              </button>
             </div>
           </div>
         ))}
         {isAddingTip && (
           <div className="tip-card-admin new-tip-card-admin">
             <input type="file" accept="image/*" onChange={handleFileChange} />
+            <input
+              type="text"
+              onChange={handleInputChange}
+              placeholder="Enter tip title"
+              className={errors.name ? "input-error" : ""}
+            />
             {errors.image && <p className="error">{errors.image}</p>}
             <textarea
-              name="description"
-              value={newTip.description}
+              name="content"
+              value={newTip.content}
               onChange={handleInputChange}
               placeholder="Enter tip description"
-              className={errors.description ? 'input-error' : ''}
+              className={errors.content ? "input-error" : ""}
             />
-            {errors.description && <p className="error">{errors.description}</p>}
-            <button className="save-button" onClick={handleSaveTip}>Save Tip</button>
+            {errors.content && <p className="error">{errors.content}</p>}
+            <button className="save-button" onClick={handleSaveTip}>
+              Save Tip
+            </button>
           </div>
         )}
       </div>
       <div className="Adminbuttons-container">
-        <button className="Naturalview-more-button" onClick={handleShowMore}>
-          {showMore ? 'View Less Natural Effects' : 'View More Natural Effects'}
+        {visibleTips.length > 3 && (
+          <button className="Naturalview-more-button" onClick={handleShowMore}>
+            {showMore
+              ? "View Less Natural Effects"
+              : "View More Natural Effects"}
+          </button>
+        )}
+        <button className="add-tip-button" onClick={handleAddTipClick}>
+          Add Tip
         </button>
-        <button className="add-tip-button" onClick={handleAddTipClick}>Add Tip</button>
       </div>
     </div>
   );

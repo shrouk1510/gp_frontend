@@ -74,27 +74,27 @@ function App() {
         <Route path="/userlifestyle" element={<ReLifestyle />} />
         {/* <Route path="/logout" element={<Welcome />} /> */}
         <Route path="/AdminLifestyle" element={<AdminLife />} />
-        <Route path="/NatTips" element={<NatTips />} />
+        <Route path="/NatTips" element={<AdminRoute><NatTips /></AdminRoute>} />
         <Route path="/addAdmin" element={<AdminRoute><SignupForm /></AdminRoute>} />
         <Route path="/predict" element={<DiabetesPrediction />} />
-        
-        
+
+
         <Route path="/Location" element={<Locations />} />
         <Route path="/userprofile" element={<PrivateRoute><UserProfile /></PrivateRoute>} />
         <Route path="/AdminReview" element={<AdminRoute><ReviewsAdmin /></AdminRoute>} />
         <Route path="/delete" element={<DeleteAdmin />} />
-        <Route path="/profile" element={<AdminProfile />} />
-        
+        <Route path="/profile" element={<AdminRoute><AdminProfile /></AdminRoute>} />
+
         <Route path="/NewNat" element={<Natural />} />
         <Route path="/UrgentSign" element={<ParentComponent />} />
-        <Route path="/MedicationL" element={<MultiStepForm/>} />
+        <Route path="/MedicationL" element={<MultiStepForm />} />
         <Route path="/reviewsB" element={<PrivateRoute><UserRev /></PrivateRoute>} />
         {/* <Route path="/Submit" element={<PrivateRoute><UserRev /></PrivateRoute>} /> */}
         <Route path="/AdminSignIn" element={<AdminRoute><ReviewsAdmin /></AdminRoute>} />
         {/* <Route path="/ProfileLogout" element={<Welcome />} /> */}
         {/* <Route path="/AdminLogout" element={<Welcome />} /> */}
         <Route path="/AdminSign" element={<AdminRoute><ReviewsAdmin /></AdminRoute>} />
-        <Route path="/graph" element={<Graph />} />
+        <Route path="/graph" element={<PrivateRoute><Graph /></PrivateRoute>} />
 
 
         {/* not found page*/}

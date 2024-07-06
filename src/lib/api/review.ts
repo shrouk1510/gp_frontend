@@ -2,7 +2,7 @@ import api_root from "../../axios";
 
 export const getAllReviewsRequest = async () => {
   try {
-    const promise = await api_root.api.get("/reviews");
+    const promise = await api_root.api.get("/reviews/");
     // console.log(promise);
 
     if (promise.status !== 200) {

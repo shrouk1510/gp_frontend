@@ -4,33 +4,39 @@ import "./UnReviewsPage.css";
 import { useReviewStore } from "../hooks/use-review-store";
 import { getAllReviewsRequest } from "../lib/api/review";
 
-const allReviewsData = [
-  {
-    id: 1,
-    value: 5,
-    feedback: "very useful website",
-    date: "2024-06-29T14:12:47.518+00:00",
-    userId: 2,
-    adminId: null,
-  },
-  {
-    id: 2,
-    value: 4,
-    feedback: "very helpful website",
-    date: "2024-06-29T14:14:18.326+00:00",
-    userId: 5,
-    adminId: null,
-  },
-  {
-    id: 3,
-    value: 0,
-    feedback: "bad service",
-    date: "2024-06-29T14:14:34.618+00:00",
-    userId: 1,
-    adminId: null,
-  },
-  // Add more reviews as needed
-];
+// const allReviewsData = [
+//   {
+//     id: 1,
+//     value: 5,
+//     feedback: "very useful website",
+//     date: "2024-06-29T14:12:47.518+00:00",
+//     userId: 6,
+//     userName: "testuser6",
+//     adminId: null,
+//     adminName: null,
+//   },
+//   {
+//     id: 2,
+//     value: 4,
+//     feedback: "very helpful website",
+//     date: "2024-06-29T14:14:18.326+00:00",
+//     userId: 3,
+//     userName: "testuser3",
+//     adminId: null,
+//     adminName: null,
+//   },
+//   {
+//     id: 3,
+//     value: 0,
+//     feedback: "bad service",
+//     date: "2024-06-29T14:14:34.618+00:00",
+//     userId: 2,
+//     userName: "ahmed",
+//     adminId: null,
+//     adminName: null,
+//   },
+//   // Add more reviews as needed
+// ];
 
 const UnregisteredReviews = () => {
   const { reviews, setReviews } = useReviewStore();
@@ -64,7 +70,7 @@ const UnregisteredReviews = () => {
     const fetchReviews = async () => {
       const fetchedReviews = await getAllReviewsRequest();
 
-      setReviews( allReviewsData);
+      setReviews(fetchedReviews);
     };
 
     fetchReviews();
@@ -82,7 +88,7 @@ const UnregisteredReviews = () => {
           <Review
             key={data.id}
             review={data.feedback}
-            user={data.userId}
+            user={data.userName || data.adminName}
             initialRating={data.value}
             reviewId={data.id}
             likes={data.likes || 0}

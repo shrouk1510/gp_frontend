@@ -3,7 +3,7 @@ import api_root from "../../axios";
 
 export const getAllUserNotificationsRequest = async () => {
   try {
-    const promise = await api_root.api.get("/notifications");
+    const promise = await api_root.api.get("/notifications/");
     // console.log(promise);
 
     if (promise.status !== 200) {

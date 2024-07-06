@@ -33,7 +33,7 @@ const apiToken = axios.create({
 // }
 
 const api = axios.create({
-    // withCredentials: true,
+    withCredentials: true,
     baseURL: backendAPI,
 });
 
@@ -45,12 +45,12 @@ api.defaults.headers.post['Access-Control-Allow-Methods'] = "GET,POST,PUT,PATCH,
 api.defaults.headers.post['Content-Type'] = 'application/json'
 // api.headers
 
-// const keyValuePairs = Object.entries(getAllCookies()).map(
-//     ([key, value]) => `${key}=${value}`
-// );
-// const keyValueString = keyValuePairs.join(";");
+const keyValuePairs = Object.entries(getAllCookies()).map(
+    ([key, value]) => `${key}=${value}`
+);
+const keyValueString = keyValuePairs.join(";");
 
-// api.defaults.headers.get['Cookie'] = keyValueString;
+api.defaults.headers.get['Cookie'] = keyValueString;
 
 const baseURLApi = axios.create({
     baseURL: backendBaseURL,

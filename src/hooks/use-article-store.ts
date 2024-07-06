@@ -34,6 +34,8 @@ export const useArticleStore = create<ArticleStore>((set) => ({
       const filteredArticles = state.articles?.filter(
         (article) => article.articleId !== articleId
       );
+
+      console.log(filteredArticles);
       return {
         articles: filteredArticles || [],
       };

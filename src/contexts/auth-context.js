@@ -47,11 +47,8 @@ export const AuthContextProvider = ({ children }) => {
             }
         },
         {
-            activeUser: {
-                id: 1,
-                username: "ahmed"
-            },
-            role: "ADMIN"
+            activeUser: null,
+            role: null
         }
     );
 
@@ -80,13 +77,16 @@ export const AuthContextProvider = ({ children }) => {
             // if (!promise.ok) {
             //     throw Error(promise.statusText)
             // }
-            const response = await api_root.api.post(`/user/signin?username=${username}&password=${password}`);
-            console.log('User data submitted:', response.data);
+            const response = await api_root.api.post(`/user/signin`, { username, password });
+            // console.log('User data submitted:', response.data);
+
+            const data = await response.data
+            dispatch({ type: "SET_USER", payload: { ...data }, role: "USER" })
             // if (response.status !== 200) {
             //     throw new Error(response.statusText)
             // }
-            setIspotentiallogin(true)
-            setIsLoading(true)
+            // setIspotentiallogin(true)
+            // setIsLoading(true)
             // setUserCookies(() => getAllCookies())
 
         } catch (error) {
@@ -103,8 +103,11 @@ export const AuthContextProvider = ({ children }) => {
             // if (response.status !== 200) {
             //     throw new Error(response.statusText)
             // }
-            setIspotentiallogin(true)
-            setIsLoading(true)
+
+            const data = await response.data
+            dispatch({ type: "SET_USER", payload: { ...data }, role: "ADMIN" })
+            // setIspotentiallogin(true)
+            // setIsLoading(true)
             // setUserCookies(() => getAllCookies())
 
         } catch (error) {
@@ -121,7 +124,7 @@ export const AuthContextProvider = ({ children }) => {
                 throw new Error(response.statusText)
             }
             setIsLoading(true)
-            dispatch("LOGOUT_USER")
+            dispatch({ type: "LOGOUT_USER" })
             // setUserCookies(() => getAllCookies())
 
         } catch (error) {
@@ -138,7 +141,7 @@ export const AuthContextProvider = ({ children }) => {
                 throw new Error(response.statusText)
             }
             setIsLoading(true)
-            dispatch("LOGOUT_USER")
+            dispatch({ type: "LOGOUT_USER" })
             // setUserCookies(() => getAllCookies())
 
         } catch (error) {
@@ -176,7 +179,8 @@ export const AuthContextProvider = ({ children }) => {
 
     const createUserData = async (userData) => {
         try {
-            // console.log(userData)
+            console.log(userData)
+
             await api_root.api.post('/user/signup', userData);
             // console.log('User data submitted:', response.data);
             // if (![200, 201].includes(response.status)) {
@@ -211,10 +215,11 @@ export const AuthContextProvider = ({ children }) => {
             const response = await api_root.api.get('/user/profile');
             const data = await response.data
             //console.log('User data submitted:', response.data);
-            dispatch("SET_USER", { payload: { ...data, ...data.details }, role: "USER" })
+            // dispatch("SET_USER", { payload: { ...data, ...data.details }, role: "USER" })
+            dispatch({ type: "SET_USER", payload: { ...data }, role: "USER" })
 
         } catch (error) {
-            // console.error('There was an error!', error);
+            console.error('There was an error!', error);
         }
     };
 
@@ -226,10 +231,10 @@ export const AuthContextProvider = ({ children }) => {
             const response = await api_root.api.get('/admin/profile');
             // console.log('User data submitted:', response.data);
             const data = await response.data
-            dispatch("SET_USER", { payload: { ...data }, role: "ADMIN" })
+            dispatch({ type: "SET_USER", payload: { ...data }, role: "ADMIN" })
 
         } catch (error) {
-            // console.error('There was an error!', error);
+            console.error('There was an error!', error);
         }
 
     };

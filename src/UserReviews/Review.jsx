@@ -57,7 +57,7 @@ const Review = ({
     return stars;
   };
 
-  const isMyReview = currentUser?.id === user;
+  const isMyReview = currentUser?.username === user;
 
   return (
     <div className="Ureview">

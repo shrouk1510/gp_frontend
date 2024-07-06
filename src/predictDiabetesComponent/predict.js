@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './predict.css';
 import toast from 'react-hot-toast';
 import { predictDiabetesRequest } from '../lib/api/predication';
+import { convertValues } from '../lib/helpers/object-int-converter';
 
 const DiabetesPredictionForm = () => {
     const [formData, setFormData] = useState({
@@ -40,7 +41,7 @@ const DiabetesPredictionForm = () => {
         // console.log(formData);
         try {
 
-            const result = await predictDiabetesRequest(formData)
+            const result = await predictDiabetesRequest(convertValues(formData))
 
             if (!result) {
                 throw "something went wrong"
@@ -157,10 +158,10 @@ const DiabetesPredictionForm = () => {
                         </select>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="GenitalThrush">Genital Thrush التهاب العضو التناسلي:</label>
+                        <label htmlFor="genitalThrush">Genital Thrush التهاب العضو التناسلي:</label>
                         <select
-                            id="GenitalThrush"
-                            name="GenitalThrush"
+                            id="genitalThrush"
+                            name="genitalThrush"
                             value={formData.genitalThrush}
                             onChange={handleChange}
                             required
@@ -188,7 +189,7 @@ const DiabetesPredictionForm = () => {
                         <label htmlFor="itching">Itching حكة:</label>
                         <select
                             id="itching"
-                            name="Itching"
+                            name="itching"
                             value={formData.itching}
                             onChange={handleChange}
                             required
@@ -213,7 +214,7 @@ const DiabetesPredictionForm = () => {
                         </select>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="ielayedHealing">Delayed Healing الشفاء المتأخر:</label>
+                        <label htmlFor="delayedHealing">Delayed Healing الشفاء المتأخر:</label>
                         <select
                             id="delayedHealing"
                             name="delayedHealing"

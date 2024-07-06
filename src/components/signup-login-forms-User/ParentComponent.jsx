@@ -49,13 +49,13 @@ const ParentComponent = () => {
       try {
         const formattedValues = {
           username: userData.username,
-          email: userData.email,
           password: userData.password,
+          email: userData.email,
           details: {
-            firstname: userData.firstname,
-            lastname: userData.lastname,
-            age: Number(userData.age),
+            firstName: userData.firstname,
+            lastName: userData.lastname,
             gender: userData.gender,
+            age: Number(userData.age),
           },
         };
 

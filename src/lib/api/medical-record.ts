@@ -36,6 +36,21 @@ export const getAllMedicalRecordsByRecordTypeIdRequest = async (
   }
 };
 
+export const getAllMedicalRecordTypesRequest = async () => {
+  try {
+    const promise = await api_root.api.get("/medical-records/types");
+    // console.log(promise);
+
+    if (promise.status !== 200) {
+      throw Error(promise.statusText);
+    }
+    const response = await promise.data;
+    return response;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
 
 export const getGraphDataRequest = async (values: {
   recordTypeId: number;

@@ -4,7 +4,9 @@ export type ReviewType = {
   feedback: string;
   date: string;
   userId: number | null;
+  userName: string | null;
   adminId: number | null;
+  adminName: string | null;
 };
 
 export type ArticleType = {

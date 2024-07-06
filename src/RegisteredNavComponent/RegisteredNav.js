@@ -1,12 +1,33 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 import './Registered.css';
+import { useAuthContext } from '../contexts/auth-context';
 
 function RegisteredNav() {
+  const { logoutAdmin, logoutUser, role } = useAuthContext()
   const [showSearchField, setShowSearchField] = useState(false);
 
   const handleSearchIconClick = () => {
     setShowSearchField(!showSearchField);
+  };
+
+  const navigate = useNavigate()
+
+  const handleLogout = async () => {
+    try {
+      if (role === "ADMIN") {
+        await logoutAdmin();
+        toast.success("Admin logout");
+      } else {
+        await logoutUser();
+        toast.success("User logout");
+      }
+
+      navigate("/");
+    } catch (error) {
+      typeof error === "string" ? toast.error(error) : alert(error);
+    }
   };
 
   return (
@@ -52,7 +73,7 @@ function RegisteredNav() {
                 <span className="material-symbols-outlined">search</span>
               </Link>
               <Link to="/userprofile" className="icon1"><span className="material-symbols-outlined">person</span></Link>
-              <Link to="/logout" className="icon2"><span className="material-symbols-outlined">logout</span></Link>
+              <div className="icon2" onClick={handleLogout} style={{ display: "inline-block", cursor: "pointer" }}><span className="material-symbols-outlined">logout</span></div>
             </div>
           </div>
         </div>
