@@ -102,7 +102,7 @@ body {
     font-size: 16px;
 }
 
-.react-admin-logout-button {
+.react-admin-logout-button , .react-admin-profile-details .delete{
     padding: 15px 30px;
     font-size: 18px;
     background: linear-gradient(90deg, #f44336, #e53935);
@@ -114,7 +114,7 @@ body {
 }
 
 .react-admin-logout-button:hover {
-    background: linear-gradient(90deg, #e53935, #d32f2f);
+    background: linear-gradient(90deg, #af2826, #c62424);
 }
 
 .react-admin-error {
@@ -124,4 +124,58 @@ body {
     margin-bottom: 5px;
     display: block;
     padding-left: 5px;
+}
+
+.react-admin-profile-details .profile-buttons {
+    text-align: center;
+}
+
+.react-admin-profile-details .delete {
+    margin-left: 60px;
+}
+
+.react-admin-profile-details .react-admin-logout-button:hover,
+.react-admin-profile-details .delete:hover {
+    color: #ddd;
+}
+
+.confirmation-dialog {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    background-color: rgb(246, 196, 196);
+}
+
+.confirmation-dialog p {
+    margin-bottom: 20px;
+}
+
+.confirm-button, .cancel-button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.confirm-button {
+    background-color: #cf7872;
+    color: white;
+}
+
+.cancel-button {
+    background-color: #6f766f;
+    color: white;
+}
+
+.confirm-button:hover {
+    background-color: #e53935;
+}
+
+.cancel-button:hover {
+    background-color: #45a049;
 }

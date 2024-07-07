@@ -36,18 +36,20 @@
     margin-bottom: 20px;
 }
 
- .todo-form-container .form-g label , .todo-form-container .form-gr label, .todo-form-container .form-gro label{
+.todo-form-container , .todo-form-container .form-g, .todo-form-container .form-gr, .todo-form-container .form-gro {
     font-weight: bold;
 }
 
+
+
 .todo-form-container .form-g [type ="number"]{
-    width: 97% ; 
-    padding: 10px ;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px ;
-    outline: none ;
-    margin-top: 3px ;
+    width: 96% !important; 
+    padding: 10px !important;
+    border: 1px solid #ccc !important;
+    border-radius: 5px !important;
+    font-size: 16px !important;
+    outline: none !important;
+    margin-top: 3px !important;
 
 
 }
@@ -175,4 +177,34 @@ textarea {
     background-color: #f8d7da;
     color: #721c24;
     border: 1px solid #f5c6cb;
+}
+
+
+.table-container .tb-actions{
+    text-align: center;
+}
+
+.table-container .tb-actions .up ,
+.table-container .tb-actions .dl 
+{
+    margin-left: 10px;
+
+}
+.table-container .tb-actions .up {
+
+    background-color: #4CAF50; 
+    padding: 5px 5px; 
+    border-radius: 3px; 
+    color: white; 
+    border: none; 
+
+}
+
+.table-container .tb-actions .dl {
+
+    background-color: rgb(233, 32, 32);
+    padding: 5px 5px; 
+    border-radius: 3px; 
+    color: white; 
+    border: none; 
 }

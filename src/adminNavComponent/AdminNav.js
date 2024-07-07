@@ -54,9 +54,6 @@ function AdminNav() {
                 <li className="nav-item home space">
                   <Link to="/addAdmin" className="nav-link" >Add Admin</Link>
                 </li>
-                <li className="nav-item space">
-                  <Link to='/delete' className="nav-link" href="#">Delete Admin</Link>
-                </li>
               </ul>
             </div>
             <div className="icons">
