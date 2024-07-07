@@ -68,12 +68,12 @@ function App() {
         <Route path="/NaturalTips" element={<UnReNature />} />
         <Route path="/admin" element={<Signin />} />
         <Route path="/NewNat" element={<NewNat />} />
-        <Route path="/uploadData" element={<UploadData />} />
+        <Route path="/uploadData" element={<PrivateRoute><UploadData /></PrivateRoute>} />
         <Route path="/viewData" element={<ViewData />} />
         <Route path="/lifestyle" element={<Lifestyle />} />
         <Route path="/userlifestyle" element={<ReLifestyle />} />
         {/* <Route path="/logout" element={<Welcome />} /> */}
-        <Route path="/AdminLifestyle" element={<AdminLife />} />
+        <Route path="/AdminLifestyle" element={<AdminRoute><AdminLife /></AdminRoute>} />
         <Route path="/NatTips" element={<AdminRoute><NatTips /></AdminRoute>} />
         <Route path="/addAdmin" element={<AdminRoute><SignupForm /></AdminRoute>} />
         <Route path="/predict" element={<DiabetesPrediction />} />

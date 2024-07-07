@@ -13,6 +13,23 @@ export const uploadUserPhotoRequest = async (
   return response;
 };
 
+export const createAdminRequest = async (values: {
+  username: string;
+  password: string;
+  email: string;
+}) => {
+  // try {
+  // console.log(values);
+
+  const promise = await api_root.api.post(`/admin/signup`, values);
+
+  if (![200, 201].includes(promise.status)) {
+    throw Error(promise.statusText);
+  }
+  const response = await promise.data;
+  return response;
+};
+
 export const updateAdminRequest = async (values: {
   username: string;
   password: string;

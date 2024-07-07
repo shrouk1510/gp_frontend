@@ -1,3 +1,4 @@
+import { MedicalRecordType } from "@/types";
 import api_root from "../../axios";
 
 export const getAllUserMedicalRecordsRequest = async () => {
@@ -89,7 +90,7 @@ export const uploadMedicalRecordRequest = async (values: {
   if (![200, 201].includes(promise.status)) {
     throw Error(promise.statusText);
   }
-  const response = await promise.data;
+  const response: MedicalRecordType = await promise.data;
   return response;
 };
 

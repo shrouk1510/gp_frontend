@@ -14,7 +14,7 @@
   width: 70%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: left;
-  margin-left:220px;
+  margin-left: 220px;
 }
 
 .application textarea {
@@ -22,6 +22,7 @@
   height: 150px;
   padding: 10px;
   margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .bb {
@@ -72,6 +73,12 @@
 .page h2 {
   text-align: center;
 }
-p{
-  color:black;
+p {
+  color: black;
+}
+
+input {
+  border: 1px solid rgb(185, 241, 151);
+  border-radius: 8px;
+  /* display: block; */
 }
