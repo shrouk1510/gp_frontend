@@ -48,7 +48,7 @@ export const updateAdminRequest = async (values: {
   return response;
 };
 
-export const deleteAdminRequest = async (values: { username: string }) => {
+export const deleteAdminRequest = async (values?: { username: string }) => {
   // try {
   // console.log(values);
 

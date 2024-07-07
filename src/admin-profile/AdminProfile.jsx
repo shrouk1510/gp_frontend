@@ -3,10 +3,10 @@ import "./AdminProfile.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../contexts/auth-context";
 import toast from "react-hot-toast";
-import { updateAdminRequest } from "../lib/api/user";
+import { deleteAdminRequest, updateAdminRequest } from "../lib/api/user";
 
 const AdminProfile = () => {
-  const { activeUser, logoutAdmin } = useAuthContext();
+  const { activeUser, logoutAdmin, updateState } = useAuthContext();
   const [isEditing, setIsEditing] = useState(false);
   const [admin, setAdmin] = useState({
     username: activeUser.username,
@@ -61,10 +61,19 @@ const AdminProfile = () => {
     setShowConfirmation(true);
   };
 
-  const confirmDelete = () => {
-    console.log("Account deleted");
+  const confirmDelete = async () => {
     // Add your delete logic here
-    setShowConfirmation(false);
+
+    try {
+      await deleteAdminRequest();
+      toast.success("admin deleted");
+      updateState({ type: "LOGOUT_USER" });
+      navigate("/");
+    } catch (error) {
+      typeof error === "string" ? toast.error(error) : alert(error);
+    } finally {
+      setShowConfirmation(false);
+    }
   };
 
   const cancelDelete = () => {
@@ -130,20 +139,29 @@ const AdminProfile = () => {
             </label>
           )}
         </div>
-        <div className='profile-buttons'>
+        <div className="profile-buttons">
           <button onClick={handleLogout} className="react-admin-logout-button">
             Logout
           </button>
-          <button onClick={handleDeleteClick} className="delete react-admin-logout-button">Delete</button>
+          <button
+            onClick={handleDeleteClick}
+            className="delete react-admin-logout-button"
+          >
+            Delete
+          </button>
         </div>
       </div>
       {showConfirmation && (
-                <div className="confirmation-dialog">
-                    <p>Are you sure you want to delete your account?</p>
-                    <button onClick={confirmDelete} className="confirm-button">Yes</button>
-                    <button onClick={cancelDelete} className="cancel-button">No</button>
-                </div>
-            )}
+        <div className="confirmation-dialog">
+          <p>Are you sure you want to delete your account?</p>
+          <button onClick={confirmDelete} className="confirm-button">
+            Yes
+          </button>
+          <button onClick={cancelDelete} className="cancel-button">
+            No
+          </button>
+        </div>
+      )}
     </div>
   );
 };

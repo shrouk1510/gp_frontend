@@ -109,7 +109,7 @@ export const updateMedicalRecordRequest = async (values: {
   if (![200, 201].includes(promise.status)) {
     throw Error(promise.statusText);
   }
-  const response = await promise.data;
+  const response: MedicalRecordType = await promise.data;
   return response;
 };
 

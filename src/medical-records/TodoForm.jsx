@@ -1,52 +1,46 @@
 import React, { useState, useEffect } from "react";
 import "./records.css";
 import toast from "react-hot-toast";
-import { uploadMedicalRecordRequest } from "../lib/api/medical-record";
+import {
+  updateMedicalRecordRequest,
+  uploadMedicalRecordRequest,
+} from "../lib/api/medical-record";
 import { useMedicalRecordStore } from "../hooks/use-medical-record-store";
 
 const GLUCOSE_TYPE_ID = 1;
 
-const TodoForm = ({ setViewTable, setWarningMessage, initialRecord, recordIndex }) => {
-  const { addMedicalRecord } = useMedicalRecordStore();
-  const [type, setType] = useState(initialRecord ? initialRecord.type : "");
-  const [measurement, setMeasurement] = useState(initialRecord ? initialRecord.measurement : "");
-  const [notes, setNotes] = useState(initialRecord ? initialRecord.notes : [""]);
+const TodoForm = ({ setViewTable, setWarningMessage, initialRecord }) => {
+  const { addMedicalRecord, updateMedicalRecord } = useMedicalRecordStore();
+  const [type, setType] = useState(
+    initialRecord ? initialRecord.recordTypeId : ""
+  );
+  const [measurement, setMeasurement] = useState(
+    initialRecord ? initialRecord.measurements : ""
+  );
+  const [notes, setNotes] = useState(
+    initialRecord ? [initialRecord.note] : [""]
+  );
   const [date, setDate] = useState(initialRecord ? initialRecord.date : "");
 
-    useEffect(() => {
-        if (initialRecord) {
-            setType(initialRecord.type);
-            setMeasurement(initialRecord.measurement);
-            setNotes(initialRecord.notes);
-            setDate(initialRecord.date);
-        }
-    }, [initialRecord]);
+  useEffect(() => {
+    if (initialRecord) {
+      setType(initialRecord.type);
+      setMeasurement(initialRecord.measurements);
+      setNotes([initialRecord.note]);
+      setDate(initialRecord.date);
+    }
+  }, [initialRecord]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const measurementValue = parseFloat(measurement);
 
-    if (isNaN(measurementValue)) {
-      setWarningMessage("Please enter a valid number for the measurement.");
+    if (isNaN(measurement)) {
+      toast.error("Please enter a valid number for the measurement.");
       return;
     }
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const measurementValue = parseFloat(measurement);
-
-        if (isNaN(measurementValue)) {
-            setWarningMessage('Please enter a valid number for the measurement.');
-            return;
-        }
+    const measurementValue = parseFloat(measurement);
 
     try {
-      const newRecord = await uploadMedicalRecordRequest({
-        recordTypeId: GLUCOSE_TYPE_ID,
-        measurements: measurementValue,
-        note: notes.length > 0 ? notes[0] : "",
-        date,
-      });
-
       let warning = "";
       if (measurementValue < 70) {
         warning =
@@ -68,15 +62,52 @@ const TodoForm = ({ setViewTable, setWarningMessage, initialRecord, recordIndex 
           "Your blood glucose level is dangerously high. Seek immediate medical attention. Do not wait.";
       }
 
-      //   const newRecord = { type, measurement: measurementValue, notes, date };
+      if (!initialRecord) {
+        const newRecord = await uploadMedicalRecordRequest({
+          recordTypeId: GLUCOSE_TYPE_ID,
+          measurements: measurementValue,
+          note: notes.length > 0 ? notes[0] : "",
+          date,
+        });
 
-      if (warning) {
+        // const newRecord = {
+        //   recordId: 2,
+        //   type,
+        //   measurements: measurementValue,
+        //   note: notes.length > 0 ? notes[0] : "",
+        //   date,
+        // };
+
+        addMedicalRecord(newRecord);
+        toast.success("Medical record added");
+
+        // if (warning) {
         setWarningMessage(newRecord?.advice || warning);
+        // }
+      } else {
+        const updatedRecord = await updateMedicalRecordRequest({
+          recordTypeId: GLUCOSE_TYPE_ID,
+          measurements: measurementValue,
+          note: notes.length > 0 ? notes[0] : "",
+          date,
+        });
+
+        // const updatedRecord = {
+        //   recordId: 2,
+        //   recordTypeId: GLUCOSE_TYPE_ID,
+        //   measurements: measurementValue,
+        //   note: notes?.length > 0 ? notes[0] : "",
+        //   date,
+        //   advice: null,
+        // };
+
+        updateMedicalRecord(updatedRecord);
+
+        setWarningMessage(updatedRecord?.advice || warning);
+
+        toast.success("Medical record updated");
       }
 
-      addMedicalRecord(newRecord);
-
-      toast.success("Medical record added");
       // Reset form fields
       setType("");
       setMeasurement("");
@@ -87,27 +118,6 @@ const TodoForm = ({ setViewTable, setWarningMessage, initialRecord, recordIndex 
       typeof error === "string" ? toast.error(error) : alert(error);
     }
   };
-        if (warning) {
-            setWarningMessage(warning);
-        }
-
-        const newRecord = { type, measurement: measurementValue, notes, date };
-        if (recordIndex !== null && recordIndex !== undefined) {
-            setRecords(prevRecords => {
-                const updatedRecords = [...prevRecords];
-                updatedRecords[recordIndex] = newRecord;
-                return updatedRecords;
-            });
-        } else {
-            setRecords(prevRecords => [...prevRecords, newRecord]);
-        }
-        
-        setType('');
-        setMeasurement('');
-        setNotes(['']);
-        setDate('');
-        setViewTable(true); // Switch to table view after submission
-    };
 
   const handleNoteChange = (index, value) => {
     const newNotes = [...notes];
@@ -124,38 +134,60 @@ const TodoForm = ({ setViewTable, setWarningMessage, initialRecord, recordIndex 
     setNotes(newNotes);
   };
 
-    return (
-        <div className="todo-form-container">
-            <div className="headeer">
-                <div className="texxt">Upload Glucose Measure</div>
-                <div className="underliney"></div>
-            </div>
-            <form className="qq" onSubmit={handleSubmit}>
-                <div className="form-g">
-                    <label htmlFor="measurement">Measurement:</label>
-                    <input type="number" id="measurement" value={measurement} onChange={(e) => setMeasurement(e.target.value)} required />
-                </div>
-                <div className="form-gr">
-                    <label htmlFor="notes">Notes:</label>
-                    {notes.map((note, index) => (
-                        <div key={index} className="note-container">
-                            <textarea
-                                id={`note-${index}`}
-                                value={note}
-                                onChange={(e) => handleNoteChange(index, e.target.value)}
-                            />
-                            <button type="button" onClick={() => removeNoteField(index)} className="remove-note-button"><span role="img" aria-label="bin">🗑️</span></button>
-                        </div>
-                    ))}
-                </div>
-                <div className="form-gro">
-                    <label htmlFor="date">Date:</label>
-                    <input type="date" id="date" value={date} onChange={(e) => setDate(e.target.value)} required />
-                </div>
-                <button type="submit" className="submit-record">Upload</button>
-            </form>
+  return (
+    <div className="todo-form-container">
+      <div className="headeer">
+        <div className="texxt">Upload Glucose Measure</div>
+        <div className="underliney"></div>
+      </div>
+      <form className="qq" onSubmit={handleSubmit}>
+        <div className="form-g">
+          <label htmlFor="measurement">Measurement:</label>
+          <input
+            type="number"
+            id="measurement"
+            value={measurement}
+            onChange={(e) => setMeasurement(e.target.value)}
+            required
+          />
         </div>
-    );
+        <div className="form-gr">
+          <label htmlFor="notes">Notes:</label>
+          {notes?.map((note, index) => (
+            <div key={index} className="note-container">
+              <textarea
+                id={`note-${index}`}
+                value={note}
+                onChange={(e) => handleNoteChange(index, e.target.value)}
+              />
+              <button
+                type="button"
+                onClick={() => removeNoteField(index)}
+                className="remove-note-button"
+              >
+                <span role="img" aria-label="bin">
+                  🗑️
+                </span>
+              </button>
+            </div>
+          ))}
+        </div>
+        <div className="form-gro">
+          <label htmlFor="date">Date:</label>
+          <input
+            type="date"
+            id="date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+            required
+          />
+        </div>
+        <button type="submit" className="submit-record">
+          {!initialRecord ? "Upload" : "Edit"}
+        </button>
+      </form>
+    </div>
+  );
 };
 
 export default TodoForm;
