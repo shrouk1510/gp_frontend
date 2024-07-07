@@ -13,6 +13,7 @@ const UnifiedTable = ({ combinedData, setViewTable }) => {
             <th>Dose</th>
             <th>Duration</th>
             <th>Time</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -22,7 +23,10 @@ const UnifiedTable = ({ combinedData, setViewTable }) => {
               <td>{data.name || '-'}</td>
               <td>{data.dose || '-'}</td>
               <td>{data.duration || '-'}</td>
-              <td>{data.time}</td>
+              <td>{data.time || '-'}</td>
+              <td>
+                <button className="update-button">Update</button>
+              </td>
             </tr>
           ))}
         </tbody>

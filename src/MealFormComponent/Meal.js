@@ -7,6 +7,8 @@ const MealForm = ({ prevStep, handleSubmitAll }) => {
     time: ''
   });
 
+  const mealTypes = ['Breakfast', 'Lunch', 'Dinner', 'Snack'];
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -30,15 +32,18 @@ const MealForm = ({ prevStep, handleSubmitAll }) => {
             <div className="underline"></div>
           </div>
           <div className="form-group">
-            <label htmlFor="name">Meal Name:</label>
-            <input
-              type="text"
+            <label htmlFor="name">Meal Type:</label>
+            <select
               id="name"
               name="name"
               value={formData.name}
               onChange={handleChange}
-              
-            />
+            >
+              <option value="" disabled>Select a meal type</option>
+              {mealTypes.map((mealType) => (
+                <option key={mealType} value={mealType}>{mealType}</option>
+              ))}
+            </select>
           </div>
           <div className="form-group">
             <label htmlFor="time">Time:</label>
@@ -48,7 +53,6 @@ const MealForm = ({ prevStep, handleSubmitAll }) => {
               name="time"
               value={formData.time}
               onChange={handleChange}
-              
             />
           </div>
         </div>
