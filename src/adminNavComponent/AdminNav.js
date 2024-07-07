@@ -57,8 +57,8 @@ function AdminNav() {
               </ul>
             </div>
             <div className="icons">
-              <Link to="/profile" className="icon1" href="Sign-up.html"><span class="material-symbols-outlined">person</span></Link>
-              <div className="icon2" href="Sign-in.html" style={{ display: "inline-block", cursor: "pointer" }} onClick={handleLogout}><span class="material-symbols-outlined">logout</span></div>
+              <Link to="/profile" className="icon1" href="Sign-up.html"><span className="material-symbols-outlined">person</span></Link>
+              <div className="icon2" href="Sign-in.html" style={{ display: "inline-block", cursor: "pointer" }} onClick={handleLogout}><span className="material-symbols-outlined">logout</span></div>
             </div>
           </div>
         </div>

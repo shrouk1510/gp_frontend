@@ -1,5 +1,21 @@
 import api_root from "../../axios";
 
+export const getAllActiveSessionsRequest = async (categoryId: string) => {
+  try {
+    const promise = await api_root.api.get(`/debug/all-sessions`);
+    // console.log(promise);
+
+    if (promise.status !== 200) {
+      throw Error(promise.statusText);
+    }
+    const response = await promise.data;
+    return response;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+
 export const uploadUserPhotoRequest = async (
   values: { photo: File }
   // role: "ADMIN" | "USER"

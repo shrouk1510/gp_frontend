@@ -4,6 +4,7 @@ import aloeVera from "./Assets/aloe_vera.jpg";
 
 import { useArticleStore } from "../hooks/use-article-store";
 import { getAllArticlesByCatigoryIdRequest } from "../lib/api/article";
+import { convertImageBlobToUrl } from "../lib/helpers/convert-image-blob";
 
 // const tips = [
 //   {
@@ -70,7 +71,11 @@ const NaturalTips = () => {
         {visibleTips?.map((tip, index) => (
           <div key={index} className={`tip-card ${showMore ? "slide-in" : ""}`}>
             <img
-              src={tip.articlePhoto ?? aloeVera}
+              src={
+                tip?.articlePhoto
+                  ? convertImageBlobToUrl(tip?.articlePhoto || "")
+                  : aloeVera
+              }
               alt={`Tip ${index + 1}`}
               className="tip-image"
             />

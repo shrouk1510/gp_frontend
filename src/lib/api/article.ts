@@ -1,3 +1,4 @@
+import { ArticleType } from "@/types";
 import api_root from "../../axios";
 
 export const getAllArticlesRequest = async () => {
@@ -60,7 +61,7 @@ export const searchArticlesRequest = async (query: string) => {
     if (promise.status !== 200) {
       throw Error(promise.statusText);
     }
-    const response = await promise.data;
+    const response: ArticleType[] = await promise.data;
     return response;
   } catch (error) {
     console.log(error);

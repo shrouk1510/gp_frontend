@@ -52,7 +52,7 @@ const ReviewsPage = () => {
   const [isAddingReview, setIsAddingReview] = useState(false);
   const [newReviewText, setNewReviewText] = useState("");
   const [newReviewRating, setNewReviewRating] = useState(0);
-  const [newReviewUser, setNewReviewUser] = useState("");
+  const [newReviewUser, setNewReviewUser] = useState(activeUser?.username);
   //   const [reviews, setReviews] = useState(allReviewsData);
   const [likedReviews, setLikedReviews] = useState([]);
 

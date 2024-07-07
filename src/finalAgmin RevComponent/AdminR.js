@@ -2,11 +2,11 @@ import AdminNav from "../adminNavComponent/AdminNav";
 import ReviewsPage from "../AdminReviews/ReviewsPage";
 
 
-const ReviewsAdmin=()=>{
-    return(
+const ReviewsAdmin = () => {
+    return (
         <div>
-            <AdminNav/>
-            <ReviewsPage/>
+            <AdminNav />
+            <ReviewsPage />
         </div>
     )
 }

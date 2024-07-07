@@ -45,12 +45,12 @@ api.defaults.headers.post['Access-Control-Allow-Methods'] = "GET,POST,PUT,PATCH,
 api.defaults.headers.post['Content-Type'] = 'application/json'
 // api.headers
 
-const keyValuePairs = Object.entries(getAllCookies()).map(
-    ([key, value]) => `${key}=${value}`
-);
-const keyValueString = keyValuePairs.join(";");
-
-api.defaults.headers.get['Cookie'] = keyValueString;
+// const keyValuePairs = Object.entries(getAllCookies()).map(
+//     ([key, value]) => `${key}=${value}`
+// );
+// const keyValueString = keyValuePairs.join(";");
+// console.log(keyValueString)
+// api.defaults.headers.get['Cookie'] = keyValueString;
 
 const baseURLApi = axios.create({
     baseURL: backendBaseURL,

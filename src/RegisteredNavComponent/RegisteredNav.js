@@ -1,18 +1,54 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { searchArticlesRequest } from '../lib/api/article';
+import { Loader } from 'lucide-react';
+import { useModal } from '../hooks/use-modal-store';
+
 import './Registered.css';
 import { useAuthContext } from '../contexts/auth-context';
 
 function RegisteredNav() {
   const { logoutAdmin, logoutUser, role } = useAuthContext()
+  const { onOpen } = useModal()
+  const [searchQuery, setSearchQuery] = useState('');
   const [showSearchField, setShowSearchField] = useState(false);
+  const [isFetching, setIsFetching] = useState(false)
+  const [articles, setArticles] = useState(null)
 
   const handleSearchIconClick = () => {
     setShowSearchField(!showSearchField);
   };
 
   const navigate = useNavigate()
+
+  const handleSearch = async (event) => {
+    event.preventDefault();
+    // Save search query to localStorage
+    localStorage.setItem('searchQuery', searchQuery);
+    // Perform search functionality
+
+    // Add your search logic here
+    setIsFetching(true)
+    try {
+      const fetchedArticles = await searchArticlesRequest(searchQuery)
+
+      setArticles(fetchedArticles)
+
+      // console.log('Searching for:', searchQuery);
+      // Clear search input content
+      setSearchQuery('');
+
+      toast.success('search success')
+    } catch (error) {
+      typeof error === "string" ? toast.error(error) : alert(error)
+    } finally {
+      setIsFetching(false)
+      // Update previous searches
+    }
+
+  };
+
 
   const handleLogout = async () => {
     try {
@@ -80,7 +116,15 @@ function RegisteredNav() {
       </nav>
       {showSearchField && (
         <div className="search-field-container">
-          <input type="text" className="form-control search-field" placeholder="Type your search..." />
+          <div style={{ display: "flex" }}><input type="text" className="form-control search-field" placeholder="Type your search..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} /> <button className="btnsearch  btn-outline-success" onClick={handleSearch}>Search</button></div>
+          {articles && !isFetching ? <ul className="search-dropdown position-absolute list-unstyled m-0">
+            {articles.length > 0 ? articles?.map((article) => (
+              <li style={{
+                cursor: "pointer"
+              }} key={article.articleId} onClick={() => onOpen("showArticle", { article })}>{article?.name}</li>
+            )) : <li>no articles found</li>}
+
+          </ul> : isFetching ? <ul className="search-dropdown position-absolute list-unstyled m-0"> <li><Loader /></li></ul> : null}
         </div>
       )}
     </header>

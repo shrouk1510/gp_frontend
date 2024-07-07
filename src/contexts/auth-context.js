@@ -5,11 +5,13 @@ import api_root from '../axios';
 // import Cookies from 'js-cookie';
 import { getAllCookies } from '../lib/helpers/get-all-cookies';
 import toast from 'react-hot-toast';
+import Cookies from 'js-cookie';
+import { getAllActiveSessionsRequest } from '../lib/api/user';
 
 export const AuthContext = createContext();
 
 
-// const SESSION_KEY = 'AR'
+const SESSION_KEY = 'JSESSIONID'
 
 export const AuthContextProvider = ({ children }) => {
 
@@ -81,12 +83,18 @@ export const AuthContextProvider = ({ children }) => {
             // console.log('User data submitted:', response.data);
 
             const data = await response.data
-            dispatch({ type: "SET_USER", payload: { ...data }, role: "USER" })
+
+            // console.log(getAllCookies())
+
+            // const activeSession = await getAllActiveSessionsRequest()
+            // console.log(activeSession, Object.keys(activeSession))
+
             // if (response.status !== 200) {
             //     throw new Error(response.statusText)
             // }
-            // setIspotentiallogin(true)
-            // setIsLoading(true)
+            dispatch({ type: "SET_USER", payload: { ...data }, role: "USER" })
+            setIspotentiallogin(true)
+            setIsLoading(true)
             // setUserCookies(() => getAllCookies())
 
         } catch (error) {
@@ -99,15 +107,17 @@ export const AuthContextProvider = ({ children }) => {
 
         try {
             const response = await api_root.api.post(`/admin/signin?username=${username}&password=${password}`);
-            console.log('User data submitted:', response.data);
+            // console.log('User data submitted:', response.data);
             // if (response.status !== 200) {
             //     throw new Error(response.statusText)
             // }
 
             const data = await response.data
+
+            // console.log(Cookies.get('JSESSIONID'))
             dispatch({ type: "SET_USER", payload: { ...data }, role: "ADMIN" })
-            // setIspotentiallogin(true)
-            // setIsLoading(true)
+            setIspotentiallogin(true)
+            setIsLoading(true)
             // setUserCookies(() => getAllCookies())
 
         } catch (error) {
@@ -245,9 +255,11 @@ export const AuthContextProvider = ({ children }) => {
 
     useEffect(() => {
         const fetchData = async () => {
-            // const activeSession = Cookies.get(SESSION_KEY) || null
-            const activeSession = getAllCookies()
-            // console.log(activeSession, Object.keys(activeSession).length)
+            const activeSession = Cookies.get(SESSION_KEY) || {}
+            // const activeSession = getAllCookies()
+            // const activeSession = await getAllActiveSessionsRequest()
+            console.log(activeSession, Object.keys(activeSession)?.length)
+            // console.log(Cookies.get('JSESSIONID'))
             try {
 
                 if (Object.keys(activeSession).length > 0) {

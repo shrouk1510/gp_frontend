@@ -18,7 +18,8 @@ import {
   uploadArticlePhotoRequest,
 } from "../lib/api/article";
 import { useArticleStore } from "../hooks/use-article-store";
-import { backendBaseURL } from "../axios";
+// import { backendBaseURL } from "../axios";
+import { convertImageBlobToUrl } from "../lib/helpers/convert-image-blob";
 
 // const tipsData = [
 //   {
@@ -254,8 +255,8 @@ const NaturalTipsAdmin = () => {
           >
             <img
               src={
-                tip.articlePhoto
-                  ? backendBaseURL + "/" + tip.articlePhoto
+                tip?.articlePhoto
+                  ? convertImageBlobToUrl(tip?.articlePhoto || "")
                   : aloeVera
               }
               alt={`Tip ${tip.name}`}
