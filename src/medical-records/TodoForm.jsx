@@ -1,16 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './records.css';
 
-const TodoForm = ({ setRecords, setViewTable, setWarningMessage }) => {
-    const [type, setType] = useState('');
-    const [measurement, setMeasurement] = useState('');
-    const [notes, setNotes] = useState(['']);
-    const [date, setDate] = useState('');
+const TodoForm = ({ setRecords, setViewTable, setWarningMessage, initialRecord, recordIndex }) => {
+    const [type, setType] = useState(initialRecord ? initialRecord.type : '');
+    const [measurement, setMeasurement] = useState(initialRecord ? initialRecord.measurement : '');
+    const [notes, setNotes] = useState(initialRecord ? initialRecord.notes : ['']);
+    const [date, setDate] = useState(initialRecord ? initialRecord.date : '');
+
+    useEffect(() => {
+        if (initialRecord) {
+            setType(initialRecord.type);
+            setMeasurement(initialRecord.measurement);
+            setNotes(initialRecord.notes);
+            setDate(initialRecord.date);
+        }
+    }, [initialRecord]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const measurementValue = parseFloat(measurement);
-        
+
         if (isNaN(measurementValue)) {
             setWarningMessage('Please enter a valid number for the measurement.');
             return;
@@ -35,10 +44,17 @@ const TodoForm = ({ setRecords, setViewTable, setWarningMessage }) => {
             setWarningMessage(warning);
         }
 
-        
         const newRecord = { type, measurement: measurementValue, notes, date };
-        setRecords(prevRecords => [...prevRecords, newRecord]);
-        // Reset form fields
+        if (recordIndex !== null && recordIndex !== undefined) {
+            setRecords(prevRecords => {
+                const updatedRecords = [...prevRecords];
+                updatedRecords[recordIndex] = newRecord;
+                return updatedRecords;
+            });
+        } else {
+            setRecords(prevRecords => [...prevRecords, newRecord]);
+        }
+        
         setType('');
         setMeasurement('');
         setNotes(['']);
@@ -67,7 +83,7 @@ const TodoForm = ({ setRecords, setViewTable, setWarningMessage }) => {
                 <div className="texxt">Upload Glucose Measure</div>
                 <div className="underliney"></div>
             </div>
-            <form className= "qq" onSubmit={handleSubmit}>
+            <form className="qq" onSubmit={handleSubmit}>
                 <div className="form-g">
                     <label htmlFor="measurement">Measurement:</label>
                     <input type="number" id="measurement" value={measurement} onChange={(e) => setMeasurement(e.target.value)} required />

@@ -1,9 +1,9 @@
 import React from 'react';
 import './records.css';
 
-const TodoTable = ({ records, setViewTable, warningMessage }) => {
+const TodoTable = ({ records, setViewTable, warningMessage, onUpdate, onDelete }) => {
     const isNormalRange = warningMessage && warningMessage.includes("within the normal range");
-    
+
     return (
         <div className="table-container">
             <h2>Medical Records</h2>
@@ -18,6 +18,7 @@ const TodoTable = ({ records, setViewTable, warningMessage }) => {
                         <th>Measurement</th>
                         <th>Notes</th>
                         <th>Date</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,6 +33,12 @@ const TodoTable = ({ records, setViewTable, warningMessage }) => {
                                 </ul>
                             </td>
                             <td>{record.date}</td>
+                            <td>
+                                <div className='tb-actions'>
+                                    <button className='up' onClick={() => onUpdate(index)}>Update</button>
+                                    <button className="dl"onClick={() => onDelete(index)}>Delete</button>
+                                </div>
+                            </td>
                         </tr>
                     ))}
                 </tbody>

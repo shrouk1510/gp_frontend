@@ -16,6 +16,7 @@ const AdminProfile = () => {
 
   const navigate = useNavigate();
   const [errors, setErrors] = useState({});
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
   const handleEditClick = () => {
     setIsEditing(!isEditing);
@@ -54,6 +55,20 @@ const AdminProfile = () => {
     }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
+  };
+
+  const handleDeleteClick = () => {
+    setShowConfirmation(true);
+  };
+
+  const confirmDelete = () => {
+    console.log("Account deleted");
+    // Add your delete logic here
+    setShowConfirmation(false);
+  };
+
+  const cancelDelete = () => {
+    setShowConfirmation(false);
   };
 
   const handleLogout = async () => {
@@ -115,10 +130,20 @@ const AdminProfile = () => {
             </label>
           )}
         </div>
-        <button onClick={handleLogout} className="react-admin-logout-button">
-          Logout
-        </button>
+        <div className='profile-buttons'>
+          <button onClick={handleLogout} className="react-admin-logout-button">
+            Logout
+          </button>
+          <button onClick={handleDeleteClick} className="delete react-admin-logout-button">Delete</button>
+        </div>
       </div>
+      {showConfirmation && (
+                <div className="confirmation-dialog">
+                    <p>Are you sure you want to delete your account?</p>
+                    <button onClick={confirmDelete} className="confirm-button">Yes</button>
+                    <button onClick={cancelDelete} className="cancel-button">No</button>
+                </div>
+            )}
     </div>
   );
 };
