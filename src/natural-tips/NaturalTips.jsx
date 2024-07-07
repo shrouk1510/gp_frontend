@@ -41,6 +41,7 @@ import { getAllArticlesByCatigoryIdRequest } from "../lib/api/article";
 // ];
 
 const NATURAL_TIPS_ID = 2;
+
 const NaturalTips = () => {
   const { setArticles, articles } = useArticleStore();
   const [showMore, setShowMore] = useState(false);
@@ -78,7 +79,7 @@ const NaturalTips = () => {
           </div>
         ))}
       </div>
-      {visibleTips?.length > 3 && (
+      {articles?.length > 3 && (
         <button className="view-more-button" onClick={handleShowMore}>
           {showMore ? "View Less Natural Effects" : "View More Natural Effects"}
         </button>
