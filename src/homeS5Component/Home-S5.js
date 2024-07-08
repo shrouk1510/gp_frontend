@@ -14,7 +14,7 @@ function ShopSection() {
                     </svg>
                 </i> 
               <h6>Free Tracking Method</h6>
-              <p>track your blood glucose, insuline, vitamines and weight</p>
+              <p>track your blood glucose, insulin, vitamins and weight</p>
             </div>
           </div>
           <div className="col-lg-4">

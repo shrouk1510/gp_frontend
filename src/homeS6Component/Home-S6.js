@@ -10,7 +10,7 @@ function ContactFooter() {
             <a href="#">
               <img src="imgs/logo3.jpg" alt="Cover" />
             </a>
-            <p>Application Built for your healthy and manage your life successfully</p>
+            <p>Application built for your health and managing your life successfully</p>
           </div>
           <div className="col-lg-3">
             <div className="home6text text1">

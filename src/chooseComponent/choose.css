@@ -54,9 +54,10 @@
   }
   
   .choose-page-btn:hover {
-    background-color: #4acc68;
+    background-color: #4acc68 ;
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    color:white !important;
   }
   
   .choose-page-btn:active {

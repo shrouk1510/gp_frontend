@@ -21,7 +21,7 @@ header .nav-item a{
     font-style: italic;
     /* color: white !important;   */
     text-transform: capitalize;
-    transition: 0.5s;
+    transition: 1s;
     color: white;
     text-decoration: none;
     
@@ -57,7 +57,9 @@ header .collapse_ul .nav-item a{
 header .collapse_ul .nav-item .item-menu a:hover{
     color: green
 }
-
+header .collapse_ul .nav-item .item-menu{
+    transition: 0.5s;
+}
  header  .btn1{
     text-transform: capitalize;
     transition: 0.5s;
@@ -142,8 +144,9 @@ header .navbar-nav{
     visibility: hidden;   
     position: absolute;  
     list-style: none;  
-    transition: 0.5s all; 
+    transition: 1s all; 
     color: green; 
+    z-index: 1;
  }  
 
   header .nav-item .item-menu li{

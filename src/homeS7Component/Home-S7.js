@@ -10,7 +10,7 @@ function Footer() {
             <div className="home6text">
               <div className="row">
                 <p>©2024 All rights reserved | This App is made with <i className="fa-sharp fa-solid fa-heart"></i> by </p>
-                <a href="#"> GlocoGuide Team.</a>
+                <a href="#"> GlucoGuide Team.</a>
               </div>
             </div>
           </div>
