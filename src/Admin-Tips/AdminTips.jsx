@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./AdminTips.css";
-import LifeStyleAdmin from "./LifeStyleAdmin";
-import LifeStyleAdmin2 from "./LifeStyleAdmin2";
 import { useArticleStore } from "../hooks/use-article-store";
 import {
   deleteArticleRequest,
@@ -161,7 +159,7 @@ const AdminTips = () => {
           </h2>
           {editingArticleId !== article.articleId ? (
             <div>
-              <div dangerouslySetInnerHTML={{ __html: article.content }}></div>
+              <pre>{article.content}</pre>
               <div className="bb">
                 <button className="edit" onClick={() => handleEdit(article)}>
                   Edit
@@ -200,12 +198,12 @@ const AdminTips = () => {
         </div>
       ))}
 
-      <div className="Userpage">
+      {/* <div className="Userpage">
         <LifeStyleAdmin />
       </div>
       <div className="Userpage">
         <LifeStyleAdmin2 />
-      </div>
+      </div> */}
     </div>
   );
 };

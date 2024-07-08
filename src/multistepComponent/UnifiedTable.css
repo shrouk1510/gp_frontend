@@ -11,7 +11,11 @@
 }
 
 .tableContainer h2 {
-  color: #34495e;
+  text-align: center;
+    color: #34495e; 
+    font-size: 35px; 
+    font-weight: 700; 
+    margin-bottom: 15px;
 }
 
 .unified-table th,
@@ -22,7 +26,7 @@
 }
 
 .unified-table th {
-  background-color: #4caf50;
+  background-color: #0775ec;
   color: white;
 }
 
@@ -32,7 +36,7 @@
 
 .backButton {
   padding: 10px 20px;
-  background-color: #4caf50;
+  background-color: #0775ec;
   color: white;
   border: none;
   cursor: pointer;
@@ -40,11 +44,11 @@
 }
 
 .backButton:hover {
-  background-color: green;
+  background-color:  #0056b3;
 }
 
 .tableContainer .update-button {
-  background-color: #008cba; /* Blue */
+  background-color:  #4CAF50;  /* Blue */
   color: white;
   padding: 5px 10px;
   border: none;
@@ -54,7 +58,7 @@
 }
 
 .tableContainer .update-button:hover {
-  background-color: #007bb5;
+  background-color: green;
 }
 
 .add-form {

@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./UserTips.css";
-import LifeStyleTipsUser from "./LifeStyleTipsUser";
-import LifeStyleTipsUser2 from "./LifeStyleTipsUser2";
 import { useArticleStore } from "../hooks/use-article-store";
 import { getAllArticlesByCatigoryIdRequest } from "../lib/api/article";
 
@@ -118,7 +116,7 @@ const UserTips = () => {
           </h2>
           {page.id !== 5 && page.id !== 7 && !page.editing ? (
             <div>
-              <div dangerouslySetInnerHTML={{ __html: page.content }}></div>
+              <pre>{page.content }</pre>
             </div>
           ) : (
             <div>
@@ -131,12 +129,6 @@ const UserTips = () => {
         </div>
       ))}
 
-      <div className="Userpage">
-        <LifeStyleTipsUser />
-      </div>
-      <div className="Userpage">
-        <LifeStyleTipsUser2 />
-      </div>
     </div>
   );
 };
