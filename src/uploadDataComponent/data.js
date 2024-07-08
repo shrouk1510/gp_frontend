@@ -22,10 +22,10 @@ const UploadData = () => {
         fetchMedicalRecords()
     }, [])
 
-    const handleUpdate = (article) => {
+    const handleUpdate = (record) => {
         // const recordToUpdate = article;
         // setRecords(records.filter((_, i) => i !== index));
-        setRecord(article)
+        setRecord(record)
         setViewTable(false);
         // Set form fields to the recordToUpdate values
         // You may need to pass these values to the TodoForm component
@@ -35,7 +35,7 @@ const UploadData = () => {
     const handleDelete = async (recordId) => {
 
         try {
-            // await deleteMedicalRecordRequest(recordId)
+            await deleteMedicalRecordRequest(recordId)
             removeMedicalRecord(recordId)
             toast.success("record deleted")
         } catch (error) {
@@ -57,12 +57,15 @@ const UploadData = () => {
                     onDelete={handleDelete}
                 />
             ) : (
-                <TodoForm
-                    // setRecords={setRecords}
-                    initialRecord={record}
-                    setViewTable={setViewTable}
-                    setWarningMessage={setWarningMessage}
-                />
+                <>
+                   
+                    <TodoForm
+                        // setRecords={setRecords}
+                        initialRecord={record}
+                        setViewTable={setViewTable}
+                        setWarningMessage={setWarningMessage}
+                    />
+                </>
             )}
         </div>
     );

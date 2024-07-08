@@ -5,6 +5,7 @@ import {
   updateMedicalRecordRequest,
   uploadMedicalRecordRequest,
 } from "../lib/api/medical-record";
+import { formatDate } from "../lib/helpers/date-formatter";
 import { useMedicalRecordStore } from "../hooks/use-medical-record-store";
 
 const GLUCOSE_TYPE_ID = 1;
@@ -20,14 +21,16 @@ const TodoForm = ({ setViewTable, setWarningMessage, initialRecord }) => {
   const [notes, setNotes] = useState(
     initialRecord ? [initialRecord.note] : [""]
   );
-  const [date, setDate] = useState(initialRecord ? initialRecord.date : "");
+  const [date, setDate] = useState(
+    initialRecord ? formatDate(initialRecord.date) : ""
+  );
 
   useEffect(() => {
     if (initialRecord) {
       setType(initialRecord.type);
       setMeasurement(initialRecord.measurements);
       setNotes([initialRecord.note]);
-      setDate(initialRecord.date);
+      setDate(formatDate(initialRecord.date));
     }
   }, [initialRecord]);
 
@@ -63,20 +66,20 @@ const TodoForm = ({ setViewTable, setWarningMessage, initialRecord }) => {
       }
 
       if (!initialRecord) {
-        // const newRecord = await uploadMedicalRecordRequest({
-        //   recordTypeId: GLUCOSE_TYPE_ID,
-        //   measurements: measurementValue,
-        //   note: notes.length > 0 ? notes[0] : "",
-        //   date,
-        // });
-
-        const newRecord = {
-          recordId: 2,
-          type,
+        const newRecord = await uploadMedicalRecordRequest({
+          recordTypeId: GLUCOSE_TYPE_ID,
           measurements: measurementValue,
           note: notes.length > 0 ? notes[0] : "",
           date,
-        };
+        });
+
+        // const newRecord = {
+        //   recordId: 2,
+        //   type,
+        //   measurements: measurementValue,
+        //   note: notes.length > 0 ? notes[0] : "",
+        //   date,
+        // };
 
         addMedicalRecord(newRecord);
         toast.success("Medical record added");
@@ -85,21 +88,22 @@ const TodoForm = ({ setViewTable, setWarningMessage, initialRecord }) => {
         setWarningMessage(newRecord?.advice || warning);
         // }
       } else {
-        // const updatedRecord = await updateMedicalRecordRequest({
-        //   recordTypeId: GLUCOSE_TYPE_ID,
-        //   measurements: measurementValue,
-        //   note: notes.length > 0 ? notes[0] : "",
-        //   date,
-        // });
-
-        const updatedRecord = {
-          recordId: 2,
+        const updatedRecord = await updateMedicalRecordRequest({
+          recordId: initialRecord.recordId,
           recordTypeId: GLUCOSE_TYPE_ID,
           measurements: measurementValue,
-          note: notes?.length > 0 ? notes[0] : "",
+          note: notes.length > 0 ? notes[0] : "",
           date,
-          advice: null,
-        };
+        });
+
+        // const updatedRecord = {
+        //   recordId: 2,
+        //   recordTypeId: GLUCOSE_TYPE_ID,
+        //   measurements: measurementValue,
+        //   note: notes?.length > 0 ? notes[0] : "",
+        //   date,
+        //   advice: null,
+        // };
 
         updateMedicalRecord(updatedRecord);
 
@@ -137,10 +141,21 @@ const TodoForm = ({ setViewTable, setWarningMessage, initialRecord }) => {
   return (
     <div className="uu">
       <div className="todo-form-container">
+        <button
+          type="button"
+          className="submit-record"
+          style={{
+            width: "80%",
+          }}
+          onClick={() => setViewTable(true)}
+        >
+          show records
+        </button>
         <div className="headeer">
           <div className="texxt">Upload Glucose Measure</div>
           <div className="underliney"></div>
         </div>
+
         <form className="qq" onSubmit={handleSubmit}>
           <div className="form-g">
             <label htmlFor="measurement">Measurement:</label>
