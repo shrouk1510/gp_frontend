@@ -14,14 +14,14 @@ const GlucoseDataGraph = () => {
   const [startDate, setStartDate] = useState("");
   const [data, setData] = useState(null);
 
-  const handleGenerateGraph = () => {
+  const handleGenerateGraph = (graphData) => {
     // Sample data generation for demonstration. Replace with actual data collection logic.
-    const generatedData = generateData(startDate);
+    const generatedData = generateData(graphData);
 
     setData(generatedData);
   };
 
-  const generateData = (startDate) => {
+  const generateData = (graphData) => {
     // Calculate current date and time
     const currentDate = new Date();
     const currentYear = currentDate.getFullYear();
@@ -32,23 +32,36 @@ const GlucoseDataGraph = () => {
     // Generate labels and data from start date to current time
     const labels = [];
     const dataValues = [];
-    let currentDateIter = new Date(startDate);
+    // let currentDateIter = new Date(startDate);
 
-    while (currentDateIter <= currentDate) {
-      const formattedDate = currentDateIter.toISOString().slice(0, 10); // Format as YYYY-MM-DD
-      labels.push(formattedDate);
+    graphData.forEach((data) => {
+      const label = new Date(data.date).toISOString().split("T")[0];
+      const value = data.measurements;
+      labels.push(label);
+      dataValues.push(value);
+    });
+    // while (currentDateIter <= currentDate) {
+    //   const formattedDate = currentDateIter.toISOString().slice(0, 10); // Format as YYYY-MM-DD
+    //   labels.push(formattedDate);
 
-      // Replace with actual data retrieval logic based on date
-      const randomValue = Math.floor(Math.random() * 150) + 50; // Example random data
-      dataValues.push(randomValue);
+    //   // Replace with actual data retrieval logic based on date
+    //   const randomValue = Math.floor(Math.random() * 150) + 50; // Example random data
+    //   dataValues.push(randomValue);
 
-      currentDateIter.setDate(currentDateIter.getDate() + 1); // Move to next day
-    }
+    //   currentDateIter.setDate(currentDateIter.getDate() + 1); // Move to next day
+    // }
+    // console.log(recordTypes, recordType);
 
-    return {
+    const selectedRecordType = recordTypes?.find(
+      (type) => type.typeId === Number(recordType)
+    );
+
+    // console.log(selectedRecordType);
+    const result = {
       labels: labels,
       datasets: [
         {
+          label: selectedRecordType?.type ?? "",
           data: dataValues,
           fill: false,
           backgroundColor: "rgba(75, 192, 192, 0.6)",
@@ -56,20 +69,23 @@ const GlucoseDataGraph = () => {
         },
       ],
     };
+
+    // console.log(result);
+    return result;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await getGraphDataRequest({
+      const graphData = await getGraphDataRequest({
         recordTypeId: recordType,
         startDate,
       });
+
+      handleGenerateGraph(graphData);
     } catch (error) {
       typeof error === "string" ? toast.error(error) : alert(error);
     }
-
-    handleGenerateGraph();
   };
 
   useEffect(() => {
