@@ -63,7 +63,7 @@ const UserProfile = () => {
 
   const handleReadAllNotifications = async () => {
     try {
-      // await markAllNotificationsReadRequest();
+       await markAllNotificationsReadRequest();
       markAllNotificationAsRead();
       toast.success("All notifications marked as read");
     } catch (error) {
@@ -73,7 +73,7 @@ const UserProfile = () => {
 
   const handleReadNotification = async (notificationId) => {
     try {
-      // await markNotificationReadByIdRequest(notificationId);
+       await markNotificationReadByIdRequest(notificationId);
       markNotificationAsRead(notificationId);
       toast.success("notification marked as read");
     } catch (error) {

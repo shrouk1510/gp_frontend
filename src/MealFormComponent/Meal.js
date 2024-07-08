@@ -4,7 +4,8 @@ import './Meal.css';
 const MealForm = ({ prevStep, handleSubmitAll }) => {
   const [formData, setFormData] = useState({
     name: '',
-    time: ''
+    time: '',
+    date: new Date().toISOString().split('T')[0] // Set the default date to today's date
   });
 
   const mealTypes = ['Breakfast', 'Lunch', 'Dinner', 'Snack'];
@@ -19,8 +20,16 @@ const MealForm = ({ prevStep, handleSubmitAll }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    // Check if name and time fields are empty
+    if (!formData.name && !formData.time) {
+      // Optionally, you can provide feedback to the user that fields are required
+      alert('Please fill in at least the Meal Type and Time fields.');
+      return;
+    }
+
     handleSubmitAll({ ...formData, type: 'Meal' });
-    setFormData({ name: '', time: '' });
+    setFormData({ name: '', time: '', date: new Date().toISOString().split('T')[0] }); // Reset date field as well
   };
 
   return (
@@ -52,6 +61,16 @@ const MealForm = ({ prevStep, handleSubmitAll }) => {
               id="time"
               name="time"
               value={formData.time}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="date">Date:</label>
+            <input
+              type="date"
+              id="date"
+              name="date"
+              value={formData.date}
               onChange={handleChange}
             />
           </div>

@@ -5,7 +5,8 @@ const ExerciseForm = ({ nextStep, prevStep, setCombinedData }) => {
   const [formData, setFormData] = useState({
     exerciseName: '',
     duration: '',
-    time: ''
+    time: '',
+    date: new Date().toISOString().split('T')[0] // Set the default date to today's date
   });
 
   const handleChange = (e) => {
@@ -21,7 +22,7 @@ const ExerciseForm = ({ nextStep, prevStep, setCombinedData }) => {
     if (formData.exerciseName || formData.duration || formData.time) {
       setCombinedData(prevData => [...prevData, { ...formData, type: 'Exercise' }]);
     }
-    setFormData({ exerciseName: '', duration: '', time: '' });
+    setFormData({ exerciseName: '', duration: '', time: '', date: new Date().toISOString().split('T')[0] }); // Reset date field as well
     nextStep();
   };
 
@@ -60,6 +61,16 @@ const ExerciseForm = ({ nextStep, prevStep, setCombinedData }) => {
               id="duration"
               name="duration"
               value={formData.duration}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="date">Date:</label>
+            <input
+              type="date"
+              id="date"
+              name="date"
+              value={formData.date}
               onChange={handleChange}
             />
           </div>

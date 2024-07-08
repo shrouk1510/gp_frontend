@@ -63,20 +63,20 @@ const TodoForm = ({ setViewTable, setWarningMessage, initialRecord }) => {
       }
 
       if (!initialRecord) {
-        const newRecord = await uploadMedicalRecordRequest({
-          recordTypeId: GLUCOSE_TYPE_ID,
-          measurements: measurementValue,
-          note: notes.length > 0 ? notes[0] : "",
-          date,
-        });
-
-        // const newRecord = {
-        //   recordId: 2,
-        //   type,
+        // const newRecord = await uploadMedicalRecordRequest({
+        //   recordTypeId: GLUCOSE_TYPE_ID,
         //   measurements: measurementValue,
         //   note: notes.length > 0 ? notes[0] : "",
         //   date,
-        // };
+        // });
+
+        const newRecord = {
+          recordId: 2,
+          type,
+          measurements: measurementValue,
+          note: notes.length > 0 ? notes[0] : "",
+          date,
+        };
 
         addMedicalRecord(newRecord);
         toast.success("Medical record added");
@@ -85,21 +85,21 @@ const TodoForm = ({ setViewTable, setWarningMessage, initialRecord }) => {
         setWarningMessage(newRecord?.advice || warning);
         // }
       } else {
-        const updatedRecord = await updateMedicalRecordRequest({
-          recordTypeId: GLUCOSE_TYPE_ID,
-          measurements: measurementValue,
-          note: notes.length > 0 ? notes[0] : "",
-          date,
-        });
-
-        // const updatedRecord = {
-        //   recordId: 2,
+        // const updatedRecord = await updateMedicalRecordRequest({
         //   recordTypeId: GLUCOSE_TYPE_ID,
         //   measurements: measurementValue,
-        //   note: notes?.length > 0 ? notes[0] : "",
+        //   note: notes.length > 0 ? notes[0] : "",
         //   date,
-        //   advice: null,
-        // };
+        // });
+
+        const updatedRecord = {
+          recordId: 2,
+          recordTypeId: GLUCOSE_TYPE_ID,
+          measurements: measurementValue,
+          note: notes?.length > 0 ? notes[0] : "",
+          date,
+          advice: null,
+        };
 
         updateMedicalRecord(updatedRecord);
 

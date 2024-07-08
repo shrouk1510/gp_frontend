@@ -4,7 +4,7 @@ import './UnifiedTable.css';
 const UnifiedTable = ({ combinedData, setViewTable }) => {
   return (
     <div className='tableContainer'>
-      <h2>Health Data Schedule</h2>
+      <h2><strong>Health Data Schedule</strong></h2>
       <table className="unified-table">
         <thead>
           <tr>
@@ -13,6 +13,7 @@ const UnifiedTable = ({ combinedData, setViewTable }) => {
             <th>Dose</th>
             <th>Duration</th>
             <th>Time</th>
+            <th>Date</th> {/* New Date column */}
             <th>Actions</th>
           </tr>
         </thead>
@@ -24,6 +25,7 @@ const UnifiedTable = ({ combinedData, setViewTable }) => {
               <td>{data.dose || '-'}</td>
               <td>{data.duration || '-'}</td>
               <td>{data.time || '-'}</td>
+              <td>{data.date || '-'}</td> {/* Display the Date */}
               <td>
                 <button className="update-button">Update</button>
               </td>

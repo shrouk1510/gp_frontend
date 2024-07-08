@@ -5,7 +5,8 @@ const MedicationForm = ({ nextStep, handleViewSchedule, setCombinedData }) => {
   const [formData, setFormData] = useState({
     name: '',
     dose: '',
-    time: ''
+    time: '',
+    date: '' // New state for date
   });
 
   const handleChange = (e) => {
@@ -21,7 +22,7 @@ const MedicationForm = ({ nextStep, handleViewSchedule, setCombinedData }) => {
     if (formData.name || formData.dose || formData.time) {
       setCombinedData(prevData => [...prevData, { ...formData, type: 'Medication' }]);
     }
-    setFormData({ name: '', dose: '', time: '' });
+    setFormData({ name: '', dose: '', time: '', date: '' });
     nextStep();
   };
 
@@ -46,7 +47,8 @@ const MedicationForm = ({ nextStep, handleViewSchedule, setCombinedData }) => {
           <div className="form-group">
             <label htmlFor="dose">Dose:</label>
             <input
-              placeholder="For example 100mg" type="text"
+              placeholder="For example 100mg"
+              type="text"
               id="dose"
               name="dose"
               value={formData.dose}
@@ -60,6 +62,16 @@ const MedicationForm = ({ nextStep, handleViewSchedule, setCombinedData }) => {
               id="time"
               name="time"
               value={formData.time}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group"> {/* New date field */}
+            <label htmlFor="date">Date:</label>
+            <input
+              type="date"
+              id="date"
+              name="date"
+              value={formData.date}
               onChange={handleChange}
             />
           </div>
