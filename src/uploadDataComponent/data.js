@@ -35,7 +35,7 @@ const UploadData = () => {
     const handleDelete = async (recordId) => {
 
         try {
-            await deleteMedicalRecordRequest(recordId)
+            // await deleteMedicalRecordRequest(recordId)
             removeMedicalRecord(recordId)
             toast.success("record deleted")
         } catch (error) {

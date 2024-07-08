@@ -10,12 +10,8 @@
   border-collapse: collapse;
 }
 
-.tableContainer h2{
-  font-size: 2.5em;
-  margin-bottom: 10px;
-  color: #2c3e50;
-  font-weight: 600;
-  text-align: center;
+.tableContainer h2 {
+  color: #34495e; 
 }
 
 .unified-table th, .unified-table td {
@@ -40,11 +36,11 @@
   cursor: pointer;
 }
 
-.backButton:hover{
-background-color: green;
+.backButton:hover {
+  background-color: green;
 }
 
-.tableContainer .update-button  {
+.tableContainer .update-button {
   background-color: #008CBA; /* Blue */
   color: white;
   padding: 5px 10px;

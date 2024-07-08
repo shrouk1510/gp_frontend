@@ -1,116 +1,109 @@
 .exerciseContainer {
-   
-    max-width: 100% !important;
-    height: 100vh;
-    background-color: #f5f5f5;
-    margin: 0;
-    padding: 1rem 0;
-  }
-  
-  .exerciseContainer .header {
-    text-align: center;
-    margin-top: 3%;
-    margin-left: 95px;
+  height: 82vh;
+  margin-top: 120px;
+}
 
-  }
-  
-  .exerciseContainer .text {
-    color: #34495e;
-    font-size: 35px;
-    font-weight: 700;
-  }
-  
-  .exerciseContainer .underline {
-    width: 60px;
-    height: 6px;
-    background-color: #34495e;
-    border-radius: 9px;
-    margin: auto;
-    margin-top: 10px;
-  }
-  
-  .exerciseContainer .exercise-form {
-    font-family: 'Source Sans Pro', Arial, sans-serif;
-    background-color: white;
-    margin-bottom: 60px;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 65%; 
-    width: 34%; 
-    flex-direction: column;
-    flex-wrap: wrap;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-left: 500px;
-    border-radius: 6px;
-    margin-top: 50px;
-  }
-  
-  .exerciseContainer .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .exerciseContainer .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    color: #34495e;
-    font-weight: bold;
-  }
-  
-  .exerciseContainer .form-group input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-  }
-  
-  .exerciseContainer .exerciseSchedule .view {
-    position: absolute;
-    top: 100%;
-    right: 498px;
-    background-color: #4CAF50;
-    padding: 10px 13px;
-    border-radius: 4px;
-    margin-top: -190px; /* Adjust spacing */
-    color: white;
-    border: none;
-    margin-right: 180px;
-  }
-  
-  .exerciseContainer .exerciseSchedule .view:hover {
-    background-color: green;
-  }
-  
-  .exerciseContainer .sub-button {
-    margin-top: 50px;
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 20%;
-  }
-  
-  .exerciseContainer .sub-button:hover {
-    background-color: green;
-  }
-  
-  .exerciseContainer .Exerback-button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 3px;
-    margin-top: 95px;
-    width: 20%;
-    
-  }
-  
-  .exerciseContainer .Exerback-button:hover {
-    background-color: green;
-  }
-  
+.exerciseContainer .header {
+  text-align: center;
+  margin-top: 3%;
+  margin-left: 95px;
+}
+
+.exerciseContainer .text {
+  color: #34495e;
+  font-size: 35px;
+  font-weight: 700;
+}
+
+.exerciseContainer .underline {
+  width: 60px;
+  height: 6px;
+  background-color: #34495e;
+  border-radius: 9px;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.exerciseContainer .exercise-form {
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  background-color: white;
+  margin-bottom: 60px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 85%; 
+  width: 34%; 
+  flex-direction: column;
+  flex-wrap: wrap;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-left: 500px;
+  border-radius: 6px;
+  margin-top: -60px;
+}
+
+.exerciseContainer .form-group {
+  margin-bottom: 15px;
+}
+
+.exerciseContainer .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #34495e;
+  font-weight: bold;
+}
+
+.exerciseContainer .form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.exerciseContainer .exerciseSchedule .view {
+  position: absolute;
+  top: 100%;
+  right: 498px;
+  background-color: #4CAF50;
+  padding: 10px 13px;
+  border-radius: 4px;
+  margin-top: -190px; /* Adjust spacing */
+  color: white;
+  border: none;
+  margin-right: 180px;
+}
+
+.exerciseContainer .exerciseSchedule .view:hover {
+  background-color: green;
+}
+
+.exerciseContainer .sub-button {
+  margin-top: 50px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 20%;
+}
+
+.exerciseContainer .sub-button:hover {
+  background-color: green;
+}
+
+.exerciseContainer .Exerback-button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+  margin-top: 95px;
+  width: 20%;
+}
+
+.exerciseContainer .Exerback-button:hover {
+  background-color: green;
+}

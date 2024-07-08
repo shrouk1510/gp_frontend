@@ -69,7 +69,7 @@ function App() {
         <Route path="/admin" element={<Signin />} />
         <Route path="/NewNat" element={<NewNat />} />
         <Route path="/uploadData" element={<PrivateRoute><UploadData /></PrivateRoute>} />
-        <Route path="/viewData" element={<ViewData />} />
+        {/* <Route path="/viewData" element={<ViewData />} /> */}
         <Route path="/lifestyle" element={<Lifestyle />} />
         <Route path="/userlifestyle" element={<ReLifestyle />} />
         {/* <Route path="/logout" element={<Welcome />} /> */}

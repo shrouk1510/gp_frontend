@@ -1,25 +1,19 @@
-/* Form styling similar to Exercise form */ 
 .medicationContainer { 
-    max-width: 100% !important;
-    height: 100vh;
-    background-color: #f5f5f5;
-    margin: 0;
-    padding: 1rem 0;
-    
-} 
- 
+    height: 82vh; 
+}
+
 .medicationContainer .header { 
     text-align: center; 
     margin-top: 3%; 
     margin-left: 95px; 
-} 
- 
+}
+
 .medicationContainer .text { 
     color: #34495e; 
     font-size: 35px; 
     font-weight: 700; 
-} 
- 
+}
+
 .medicationContainer .underline { 
     width: 60px; 
     height: 6px; 
@@ -27,8 +21,8 @@
     border-radius: 9px; 
     margin: auto; 
     margin-top: 10px; 
-} 
- 
+}
+
 .medicationContainer .medication-form { 
     font-family: 'Source Sans Pro', Arial, sans-serif; 
     background-color: white; 
@@ -37,35 +31,35 @@
     display: flex; 
     justify-content: center; 
     align-items: center; 
-    height: 65%; 
+    height: 85%; 
     width: 34%; 
     flex-direction: column; 
     flex-wrap: wrap; 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
     margin-left:500px; 
     border-radius: 6px; 
-    margin-top: 50px;
-} 
- 
+    margin-top: 48px;
+}
+
 .medicationContainer .form-group { 
     margin-bottom: 15px; 
-} 
- 
+}
+
 .medicationContainer .form-group label { 
     display: block; 
     margin-bottom: 5px; 
     color: #34495e; 
     font-weight: bold; 
-} 
- 
+}
+
 .medicationContainer .form-group input { 
     width: 100%; 
     padding: 10px; 
     border: 1px solid #ccc; 
     border-radius: 4px; 
     font-size: 16px; 
-} 
- 
+}
+
 .medicationContainer .subb-button { 
     margin-top: 94px; 
     padding: 10px 20px; 
@@ -75,13 +69,13 @@
     cursor: pointer; 
     border-radius: 4px; 
     width: 20%;
-} 
- 
+}
+
 .medicationContainer .subb-button:hover { 
     background-color: green; 
-} 
- 
-.medicationContainer  .see{ 
+}
+
+.medicationContainer .see { 
     position: absolute;  
     right: 406px;  
     background-color: #4CAF50; 
@@ -91,12 +85,9 @@
     color: white; 
     border: none; 
     margin-right: 270px;
-    margin-top: -45px;
-    
-} 
- 
-.medicationContainer .see:hover{ 
+    margin-top: -30px;
+}
+
+.medicationContainer .see:hover { 
     background-color: green; 
- 
-} 
- 
+}
