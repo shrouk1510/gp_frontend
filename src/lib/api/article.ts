@@ -84,9 +84,16 @@ export const uploadArticlePhotoRequest = async (
   articleId: number
   // role: "ADMIN" | "USER"
 ) => {
+  const formData = new FormData();
+  formData.append("photo", values.photo);
   const promise = await api_root.api.post(
     `/articles/${articleId}/upload-photo`,
-    values
+    formData,
+    {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    }
   );
 
   if (![200, 201].includes(promise.status)) {

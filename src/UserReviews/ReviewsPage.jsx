@@ -103,7 +103,7 @@ const ReviewsPage = () => {
 
         setNewReviewText("");
         setNewReviewRating(0);
-        setNewReviewUser("");
+        // setNewReviewUser("");
         toast.success("Review added");
       } catch (error) {
         typeof error === "string" ? toast.error(error) : alert(error);
@@ -149,7 +149,7 @@ const ReviewsPage = () => {
 
   const handleDeleteReview = async (reviewId) => {
     try {
-      await deleteReviewRequest(reviewId);
+      await deleteReviewRequest(reviewId, role);
 
       removeReview(reviewId);
 

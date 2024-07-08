@@ -125,7 +125,7 @@ const NaturalTipsAdmin = () => {
         };
         reader.readAsDataURL(file);
       }
-      toast.success("article image updated");
+      // toast.success("article image updated");
     } catch (error) {
       typeof error === "string" ? toast.error(error) : alert(error);
     }
@@ -177,10 +177,12 @@ const NaturalTipsAdmin = () => {
           toast.success("article updated");
 
           if (articlePhoto) {
-            await uploadArticlePhotoRequest(
+            const updatedArticleImage = await uploadArticlePhotoRequest(
               { photo: articlePhoto },
               updatedArticle.articleId
             );
+
+            updateArticle(updatedArticleImage);
             toast.success("article image updated");
           }
         } else {
@@ -195,10 +197,12 @@ const NaturalTipsAdmin = () => {
           toast.success("article created");
 
           if (articlePhoto) {
-            await uploadArticlePhotoRequest(
+            const updatedArticle = await uploadArticlePhotoRequest(
               { photo: articlePhoto },
               createdArticle.articleId
             );
+
+            updateArticle(updatedArticle);
             toast.success("article image updated");
           }
         }
@@ -282,15 +286,17 @@ const NaturalTipsAdmin = () => {
         ))}
         {isAddingTip && (
           <div className="tip-card-admin new-tip-card-admin">
-            <img
-              src={newTip.articlePhoto}
-              alt={`${newTip.name} image`}
-              style={{
-                width: "5rem",
-                // height: "10px",
-                objectFit: "cover",
-              }}
-            />
+            {newTip?.articlePhoto && (
+              <img
+                src={newTip?.articlePhoto || ""}
+                alt={`tip image`}
+                style={{
+                  width: "5rem",
+                  // height: "10px",
+                  objectFit: "cover",
+                }}
+              />
+            )}
             <input type="file" accept="image/*" onChange={handleFileChange} />
             {errors.image && <p className="error">{errors.image}</p>}
             <input

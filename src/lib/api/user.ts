@@ -20,7 +20,13 @@ export const uploadUserPhotoRequest = async (
   values: { photo: File }
   // role: "ADMIN" | "USER"
 ) => {
-  const promise = await api_root.api.post("/user/upload-photo", values);
+  const formData = new FormData();
+  formData.append("photo", values.photo);
+  const promise = await api_root.api.post("/user/upload-photo", formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
 
   if (![200, 201].includes(promise.status)) {
     throw Error(promise.statusText);
