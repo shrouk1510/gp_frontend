@@ -1,14 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Exercise.css';
+import toast from 'react-hot-toast';
+import { addDailyListExerciseRequest, updateDailyListExerciseRequest } from '../lib/api/daily-list';
+import { useModal } from '../hooks/use-modal-store';
+import { useDailyListStore } from '../hooks/use-daily-list-store';
 
-const ExerciseForm = ({ nextStep, prevStep, setCombinedData }) => {
+const ExerciseForm = ({ initialExercise }) => {
+
+  const { onClose } = useModal()
+  const { } = useDailyListStore()
   const [formData, setFormData] = useState({
     exerciseName: '',
-    duration: '',
+    durationMinutes: '',
     time: '',
     date: new Date().toISOString().split('T')[0] // Set the default date to today's date
   });
 
+  const [isSubmiting, setIsSubmiting] = useState(false)
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -17,21 +25,64 @@ const ExerciseForm = ({ nextStep, prevStep, setCombinedData }) => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (formData.exerciseName || formData.duration || formData.time) {
-      setCombinedData(prevData => [...prevData, { ...formData, type: 'Exercise' }]);
+    if (!formData.exerciseName || !formData.durationMinutes || !formData.time || !formData.date) {
+      toast.error('all fields are required')
+      return
     }
-    setFormData({ exerciseName: '', duration: '', time: '', date: new Date().toISOString().split('T')[0] }); // Reset date field as well
-    nextStep();
+
+    try {
+      setIsSubmiting(true)
+      if (initialExercise) {
+        //update existing meal
+        const updatedExercise = await updateDailyListExerciseRequest({
+          ...formData, durationMinutes: Number(formData.durationMinutes),
+        }, initialExercise.id)
+
+        toast.success('exercise updated')
+      } else {
+        //create new meal
+        const createdExercise = await addDailyListExerciseRequest({
+          ...formData,
+          durationMinutes: Number(formData.durationMinutes)
+        })
+
+
+        toast.success('exercise created')
+
+      }
+      onClose()
+      setFormData({ exerciseName: '', durationMinutes: '', time: '', date: new Date().toISOString().split('T')[0] }); // Reset date field as well
+    } catch (error) {
+      typeof error === "string" ? toast.error(error) : alert(error)
+    } finally {
+      setIsSubmiting(false)
+    }
+    // nextStep();
   };
 
+
+  useEffect(() => {
+    if (initialExercise) {
+      setFormData({
+        name: initialExercise.name,
+        durationMinutes: initialExercise.durationMinutes,
+        time: initialExercise.time,
+        date: initialExercise.date
+      })
+    }
+  }, [initialExercise])
+
+  const titleText = initialExercise ? `Edit ${initialExercise.name}` : "Exercise Data"
+  const submitText = initialExercise ? "Edit" : "Add"
+  const submitingText = initialExercise ? "Editing..." : "Adding..."
   return (
     <div className='exerciseContainer'>
       <form onSubmit={handleSubmit} className="exercise-form">
         <div className="form-group">
           <div className="header">
-            <div className="text">Exercise Data</div>
+            <div className="text">{titleText}</div>
             <div className="underline"></div>
           </div>
           <div className="form-group">
@@ -55,12 +106,13 @@ const ExerciseForm = ({ nextStep, prevStep, setCombinedData }) => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="duration">Duration (in minutes):</label>
+            <label htmlFor="durationMinutes">Duration (in minutes):</label>
             <input
               type="number"
-              id="duration"
-              name="duration"
-              value={formData.duration}
+              id="durationMinutes"
+              inputMode="numeric"
+              name="durationMinutes"
+              value={formData.durationMinutes}
               onChange={handleChange}
             />
           </div>
@@ -75,8 +127,8 @@ const ExerciseForm = ({ nextStep, prevStep, setCombinedData }) => {
             />
           </div>
         </div>
-        <button type="button" className="Exerback-button" onClick={prevStep}>Back</button>
-        <button type="submit" className="sub-button">Next</button>
+        {/* <button type="button" className="Exerback-button" onClick={prevStep}>Back</button> */}
+        <button type="submit" className="sub-button" disabled={isSubmiting}>{isSubmiting ? submitingText : submitText}</button>
       </form>
     </div>
   );

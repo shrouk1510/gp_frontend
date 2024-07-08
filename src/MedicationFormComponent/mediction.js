@@ -1,7 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './medication.css';
+import toast from 'react-hot-toast';
+import { useDailyListStore } from '../hooks/use-daily-list-store';
+import { useModal } from '../hooks/use-modal-store';
+import { addDailyListMedicationRequest, updateDailyListMedicationRequest } from '../lib/api/daily-list';
 
-const MedicationForm = ({ nextStep, handleViewSchedule, setCombinedData }) => {
+const MedicationForm = ({ intialMedication }) => {
+
+  const { onClose } = useModal()
+  const { } = useDailyListStore()
+
   const [formData, setFormData] = useState({
     name: '',
     dose: '',
@@ -9,6 +17,7 @@ const MedicationForm = ({ nextStep, handleViewSchedule, setCombinedData }) => {
     date: '' // New state for date
   });
 
+  const [isSubmiting, setIsSubmiting] = useState(false)
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -17,21 +26,76 @@ const MedicationForm = ({ nextStep, handleViewSchedule, setCombinedData }) => {
     });
   };
 
-  const handleSubmit = (e) => {
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   if (formData.name || formData.dose || formData.time) {
+  //     setCombinedData(prevData => [...prevData, { ...formData, type: 'Medication' }]);
+  //   }
+  //   setFormData({ name: '', dose: '', time: '', date: '' });
+  //   nextStep();
+  // };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (formData.name || formData.dose || formData.time) {
-      setCombinedData(prevData => [...prevData, { ...formData, type: 'Medication' }]);
+
+    // Check if name and time fields are empty
+    if (!formData.name && !formData.time) {
+      // Optionally, you can provide feedback to the user that fields are required
+      toast.error('All fields are required');
+      return;
     }
-    setFormData({ name: '', dose: '', time: '', date: '' });
-    nextStep();
+
+    try {
+      setIsSubmiting(true)
+      if (intialMedication) {
+        //update existing meal
+        const updatedMedication = await updateDailyListMedicationRequest({
+          ...formData
+        }, intialMedication.id)
+
+        toast.success('medication updated')
+      } else {
+        //create new meal
+        const createdMedication = await addDailyListMedicationRequest({
+          ...formData
+        })
+
+
+        toast.success('medication created')
+
+      }
+      onClose()
+      // handleSubmitAll({ ...formData, type: 'Meal' });
+      setFormData({ name: '', dose: '', time: '', date: '' }); // Reset date field as well
+    } catch (error) {
+      typeof error === "string" ? toast.error(error) : alert(error)
+    } finally {
+      setIsSubmiting(false)
+    }
+
   };
+
+  useEffect(() => {
+    if (intialMedication) {
+      setFormData({
+        name: intialMedication.name,
+        dose: intialMedication.dose,
+        time: intialMedication.time,
+        date: intialMedication.date
+      })
+    }
+  }, [intialMedication])
+
+  const titleText = intialMedication ? `Edit ${intialMedication.name}` : "Medication Data"
+  const submitText = intialMedication ? "Edit" : "Add"
+  const submitingText = intialMedication ? "Editing..." : "Adding..."
 
   return (
     <div className='medicationContainer'>
       <form onSubmit={handleSubmit} className="medication-form">
         <div className="form-group">
           <div className="header">
-            <div className="text">Medication Data</div>
+            <div className="text">{titleText}</div>
             <div className="underline"></div>
           </div>
           <div className="form-group">
@@ -76,11 +140,11 @@ const MedicationForm = ({ nextStep, handleViewSchedule, setCombinedData }) => {
             />
           </div>
         </div>
-        <button type="submit" className="subb-button">Next</button>
+        <button type="submit" className="subb-button" disabled={isSubmiting}>{isSubmiting ? submitingText : submitText}</button>
       </form>
-      <div className='medicalSchedule'>
+      {/* <div className='medicalSchedule'>
         <button className="see" onClick={handleViewSchedule}>View Your Schedule</button>
-      </div>
+      </div> */}
     </div>
   );
 };

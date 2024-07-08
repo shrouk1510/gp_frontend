@@ -1,20 +1,20 @@
 import api_root from "../../axios";
 
-export const getTodayDailyListRequest = async () => {
-  try {
-    const promise = await api_root.api.get("/dailyList/all");
-    // console.log(promise);
+// export const getDailyListRequest = async () => {
+//   try {
+//     const promise = await api_root.api.get("/dailylist");
+//     // console.log(promise);
 
-    if (promise.status !== 200) {
-      throw Error(promise.statusText);
-    }
-    const response = await promise.data;
-    return response;
-  } catch (error) {
-    console.log(error);
-    return [];
-  }
-};
+//     if (promise.status !== 200) {
+//       throw Error(promise.statusText);
+//     }
+//     const response = await promise.data;
+//     return response;
+//   } catch (error) {
+//     console.log(error);
+//     return [];
+//   }
+// };
 
 export const getDailyListMealsRequest = async () => {
   try {
@@ -64,18 +64,125 @@ export const getDailyListMedicationsRequest = async () => {
   }
 };
 
-export const saveDailyListRequest = async (
+export const addDailyListMealRequest = async (
   values: {
-    meals: { name: string; description: string }[];
-    exercises: { name: string; duration: string }[];
-    medications: { name: string; dosage: string }[];
-    exerciseAlertTime: string;
-    mealAlertTime: string;
-    medicationAlertTime: string;
+    name: string;
+    date: string;
+    time: string;
   }
   // role: "ADMIN" | "USER"
 ) => {
-  const promise = await api_root.api.post("/dailyList/save", values);
+  const promise = await api_root.api.post(
+    `/dailylist/addMeal?date=${values.date}`,
+    values
+  );
+
+  if (![200, 201].includes(promise.status)) {
+    throw Error(promise.statusText);
+  }
+  const response = await promise.data;
+  return response;
+};
+
+export const addDailyListMedicationRequest = async (
+  values: {
+    name: string;
+    dosage: string;
+    date: string;
+    time: string;
+  }
+  // role: "ADMIN" | "USER"
+) => {
+  const promise = await api_root.api.post(
+    `/dailylist/addMedication?date=${values.date}`,
+    values
+  );
+
+  if (![200, 201].includes(promise.status)) {
+    throw Error(promise.statusText);
+  }
+  const response = await promise.data;
+  return response;
+};
+
+export const addDailyListExerciseRequest = async (
+  values: {
+    name: string;
+    durationMinutes: number;
+    date: string;
+    time: string;
+  }
+  // role: "ADMIN" | "USER"
+) => {
+  const promise = await api_root.api.post(
+    `/dailylist/addExercise?date=${values.date}`,
+    values
+  );
+
+  if (![200, 201].includes(promise.status)) {
+    throw Error(promise.statusText);
+  }
+  const response = await promise.data;
+  return response;
+};
+
+export const updateDailyListMealRequest = async (
+  values: {
+    name: string;
+    date: string;
+    time: string;
+  },
+  mealId: number
+  // role: "ADMIN" | "USER"
+) => {
+  const promise = await api_root.api.put(
+    `/dailylist/updateMeal/${mealId}`,
+    values
+  );
+
+  if (![200, 201].includes(promise.status)) {
+    throw Error(promise.statusText);
+  }
+  const response = await promise.data;
+  return response;
+};
+
+export const updateDailyListMedicationRequest = async (
+  values: {
+    name: string;
+    date: string;
+    dosage: string;
+    time: string;
+  },
+  medicationId: number
+  // role: "ADMIN" | "USER"
+) => {
+  const promise = await api_root.api.put(
+    `/dailylist/updateMedication/${medicationId}`,
+    values
+  );
+
+  if (![200, 201].includes(promise.status)) {
+    throw Error(promise.statusText);
+  }
+  const response = await promise.data;
+  return response;
+};
+
+export const updateDailyListExerciseRequest = async (
+  values: {
+    name: string;
+    durationMinutes: number;
+    date: string;
+    time: string;
+  },
+  exerciseId: number
+  // role: "ADMIN" | "USER"
+) => {
+  const promise = await api_root.api.put(
+    `/dailylist/updateExercise/${exerciseId}`,
+    values
+  );
 
   if (![200, 201].includes(promise.status)) {
     throw Error(promise.statusText);

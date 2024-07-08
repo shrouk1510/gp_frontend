@@ -1,9 +1,42 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import './UnifiedTable.css';
+import { useDailyListStore } from '../hooks/use-daily-list-store';
+import { useModal } from '../hooks/use-modal-store';
 
-const UnifiedTable = ({ combinedData, setViewTable, handleUpdate }) => {
+const UnifiedTable = ({ handleUpdate }) => {
+  const { meals, medications, exercises } = useDailyListStore()
+  const { onOpen } = useModal()
+  const [dailyListType, setDailyListType] = useState('')
+
+  const combinedData = useMemo(() => combinDailyList(meals, medications, exercises), [meals, medications, exercises])
+
+  const handleAdd = () => {
+    switch (dailyListType) {
+      case 'Meal':
+        // setMeal(dailyList)
+        onOpen("meal")
+        break
+      case 'Medication':
+        onOpen("medication")
+        break
+      case 'Exercise':
+        onOpen("exercise")
+        break
+    }
+  }
+
+
   return (
     <div className='tableContainer'>
+      <div className='add-form'>
+        <select value={dailyListType} onChange={(e) => setDailyListType(e.target.value)}>
+          <option value="">Select type</option>
+          <option value="Medication">Medication</option>
+          <option value="Exercise">Exercise</option>
+          <option value="Meal">Meal</option>
+        </select>
+        <button type='button' className='backButton' onClick={handleAdd}>add</button>
+      </div>
       <h2><strong>Health Data Schedule</strong></h2>
       <table className="unified-table">
         <thead>
@@ -18,7 +51,7 @@ const UnifiedTable = ({ combinedData, setViewTable, handleUpdate }) => {
           </tr>
         </thead>
         <tbody>
-          {combinedData.map((data, index) => (
+          {combinedData.length > 0 ? combinedData.map((data, index) => (
             <tr key={index}>
               <td>{data.type}</td>
               <td>{data.name || '-'}</td>
@@ -30,14 +63,26 @@ const UnifiedTable = ({ combinedData, setViewTable, handleUpdate }) => {
                 <button className="update-button" onClick={() => handleUpdate(data, data.type)}>Update</button>
               </td>
             </tr>
-          ))}
+          )) : <tr><td colSpan={"7"}>no daily list found</td></tr>}
         </tbody>
       </table>
-      <div className='buttonContainer'>
+      {/* <div className='buttonContainer'>
         <button className="backButton" onClick={() => setViewTable(false)}>Back to Form</button>
-      </div>
+      </div> */}
     </div>
   );
 };
 
 export default UnifiedTable;
+
+
+const combinDailyList = (meals, medications, execrises) => {
+
+
+  const extendedMeals = meals ? meals.map((meal) => ({ ...meal, type: "Meal" })) : []
+
+  const extendedMedications = medications ? medications.map((medication) => ({ ...medication, type: "Medication" })) : []
+  const extendedExecrises = execrises ? execrises.map((exercise) => ({ ...exercise, type: "Exercise" })) : []
+
+  return [...extendedMeals, ...extendedMedications, ...extendedExecrises]
+}

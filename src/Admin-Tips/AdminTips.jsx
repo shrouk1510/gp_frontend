@@ -178,6 +178,7 @@ const AdminTips = () => {
             <div>
               <input
                 type="text"
+                name="name"
                 placeholder="Enter article name"
                 value={newName}
                 onChange={(e) => setNewName(e.target.value)}

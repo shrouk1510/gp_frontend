@@ -87,7 +87,7 @@ function App() {
 
         <Route path="/NewNat" element={<Natural />} />
         <Route path="/UrgentSign" element={<ParentComponent />} />
-        <Route path="/MedicationL" element={<MultiStepForm />} />
+        <Route path="/MedicationL" element={<PrivateRoute><MultiStepForm /></PrivateRoute>} />
         <Route path="/reviewsB" element={<PrivateRoute><UserRev /></PrivateRoute>} />
         {/* <Route path="/Submit" element={<PrivateRoute><UserRev /></PrivateRoute>} /> */}
         <Route path="/AdminSignIn" element={<AdminRoute><ReviewsAdmin /></AdminRoute>} />

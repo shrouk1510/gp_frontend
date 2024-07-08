@@ -282,15 +282,26 @@ const NaturalTipsAdmin = () => {
         ))}
         {isAddingTip && (
           <div className="tip-card-admin new-tip-card-admin">
+            <img
+              src={newTip.articlePhoto}
+              alt={`${newTip.name} image`}
+              style={{
+                width: "5rem",
+                // height: "10px",
+                objectFit: "cover",
+              }}
+            />
             <input type="file" accept="image/*" onChange={handleFileChange} />
+            {errors.image && <p className="error">{errors.image}</p>}
             <input
               type="text"
+              name="name"
               value={newTip.name}
               onChange={handleInputChange}
               placeholder="Enter tip title"
               className={errors.name ? "input-error" : ""}
             />
-            {errors.image && <p className="error">{errors.image}</p>}
+            {errors.name && <p className="error">{errors.name}</p>}
             <textarea
               name="content"
               value={newTip.content}

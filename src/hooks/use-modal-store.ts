@@ -1,9 +1,12 @@
-import { ArticleType } from "@/types";
+import { ArticleType, ExecriseType, MealType, MedicationType } from "@/types";
 import { create } from "zustand";
 
-export type ModalType = "showArticle";
+export type ModalType = "showArticle" | "meal" | "medication" | "exercise";
 
 interface ModalData {
+  exercise?: ExecriseType;
+  meal?: MealType;
+  medication?: MedicationType;
   article?: ArticleType;
   apiUrl?: string;
   query?: Record<string, any>;
