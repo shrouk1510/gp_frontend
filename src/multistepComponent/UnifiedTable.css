@@ -1,38 +1,59 @@
 .tableContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px;
-  }
-  
-  .unified-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .unified-table th, .unified-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
-  
-  .unified-table th {
-    background-color: #4CAF50;
-    color: white;
-  }
-  
-  .buttonContainer {
-    margin-top: 20px;
-  }
-  
-  .backButton {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
 
-  .backButton:hover{
-  background-color: green;
-  }
-  
+.unified-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tableContainer h2{
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  color: #2c3e50;
+  font-weight: 600;
+  text-align: center;
+}
+
+.unified-table th, .unified-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.unified-table th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.buttonContainer {
+  margin-top: 20px;
+}
+
+.backButton {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.backButton:hover{
+background-color: green;
+}
+
+.tableContainer .update-button  {
+  background-color: #008CBA; /* Blue */
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 3px;
+}
+
+.tableContainer .update-button:hover {
+  background-color: #007bb5;
+}

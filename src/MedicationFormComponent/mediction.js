@@ -18,7 +18,9 @@ const MedicationForm = ({ nextStep, handleViewSchedule, setCombinedData }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setCombinedData(prevData => [...prevData, { ...formData, type: 'Medication' }]);
+    if (formData.name || formData.dose || formData.time) {
+      setCombinedData(prevData => [...prevData, { ...formData, type: 'Medication' }]);
+    }
     setFormData({ name: '', dose: '', time: '' });
     nextStep();
   };
@@ -39,18 +41,16 @@ const MedicationForm = ({ nextStep, handleViewSchedule, setCombinedData }) => {
               name="name"
               value={formData.name}
               onChange={handleChange}
-              
             />
           </div>
           <div className="form-group">
             <label htmlFor="dose">Dose:</label>
             <input
-              type="text"
+              placeholder="For example 100mg" type="text"
               id="dose"
               name="dose"
               value={formData.dose}
               onChange={handleChange}
-              
             />
           </div>
           <div className="form-group">
@@ -61,7 +61,6 @@ const MedicationForm = ({ nextStep, handleViewSchedule, setCombinedData }) => {
               name="time"
               value={formData.time}
               onChange={handleChange}
-            
             />
           </div>
         </div>

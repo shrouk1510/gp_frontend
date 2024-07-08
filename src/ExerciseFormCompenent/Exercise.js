@@ -3,6 +3,7 @@ import './Exercise.css';
 
 const ExerciseForm = ({ nextStep, prevStep, setCombinedData }) => {
   const [formData, setFormData] = useState({
+    exerciseName: '',
     duration: '',
     time: ''
   });
@@ -17,8 +18,10 @@ const ExerciseForm = ({ nextStep, prevStep, setCombinedData }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setCombinedData(prevData => [...prevData, { ...formData, type: 'Exercise' }]);
-    setFormData({ duration: '', time: '' });
+    if (formData.exerciseName || formData.duration || formData.time) {
+      setCombinedData(prevData => [...prevData, { ...formData, type: 'Exercise' }]);
+    }
+    setFormData({ exerciseName: '', duration: '', time: '' });
     nextStep();
   };
 
@@ -31,6 +34,16 @@ const ExerciseForm = ({ nextStep, prevStep, setCombinedData }) => {
             <div className="underline"></div>
           </div>
           <div className="form-group">
+            <label htmlFor="exerciseName">Exercise Name:</label>
+            <input
+              type="text"
+              id="exerciseName"
+              name="exerciseName"
+              value={formData.exerciseName}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group">
             <label htmlFor="time">Time:</label>
             <input
               type="time"
@@ -38,7 +51,6 @@ const ExerciseForm = ({ nextStep, prevStep, setCombinedData }) => {
               name="time"
               value={formData.time}
               onChange={handleChange}
-              
             />
           </div>
           <div className="form-group">
@@ -49,7 +61,6 @@ const ExerciseForm = ({ nextStep, prevStep, setCombinedData }) => {
               name="duration"
               value={formData.duration}
               onChange={handleChange}
-            
             />
           </div>
         </div>
