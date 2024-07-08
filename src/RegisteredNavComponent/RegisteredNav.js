@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { searchArticlesRequest } from '../lib/api/article';
@@ -7,9 +7,12 @@ import { useModal } from '../hooks/use-modal-store';
 
 import './Registered.css';
 import { useAuthContext } from '../contexts/auth-context';
+import { useNotificationStore } from '../hooks/use-notification-store';
+import { getAllUserNotificationsRequest } from '../lib/api/notification';
 
 function RegisteredNav() {
   const { logoutAdmin, logoutUser, role } = useAuthContext()
+  const { unReadNotifications, setNotifications } = useNotificationStore()
   const { onOpen } = useModal()
   const [searchQuery, setSearchQuery] = useState('');
   const [showSearchField, setShowSearchField] = useState(false);
@@ -66,6 +69,17 @@ function RegisteredNav() {
     }
   };
 
+
+  useEffect(() => {
+    const fetchNotifications = async () => {
+      const fetchedNotifications = await getAllUserNotificationsRequest();
+
+      setNotifications(fetchedNotifications);
+    };
+
+    fetchNotifications();
+  }, []);
+
   return (
     <header>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -108,8 +122,8 @@ function RegisteredNav() {
               <Link className="icon1" onClick={handleSearchIconClick}>
                 <span className="material-symbols-outlined">search</span>
               </Link>
-              <Link to="/userprofile" className="icon1"><span className="material-symbols-outlined">person</span></Link>
-              <div className="icon2" onClick={handleLogout} style={{ display: "inline-block", cursor: "pointer" }}><span className="material-symbols-outlined">logout</span></div>
+              <Link to="/userprofile" className="icon1" style={{ position: "relative", display: "inline-flex", justifyContent: "center", alignItems: "center" }}><span className="material-symbols-outlined">person</span> {unReadNotifications?.length > 0 && <div style={{ borderRadius: "50%", padding: "0.2rem", backgroundColor: "red", position: "absolute", top: "-8px", width: "30px", height: "30px", display: "flex", justifyContent: "center", alignItems: "center" }}>{unReadNotifications?.length}</div>}</Link>
+              <div className="icon2" onClick={handleLogout} style={{ display: "inline-flex", justifyContent: "center", alignItems: "center", cursor: "pointer" }}><span className="material-symbols-outlined">logout</span></div>
             </div>
           </div>
         </div>

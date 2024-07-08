@@ -5,6 +5,7 @@ import { create } from "zustand";
 
 interface NotificationStore {
   notifications: NotificationType[] | null;
+  unReadNotifications: NotificationType[] | null;
   setNotifications(notifications: NotificationType[]): void;
   addNotification: (notification: NotificationType) => void;
   markNotificationAsRead: (notificationId: number) => void;
@@ -15,8 +16,14 @@ interface NotificationStore {
 
 export const useNotificationStore = create<NotificationStore>((set) => ({
   notifications: null,
+  unReadNotifications: null,
   setNotifications: (notifications: NotificationType[]) =>
-    set({ notifications }),
+    set({
+      notifications,
+      unReadNotifications: notifications.filter(
+        (notification) => !notification.readFlag
+      ),
+    }),
   markNotificationAsRead: (notificationId: number) =>
     set((state) => {
       const notification = state.notifications?.find(
