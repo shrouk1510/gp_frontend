@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import './UnifiedTable.css';
 import { useDailyListStore } from '../hooks/use-daily-list-store';
 import { useModal } from '../hooks/use-modal-store';
+import toast from 'react-hot-toast';
 
 const UnifiedTable = ({ handleUpdate }) => {
   const { meals, medications, exercises } = useDailyListStore()
@@ -23,11 +24,13 @@ const UnifiedTable = ({ handleUpdate }) => {
       case 'Exercise':
         onOpen("exercise")
         break
+      default:
+        toast.error('Select daily list type first !!')
     }
   }
 
   useEffect(() => {
-    console.log('eeee')
+    // console.log('eeee')
     const result = combinDailyList(meals, medications, exercises)
     setCombinedData(result)
   }, [meals, medications, exercises])
@@ -50,9 +53,9 @@ const UnifiedTable = ({ handleUpdate }) => {
             <th>Type</th>
             <th>Name</th>
             <th>Dose</th>
-            <th>Duration</th>
+            <th>Duration (minutes)</th>
             <th>Time</th>
-            <th>Date</th> {/* New Date column */}
+            {/* <th>Date</th>  */}
             <th>Actions</th>
           </tr>
         </thead>
@@ -61,15 +64,15 @@ const UnifiedTable = ({ handleUpdate }) => {
             <tr key={index}>
               <td>{data.type}</td>
               <td>{data.name || '-'}</td>
-              <td>{data.dose || '-'}</td>
-              <td>{data.duration || '-'}</td>
+              <td>{data.dosage || '-'}</td>
+              <td>{data.durationMinutes || '-'}</td>
               <td>{data.time || '-'}</td>
-              <td>{data.date || '-'}</td> {/* Display the Date */}
+              {/* <td>{data.date || '-'}</td>  */}
               <td>
                 <button className="update-button" onClick={() => handleUpdate(data, data.type)}>Update</button>
               </td>
             </tr>
-          )) : <tr><td colSpan={"7"}>no daily list found</td></tr>}
+          )) : <tr><td colSpan={"6"}>no daily list found</td></tr>}
         </tbody>
       </table>
       {/* <div className='buttonContainer'>

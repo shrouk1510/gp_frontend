@@ -12,9 +12,9 @@ const MedicationForm = ({ intialMedication: initialMedication }) => {
 
   const [formData, setFormData] = useState({
     name: '',
-    dose: '',
+    dosage: '',
     time: '',
-    date: '' // New state for date
+    date: new Date().toISOString().split('T')[0]
   });
 
   const [isSubmiting, setIsSubmiting] = useState(false)
@@ -76,7 +76,7 @@ const MedicationForm = ({ intialMedication: initialMedication }) => {
       }
       onClose()
       // handleSubmitAll({ ...formData, type: 'Meal' });
-      setFormData({ name: '', dose: '', time: '', date: '' }); // Reset date field as well
+      setFormData({ name: '', dosage: '', time: '', date: new Date().toISOString().split('T')[0] }); // Reset date field as well
     } catch (error) {
       typeof error === "string" ? toast.error(error) : alert(error)
     } finally {
@@ -89,9 +89,9 @@ const MedicationForm = ({ intialMedication: initialMedication }) => {
     if (initialMedication) {
       setFormData({
         name: initialMedication.name,
-        dose: initialMedication.dose,
+        dosage: initialMedication.dosage,
         time: initialMedication.time,
-        date: (initialMedication.date)
+        // date: (initialMedication.date)
       })
     }
   }, [initialMedication])
@@ -119,13 +119,13 @@ const MedicationForm = ({ intialMedication: initialMedication }) => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="dose">Dose:</label>
+            <label htmlFor="dosage">Dose:</label>
             <input
               placeholder="For example 100mg"
               type="text"
-              id="dose"
-              name="dose"
-              value={formData.dose}
+              id="dosage"
+              name="dosage"
+              value={formData.dosage}
               onChange={handleChange}
             />
           </div>

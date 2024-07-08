@@ -80,7 +80,7 @@ const MealForm = ({ initialMeal }) => {
       setFormData({
         name: initialMeal.name,
         time: initialMeal.time,
-        date: initialMeal.date
+        // date: initialMeal.date
       })
     }
   }, [initialMeal])

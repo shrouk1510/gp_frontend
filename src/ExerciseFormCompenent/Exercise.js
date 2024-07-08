@@ -10,7 +10,7 @@ const ExerciseForm = ({ initialExercise }) => {
   const { onClose } = useModal()
   const { setDailyList } = useDailyListStore()
   const [formData, setFormData] = useState({
-    exerciseName: '',
+    name: '',
     durationMinutes: '',
     time: '',
     date: new Date().toISOString().split('T')[0] // Set the default date to today's date
@@ -27,7 +27,8 @@ const ExerciseForm = ({ initialExercise }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.exerciseName || !formData.durationMinutes || !formData.time || !formData.date) {
+    console.log(formData)
+    if (!formData.name || !formData.durationMinutes || !formData.time || !formData.date) {
       toast.error('all fields are required')
       return
     }
@@ -55,7 +56,7 @@ const ExerciseForm = ({ initialExercise }) => {
 
       }
       onClose()
-      setFormData({ exerciseName: '', durationMinutes: '', time: '', date: new Date().toISOString().split('T')[0] }); // Reset date field as well
+      setFormData({ name: '', durationMinutes: '', time: '', date: new Date().toISOString().split('T')[0] }); // Reset date field as well
     } catch (error) {
       typeof error === "string" ? toast.error(error) : alert(error)
     } finally {
@@ -67,12 +68,14 @@ const ExerciseForm = ({ initialExercise }) => {
 
   useEffect(() => {
     if (initialExercise) {
-      setFormData({
-        name: initialExercise.name,
-        durationMinutes: initialExercise.durationMinutes,
-        time: initialExercise.time,
-        date: initialExercise.date
-      })
+      setFormData(
+        (prev) => ({
+          ...prev,
+          name: initialExercise.name,
+          durationMinutes: initialExercise.durationMinutes,
+          time: initialExercise.time,
+        })
+      )
     }
   }, [initialExercise])
 
@@ -88,12 +91,12 @@ const ExerciseForm = ({ initialExercise }) => {
             <div className="underline"></div>
           </div>
           <div className="form-group">
-            <label htmlFor="exerciseName">Exercise Name:</label>
+            <label htmlFor="name">Exercise Name:</label>
             <input
               type="text"
-              id="exerciseName"
-              name="exerciseName"
-              value={formData.exerciseName}
+              id="name"
+              name="name"
+              value={formData.name}
               onChange={handleChange}
             />
           </div>
