@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import './UnifiedTable.css';
 import { useDailyListStore } from '../hooks/use-daily-list-store';
 import { useModal } from '../hooks/use-modal-store';
@@ -7,8 +7,9 @@ const UnifiedTable = ({ handleUpdate }) => {
   const { meals, medications, exercises } = useDailyListStore()
   const { onOpen } = useModal()
   const [dailyListType, setDailyListType] = useState('')
+  const [combinedData, setCombinedData] = useState([])
 
-  const combinedData = useMemo(() => combinDailyList(meals, medications, exercises), [meals, medications, exercises])
+  // const combinedData = useMemo(() => combinDailyList(meals, medications, exercises), [meals, medications, exercises])
 
   const handleAdd = () => {
     switch (dailyListType) {
@@ -25,6 +26,11 @@ const UnifiedTable = ({ handleUpdate }) => {
     }
   }
 
+  useEffect(() => {
+    console.log('eeee')
+    const result = combinDailyList(meals, medications, exercises)
+    setCombinedData(result)
+  }, [meals, medications, exercises])
 
   return (
     <div className='tableContainer'>

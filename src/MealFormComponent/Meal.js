@@ -3,9 +3,11 @@ import './Meal.css';
 import toast from 'react-hot-toast';
 import { addDailyListMealRequest, updateDailyListMealRequest } from '../lib/api/daily-list';
 import { useModal } from '../hooks/use-modal-store';
+import { useDailyListStore } from '../hooks/use-daily-list-store';
 
-const MealForm = ({ intialMeal }) => {
+const MealForm = ({ initialMeal }) => {
   const { onClose } = useModal()
+  const { setDailyList, updateMeal } = useDailyListStore()
   const [formData, setFormData] = useState({
     name: '',
     time: '',
@@ -35,19 +37,29 @@ const MealForm = ({ intialMeal }) => {
 
     try {
       setIsSubmiting(true)
-      if (intialMeal) {
+      if (initialMeal) {
         //update existing meal
-        const updatedMeal = await updateDailyListMealRequest({
+        const updatedDailyList = await updateDailyListMealRequest({
           ...formData
-        }, intialMeal.id)
+        }, initialMeal.id)
 
+        // const updatedMeal = updatedDailyList.meals.find(meal => meal.id === initialMeal.id)
+
+        // if (!updatedMeal) {
+        //   throw 'meal updated but not returned by response'
+        // }
+
+        // // console.log(updatedMeal)
+        // updateMeal(updatedMeal)
+
+        setDailyList(updatedDailyList)
         toast.success('meal updated')
       } else {
         //create new meal
-        const createdMeal = await addDailyListMealRequest({
+        const createdDailyList = await addDailyListMealRequest({
           ...formData
         })
-
+        setDailyList(createdDailyList)
 
         toast.success('meal created')
 
@@ -64,19 +76,19 @@ const MealForm = ({ intialMeal }) => {
   };
 
   useEffect(() => {
-    if (intialMeal) {
+    if (initialMeal) {
       setFormData({
-        name: intialMeal.name,
-        time: intialMeal.time,
-        date: intialMeal.date
+        name: initialMeal.name,
+        time: initialMeal.time,
+        date: initialMeal.date
       })
     }
-  }, [intialMeal])
+  }, [initialMeal])
 
 
-  const titleText = intialMeal ? `Edit ${intialMeal.name}` : "Meal Data"
-  const submitText = intialMeal ? "Edit" : "Add"
-  const submitingText = intialMeal ? "Editing..." : "Adding..."
+  const titleText = initialMeal ? `Edit ${initialMeal.name}` : "Meal Data"
+  const submitText = initialMeal ? "Edit" : "Add"
+  const submitingText = initialMeal ? "Editing..." : "Adding..."
 
   return (
     <div className='mealContainer'>
@@ -84,6 +96,7 @@ const MealForm = ({ intialMeal }) => {
         <div className="form-group">
           <div className="header">
             <div className="text">{titleText}</div>
+            {initialMeal && <p>#{initialMeal?.id}</p>}
             <div className="underline"></div>
           </div>
           <div className="form-group">

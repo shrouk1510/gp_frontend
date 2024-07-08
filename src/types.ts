@@ -47,20 +47,24 @@ export type NotificationType = {
 export type ExecriseType = {
   id: number;
   name: string;
-  duration: string;
+  time: string;
   durationMinutes: number;
+  date?: string;
 };
 
 export type MealType = {
   id: number;
   name: string;
-  description: string;
+  time: string;
+  date?: string;
 };
 
 export type MedicationType = {
   id: number;
   name: string;
   dosage: string;
+  time: string;
+  date?: string;
 };
 
 export type DailyListType = {

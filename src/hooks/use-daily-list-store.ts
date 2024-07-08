@@ -8,13 +8,16 @@ interface DailyListStore {
   meals: MealType[] | null;
   exercises: ExecriseType[] | null;
   medications: MedicationType[] | null;
-  // setDailyLists(dailyLists: DailyListType[]): void;
+  setDailyList(dailyList: DailyListType): void;
   // addDailyList: (dailyList: DailyListType) => void;
   // updateDailyList: (dailyList: DailyListType) => void;
   // removeDailyList: (dailyListId: number) => void;
-  setMeals: (dailyList: DailyListType[]) => void;
-  setMedications: (dailyList: DailyListType[]) => void;
-  setExercises: (dailyList: DailyListType[]) => void;
+  setMeals: (meals: MealType[]) => void;
+  setMedications: (medications: MedicationType[]) => void;
+  setExercises: (exercises: ExecriseType[]) => void;
+  updateMeal: (meal: MealType) => void;
+  updateMedication: (medication: MedicationType) => void;
+  updateExercise: (exercise: ExecriseType) => void;
   // updateDailyList: (dailyList: DailyListType) => void;
   // removeDailyList: (dailyListId: number) => void;
 }
@@ -25,20 +28,77 @@ export const useDailyListStore = create<DailyListStore>((set) => ({
   meals: null,
   medications: null,
   exercises: null,
-  setDailyList: (dailyLists: DailyListType[]) =>
+  // add only
+  setDailyList: (dailyList: DailyListType) =>
     set({
-      dailyLists,
-      meals: dailyLists.reduce((meals, curr) => [...meals, ...curr.meals], []),
-      medications: dailyLists.reduce(
-        (medications, curr) => [...medications, ...curr.medications],
-        []
-      ),
-      exercises: dailyLists.reduce(
-        (exercises, curr) => [...exercises, ...curr.exercises],
-        []
-      ),
+      dailyLists: [dailyList],
+      meals: dailyList.meals,
+      medications: dailyList.medications,
+      exercises: dailyList.exercises,
     }),
-  setMeals: (dailyList: DailyListType[]) => set({}),
-  setMedications: (dailyList: DailyListType[]) => set({}),
-  setExercises: (dailyList: DailyListType[]) => set({}),
+  setMeals: (meals: MealType[]) => set({ meals }),
+  updateMeal: (meal: MealType) =>
+    set((state) => {
+      const indexToUpdate = state.meals?.findIndex(
+        (object) => object.id === meal.id
+      );
+
+      if (indexToUpdate !== -1) {
+        // Destructure and update properties in-place
+        const meals = state.meals ?? [];
+        meals[indexToUpdate] = meal;
+        console.log(state);
+
+        return {
+          ...state,
+          meals,
+        };
+      } else {
+        console.error(
+          "Object with id",
+          indexToUpdate,
+          "not found in the array."
+        );
+        return { ...state };
+      }
+    }),
+
+  setMedications: (medications: MedicationType[]) => set({ medications }),
+  updateMedication: (medication: MedicationType) =>
+    set((state) => {
+      const indexToUpdate = state.medications?.findIndex(
+        (object) => object.id === medication.id
+      );
+
+      if (indexToUpdate !== -1) {
+        // Destructure and update properties in-place
+        state.medications[indexToUpdate] = medication;
+      } else {
+        console.warn(
+          "Object with id",
+          indexToUpdate,
+          "not found in the array."
+        );
+      }
+      return state;
+    }),
+  setExercises: (exercises: ExecriseType[]) => set({ exercises }),
+  updateExercise: (exercise: ExecriseType) =>
+    set((state) => {
+      const indexToUpdate = state.medications?.findIndex(
+        (object) => object.id === exercise.id
+      );
+
+      if (indexToUpdate !== -1) {
+        // Destructure and update properties in-place
+        state.exercises[indexToUpdate] = exercise;
+      } else {
+        console.warn(
+          "Object with id",
+          indexToUpdate,
+          "not found in the array."
+        );
+      }
+      return state;
+    }),
 }));

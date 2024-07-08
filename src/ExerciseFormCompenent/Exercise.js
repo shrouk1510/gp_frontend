@@ -8,7 +8,7 @@ import { useDailyListStore } from '../hooks/use-daily-list-store';
 const ExerciseForm = ({ initialExercise }) => {
 
   const { onClose } = useModal()
-  const { } = useDailyListStore()
+  const { setDailyList } = useDailyListStore()
   const [formData, setFormData] = useState({
     exerciseName: '',
     durationMinutes: '',
@@ -40,6 +40,8 @@ const ExerciseForm = ({ initialExercise }) => {
           ...formData, durationMinutes: Number(formData.durationMinutes),
         }, initialExercise.id)
 
+        setDailyList(updatedExercise)
+
         toast.success('exercise updated')
       } else {
         //create new meal
@@ -48,7 +50,7 @@ const ExerciseForm = ({ initialExercise }) => {
           durationMinutes: Number(formData.durationMinutes)
         })
 
-
+        setDailyList(createdExercise)
         toast.success('exercise created')
 
       }

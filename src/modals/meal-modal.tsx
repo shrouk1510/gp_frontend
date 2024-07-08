@@ -28,7 +28,7 @@ const MealModal = () => {
           </DialogTitle>
         </DialogHeader>
         <div className="p-4">
-          <MealForm intialMeal={meal} />
+          <MealForm initialMeal={meal} />
         </div>
       </DialogContent>
     </Dialog>

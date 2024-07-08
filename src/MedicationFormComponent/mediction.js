@@ -5,10 +5,10 @@ import { useDailyListStore } from '../hooks/use-daily-list-store';
 import { useModal } from '../hooks/use-modal-store';
 import { addDailyListMedicationRequest, updateDailyListMedicationRequest } from '../lib/api/daily-list';
 
-const MedicationForm = ({ intialMedication }) => {
+const MedicationForm = ({ intialMedication: initialMedication }) => {
 
   const { onClose } = useModal()
-  const { } = useDailyListStore()
+  const { updateMedication, setDailyList } = useDailyListStore()
 
   const [formData, setFormData] = useState({
     name: '',
@@ -47,12 +47,21 @@ const MedicationForm = ({ intialMedication }) => {
 
     try {
       setIsSubmiting(true)
-      if (intialMedication) {
+      if (initialMedication) {
         //update existing meal
-        const updatedMedication = await updateDailyListMedicationRequest({
+        const updatedDailyList = await updateDailyListMedicationRequest({
           ...formData
-        }, intialMedication.id)
+        }, initialMedication.id)
 
+        // const updatedMedication = updatedDailyList.medications.find(medication => medication.id === initialMedication.id)
+
+        // if (!updatedMedication) {
+        //   throw 'medication updated but not returned by response'
+        // }
+
+        // // console.log(updatedMeal)
+        // updateMedication(updatedMedication)
+        setDailyList(updatedDailyList)
         toast.success('medication updated')
       } else {
         //create new meal
@@ -60,6 +69,7 @@ const MedicationForm = ({ intialMedication }) => {
           ...formData
         })
 
+        setDailyList(createdMedication)
 
         toast.success('medication created')
 
@@ -76,19 +86,19 @@ const MedicationForm = ({ intialMedication }) => {
   };
 
   useEffect(() => {
-    if (intialMedication) {
+    if (initialMedication) {
       setFormData({
-        name: intialMedication.name,
-        dose: intialMedication.dose,
-        time: intialMedication.time,
-        date: intialMedication.date
+        name: initialMedication.name,
+        dose: initialMedication.dose,
+        time: initialMedication.time,
+        date: (initialMedication.date)
       })
     }
-  }, [intialMedication])
+  }, [initialMedication])
 
-  const titleText = intialMedication ? `Edit ${intialMedication.name}` : "Medication Data"
-  const submitText = intialMedication ? "Edit" : "Add"
-  const submitingText = intialMedication ? "Editing..." : "Adding..."
+  const titleText = initialMedication ? `Edit ${initialMedication.name}` : "Medication Data"
+  const submitText = initialMedication ? "Edit" : "Add"
+  const submitingText = initialMedication ? "Editing..." : "Adding..."
 
   return (
     <div className='medicationContainer'>

@@ -1,3 +1,4 @@
+import { DailyListType } from "@/types";
 import api_root from "../../axios";
 
 // export const getDailyListRequest = async () => {
@@ -18,7 +19,7 @@ import api_root from "../../axios";
 
 export const getDailyListMealsRequest = async () => {
   try {
-    const promise = await api_root.api.get("/dailyList/meals");
+    const promise = await api_root.api.get("/dailylist/meals");
     // console.log(promise);
 
     if (promise.status !== 200) {
@@ -34,7 +35,7 @@ export const getDailyListMealsRequest = async () => {
 
 export const getDailyListExercisesRequest = async () => {
   try {
-    const promise = await api_root.api.get("/dailyList/exercises");
+    const promise = await api_root.api.get("/dailylist/exercises");
     // console.log(promise);
 
     if (promise.status !== 200) {
@@ -50,7 +51,7 @@ export const getDailyListExercisesRequest = async () => {
 
 export const getDailyListMedicationsRequest = async () => {
   try {
-    const promise = await api_root.api.get("/dailyList/medications");
+    const promise = await api_root.api.get("/dailylist/medications");
     // console.log(promise);
 
     if (promise.status !== 200) {
@@ -143,7 +144,7 @@ export const updateDailyListMealRequest = async (
   if (![200, 201].includes(promise.status)) {
     throw Error(promise.statusText);
   }
-  const response = await promise.data;
+  const response: DailyListType = await promise.data;
   return response;
 };
 
@@ -165,7 +166,7 @@ export const updateDailyListMedicationRequest = async (
   if (![200, 201].includes(promise.status)) {
     throw Error(promise.statusText);
   }
-  const response = await promise.data;
+  const response: DailyListType = await promise.data;
   return response;
 };
 
@@ -187,6 +188,6 @@ export const updateDailyListExerciseRequest = async (
   if (![200, 201].includes(promise.status)) {
     throw Error(promise.statusText);
   }
-  const response = await promise.data;
+  const response: DailyListType = await promise.data;
   return response;
 };

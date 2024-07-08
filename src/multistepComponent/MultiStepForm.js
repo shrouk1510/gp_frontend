@@ -10,7 +10,7 @@ import { useDailyListStore } from '../hooks/use-daily-list-store';
 import { useModal } from '../hooks/use-modal-store';
 
 const MultiStepForm = () => {
-    const { setDailyList } = useDailyListStore()
+    const { setExercises, setMeals, setMedications } = useDailyListStore()
     // const [step, setStep] = useState(1);
     const { onOpen } = useModal()
     // const [combinedData, setCombinedData] = useState([]);
@@ -60,16 +60,17 @@ const MultiStepForm = () => {
     const handleUpdate = (dailyList, type) => {
         // const recordToUpdate = article;
         // setRecords(records.filter((_, i) => i !== index));
+        // console.log(dailyList, type)
         switch (type) {
             case 'Meal':
                 // setMeal(dailyList)
-                onOpen("meal", { dailyList })
+                onOpen("meal", { meal: dailyList })
                 break
             case 'Medication':
-                onOpen("medication", { dailyList })
+                onOpen("medication", { medication: dailyList })
                 break
             case 'Exercise':
-                onOpen("exercise", { dailyList })
+                onOpen("exercise", { exercise: dailyList })
                 break
         }
 
@@ -86,7 +87,9 @@ const MultiStepForm = () => {
             const fetchedMedications = await getDailyListMedicationsRequest()
             const fetchedExercises = await getDailyListExercisesRequest()
             // console.log(fetchedDailyList)
-            setDailyList([])
+            setExercises(fetchedExercises)
+            setMedications(fetchedMedications)
+            setMeals(fetchedMeals)
         }
         fetchDailyList()
     }, [])
@@ -95,7 +98,7 @@ const MultiStepForm = () => {
             <RegisteredNav />
             {/* {viewTable ? ( */}
             <div className="scheduleTables">
-               
+
                 <UnifiedTable handleUpdate={handleUpdate} />
             </div>
             {/* ) : (
