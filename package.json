@@ -1,6 +1,6 @@
 {
   "name": "gluco_guide",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "private": true,
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",

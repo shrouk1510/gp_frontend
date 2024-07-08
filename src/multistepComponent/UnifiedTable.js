@@ -1,7 +1,7 @@
 import React from 'react';
 import './UnifiedTable.css';
 
-const UnifiedTable = ({ combinedData, setViewTable }) => {
+const UnifiedTable = ({ combinedData, setViewTable, handleUpdate }) => {
   return (
     <div className='tableContainer'>
       <h2>Health Data Schedule</h2>
@@ -25,7 +25,7 @@ const UnifiedTable = ({ combinedData, setViewTable }) => {
               <td>{data.duration || '-'}</td>
               <td>{data.time || '-'}</td>
               <td>
-                <button className="update-button">Update</button>
+                <button className="update-button" onClick={() => handleUpdate(data, data.type)}>Update</button>
               </td>
             </tr>
           ))}

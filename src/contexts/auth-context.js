@@ -255,8 +255,8 @@ export const AuthContextProvider = ({ children }) => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const activeSession = Cookies.get(SESSION_KEY) || {}
-            // const activeSession = getAllCookies()
+            // const activeSession = Cookies.get(SESSION_KEY) || {}
+            const activeSession = getAllCookies()
             // const activeSession = await getAllActiveSessionsRequest()
             console.log(activeSession, Object.keys(activeSession)?.length)
             // console.log(Cookies.get('JSESSIONID'))
