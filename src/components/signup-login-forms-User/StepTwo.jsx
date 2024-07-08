@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 const StepTwo = ({ handleChange, userData, handlePrevious, handleSubmit }) => {
   return (
+  <div className="ll">
     <div className="container1sign">
       <div className="headersign">
         <div className="textsign">Complete Your Registration</div>
@@ -72,6 +73,7 @@ const StepTwo = ({ handleChange, userData, handlePrevious, handleSubmit }) => {
         </button>
       </div>
     </div>
+  </div>
   );
 };
 

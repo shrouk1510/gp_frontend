@@ -11,10 +11,10 @@
 }
 
 /* Styling the title */
-.title {
+.natural-tips-container .title {
   font-size: 2.5em;
   margin-bottom: 20px;
-  color: #333;
+  color: #34495e;
 }
 
 /* Grid layout for tips */

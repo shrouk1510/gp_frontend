@@ -2,14 +2,16 @@
     display: flex;
     justify-content: space-between;
     padding: 20px;
-    margin-left: 30px;
+    background-color: #f5f5f5;
+    max-width: 100% !important;
+    height: 100vh;
 }
 
 .pages-container .reviews-container {
     padding: 20px;
     text-align: center;
-    flex-grow: 1; 
-    max-width: 40%; 
+    flex-grow: 1;
+    max-width: 40%;
     margin-right: 80px;
 }
 
@@ -32,9 +34,21 @@
     transform: scale(1.1);
 }
 
+.pages-container .header-container h1 {
+    font-size: 6;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: #2c3e50;
+    font-weight: 600;
+    text-align: center;
+
+}
+
 .pages-container .header-container p {
     margin-top: 80px;
     margin-right: auto;
+    color: #2c3e50;
+    font: bold;    
 }
 
 .Ureview {
@@ -44,8 +58,8 @@
     padding: 20px;
     margin-bottom: 20px;
     text-align: left;
-   
-    width:95%;
+
+    width: 95%;
 }
 
 .pages-container .new-review-form {
@@ -114,17 +128,17 @@
 }
 
 .Ureview .review-actions .hedit {
-    background-color:  #007bff;
+    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
     padding: 5px 10px;
     cursor: pointer;
     margin-right: 10px;
-  
+
 }
 
-.Ureview .review-actions .hedit:hover{
+.Ureview .review-actions .hedit:hover {
     background-color: #0056b3;
 }
 
@@ -138,12 +152,13 @@
     margin-right: 10px;
 }
 
-.Ureview .review-actions .hdelete:hover{
-    background-color: #e22424;;
+.Ureview .review-actions .hdelete:hover {
+    background-color: #e22424;
+    ;
 }
 
-.Ureview .review-actions .saved{
-    background-color:  #007bff;
+.Ureview .review-actions .saved {
+    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
@@ -152,11 +167,12 @@
     margin-right: 10px;
 }
 
-.Ureview .review-actions .saved:hover{
+.Ureview .review-actions .saved:hover {
     background-color: #0056b3;
 }
+
 .Ureview .review-actions .like-button {
-    background-color:#007bff;
+    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
@@ -166,5 +182,6 @@
 }
 
 .Ureview .review-actions .like-button.liked {
-    background-color:#ff6b6b; /* Adjusted color for liked state */
+    background-color: #ff6b6b;
+    /* Adjusted color for liked state */
 }

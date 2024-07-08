@@ -1,10 +1,20 @@
-.todo-form-container {
+.uu{
+    max-width: 100% !important;
+    height: 100vh;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 1rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.uu .todo-form-container {
     display: flex;
     flex-direction: column;
     margin: auto;
     margin-top: 25px;
     width: 420px;
-    background-color: whitesmoke;
+    background-color:  #ffffff;
     padding-bottom: 30px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     align-items: center;
@@ -12,18 +22,18 @@
     border-radius: 10px;
 }
 
-.todo-form-container .headeer {
+.uu .todo-form-container .headeer {
     text-align: center;
     margin-top: 30px;
 }
 
-.todo-form-container .texxt {
+.uu .todo-form-container .texxt {
     color: #4CAF50;
     font-size: 48px;
     font-weight: 700;
 }
 
-.todo-form-container .underliney {
+.uu .todo-form-container .underliney {
     width: 61px;
     height: 6px;
     background-color: #4CAF50;
@@ -32,17 +42,17 @@
     margin-top: 10px;
 }
 
-.todo-form-container , .todo-form-container .form-g, .todo-form-container .form-gr, .todo-form-container .form-gro {
+.uu .todo-form-container , .todo-form-container .form-g, .todo-form-container .form-gr, .todo-form-container .form-gro {
     margin-bottom: 20px;
 }
 
-.todo-form-container , .todo-form-container .form-g, .todo-form-container .form-gr, .todo-form-container .form-gro {
+.uu .todo-form-container , .todo-form-container .form-g, .todo-form-container .form-gr, .todo-form-container .form-gro {
     font-weight: bold;
 }
 
 
 
-.todo-form-container .form-g [type ="number"]{
+.uu .todo-form-container .form-g [type ="number"]{
     width: 96% !important; 
     padding: 10px !important;
     border: 1px solid #ccc !important;
@@ -53,7 +63,7 @@
 
 
 }
-.form-gro input[type="date"] {
+.uu .form-gro input[type="date"] {
     width: 100%; 
     padding: 10px;
     border: 1px solid #ccc;
@@ -63,11 +73,11 @@
     margin-top: 3px;
 }
 
-.todo-form-container .qq{
+.uu .todo-form-container .qq{
     margin-top: 8px;
 }
 
-textarea {
+.uu textarea {
     width: 100%; 
     padding: 10px;
     border: 1px solid #ccc;
@@ -80,14 +90,14 @@ textarea {
     resize: none;
 }
 
-.note-container {
+.uu .note-container {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
     width: 107%;
 }
 
-.remove-note-button {
+.uu .remove-note-button {
     font-size: 30px;
     padding: 0; 
     margin-left: 2px; 
@@ -96,12 +106,12 @@ textarea {
     border: none;
 }
 
-.remove-note-button:hover {
+.uu .remove-note-button:hover {
     background-color: aliceblue;
     transform: scale(1.1);
 }
 
-.submit-record {
+.uu .submit-record {
     background-color: #4CAF50;
     color: #fff;
     border: none;
@@ -116,7 +126,7 @@ textarea {
     transition: transform 0.3s ease;
 }
 
-.submit-record:hover {
+.uu .submit-record:hover {
     background-color:#45a049;
     transform: scale(1.1);
 }

@@ -1,28 +1,40 @@
-.containersign {
+
+.ll {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    max-width: 100%;
+    background-color:  #f5f5f5 ;
+    padding: 20px;
+
+}
+.ll .containersign {
     display: flex;
     flex-direction: column;
     margin: auto;
     margin-top: 100px;
     width: 400px;
-    background-color: aliceblue;
+    background-color:#ffffff;
     padding-bottom: 30px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     align-items: center;
     border-radius: 10px;
 }
 
-.headersign {
+.ll .headersign {
     text-align: center;
     margin-top: 30px;
 }
 
-.textsign {
+.ll .textsign {
     color: blue;
     font-size: 48px;
     font-weight: 700;
 }
 
-.underlinesign {
+.ll .underlinesign {
     width: 61px;
     height: 6px;
     background-color: blue;
@@ -31,14 +43,14 @@
     margin-top: 10px;
 }
 
-.inputssign {
+.ll .inputssign {
     margin-top: 40px;
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-.inputsign {
+.ll .inputsign {
     display: flex;
     align-items: center;
     margin: auto;
@@ -48,13 +60,13 @@
     border-radius: 6px;
 }
 
-.inputsign img {
+.ll .inputsign img {
     margin: 0px 15px;
     width: 20px;
     height: 20px;
 }
 
-.inputsign input, .inputsign select {
+.ll .inputsign input, .inputsign select {
     flex: 1;
     height: 100%;
     background: transparent;
@@ -65,7 +77,7 @@
     padding: 0 15px;
 }
 
-.inputsign select {
+.ll .inputsign select {
     -webkit-appearance: none;  /* Remove default arrow in Chrome, Safari, Opera */
     -moz-appearance: none;     /* Remove default arrow in Firefox */
     appearance: none;          /* Remove default arrow in other browsers */
@@ -75,19 +87,19 @@
     background-size: 12px 8px;
 }
 
-.forgot-passwordsign {
+.ll .forgot-passwordsign {
     margin-top: 15px;
     color: #797979;
     font-size: 18px;
     text-align: center;
 }
 
-.forgot-passwordsign span {
+.ll .forgot-passwordsign span {
     color: red;
     cursor: pointer;
 }
 
-.submitsign {
+.ll .submitsign {
     margin-top: 20px;
     padding: 10px 20px;
     background-color: blue;
@@ -103,18 +115,18 @@
     margin-left: 100px;
 }
 
-.submitsign:hover {
+.ll .submitsign:hover {
     color: white;
     background-color: darkblue;
     transform: scale(1.1);
 }
 
-.gray {
+.ll .gray {
     background-color: #eaeaea;
     color: #676767;
 }
 
-.next-buttonsign {
+.ll .next-buttonsign {
     margin-top: 20px;
     padding: 10px 20px;
     background-color: blue;
@@ -129,20 +141,20 @@
     transition: transform 0.3s ease;
 }
 
-.next-buttonsign:hover {
+.ll .next-buttonsign:hover {
     background-color: darkblue;
     transform: scale(1.1);
 }
 
-.buttons-containersign {
+.ll .buttons-containersign {
     display: flex;
     justify-content: space-between;
     width: 70%;
     margin-top: 20px;
 }
 
-.previous-buttonsign,
-.submit-buttonsign {
+.ll .previous-buttonsign,
+.ll .submit-buttonsign {
     padding: 10px 20px;
     background-color: blue;
     color: white;
@@ -153,28 +165,28 @@
     transition: transform 0.3s ease;
 }
 
-.previous-buttonsign:hover,
-.submit-buttonsign:hover {
+.ll .previous-buttonsign:hover,
+.ll .submit-buttonsign:hover {
     background-color: darkblue;
     transform: scale(1.1);
 }
 
-.container1sign {
+.ll .container1sign {
     display: flex;
     flex-direction: column;
     margin: auto;
     margin-top: 50px;
     width: 400px;
-    background-color: aliceblue;
+    background-color: #ffffff;
     padding-bottom: 30px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     align-items: center;
     border-radius: 10px;
 }
 
-.inputsig ::placeholder {
+.ll .inputsig ::placeholder {
     padding: 20px;
 }
-.buttons-containersign .submit-buttonsign:hover{
+.ll .buttons-containersign .submit-buttonsign:hover{
     color: white;
 }

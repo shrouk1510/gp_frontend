@@ -1,14 +1,15 @@
-.container {
+.pp {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #f5f5f5;
+    max-width: 100%;
+    background-color:  #f5f5f5;
     padding: 20px;
 }
 
-.form-container {
+.pp .form-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,42 +21,40 @@
     width: 100%;
 }
 
-.header {
+.pp .header {
     text-align: center;
     margin-bottom: 20px;
 }
-
-.text {
+.pp .text {
     color: blue;
-    font-size: 36px;
+    font-size: 48px !important;
     font-weight: 700;
 }
 
-.underline {
-    width: 60px;
-    height: 4px;
+.pp .underline {
+    width: 61px !important;
+    height: 6px !important;
     background-color: blue;
-    margin: 10px auto;
-    border-radius: 2px;
+    border-radius: 9px !important;
+    margin: auto;
+    margin-top: 10px;
 }
 
-.inputs {
+.pp .inputs {
     width: 100%;
     margin-bottom: 20px;
 }
-
-.input-container {
+.pp .input-container {
     position: relative;
     margin-bottom: 30px; /* Increased margin to accommodate tooltips */
     width: 100%;
     /* height: 20%; */
 }
-.input-container .username{
+.pp .input-container .username{
     height: 56px;
     
 }
-
-.input {
+.pp .input {
     display: flex;
     align-items: center;  
     background-color: #eaeaea;
@@ -65,14 +64,14 @@
     
 }
 
-.input img {
+.pp.input img {
     width: 20px;
     height: 20px;
     margin-right: 10px;
     margin-bottom: 10px;
 }
 
-.input input {
+.pp .input input {
     flex: 1;
     border: none;
     background: transparent;
@@ -81,18 +80,17 @@
     margin-bottom: 10px;
 }
 
-.inputs .input input{
+.pp .inputs .input input{
     border: none;
 }
 
-
-.submit-container {
+.pp .submit-container {
     display: flex;
     justify-content: center;
     width: 100%;
 }
 
-.submit {
+.pp .submit {
     width: 100%;
     max-width: 150px;
     background-color: blue;
@@ -104,21 +102,21 @@
     transition: transform 0.3s ease;
 }
 
-.submit:hover {
+.pp .submit:hover {
     transform: scale(1.1);
 }
 
-.link-container {
+.pp .link-container {
     margin-top: 20px;
 }
 
-.link {
+.pp .link-container .link {
     color: red;
     text-decoration: none;
     font-size: 14px;
 }
 
-.tooltip {
+.pp .tooltip {
     position: absolute;
     bottom: -25px; /* Adjusted */
     left: 0;
@@ -133,10 +131,10 @@
     z-index: 1;
 }
 
-.tooltip.active {
+.pp .tooltip.active {
     visibility: visible;
     opacity: 1;
 }
-.submit:hover{
+.pp .submit:hover{
     color: white ;
 }

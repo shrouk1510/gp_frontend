@@ -135,57 +135,59 @@ const TodoForm = ({ setViewTable, setWarningMessage, initialRecord }) => {
   };
 
   return (
-    <div className="todo-form-container">
-      <div className="headeer">
-        <div className="texxt">Upload Glucose Measure</div>
-        <div className="underliney"></div>
+    <div className="uu">
+      <div className="todo-form-container">
+        <div className="headeer">
+          <div className="texxt">Upload Glucose Measure</div>
+          <div className="underliney"></div>
+        </div>
+        <form className="qq" onSubmit={handleSubmit}>
+          <div className="form-g">
+            <label htmlFor="measurement">Measurement:</label>
+            <input
+              type="number"
+              id="measurement"
+              value={measurement}
+              onChange={(e) => setMeasurement(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-gr">
+            <label htmlFor="notes">Notes:</label>
+            {notes?.map((note, index) => (
+              <div key={index} className="note-container">
+                <textarea
+                  id={`note-${index}`}
+                  value={note}
+                  onChange={(e) => handleNoteChange(index, e.target.value)}
+                />
+                <button
+                  type="button"
+                  onClick={() => removeNoteField(index)}
+                  className="remove-note-button"
+                >
+                  <span role="img" aria-label="bin">
+                    🗑️
+                  </span>
+                </button>
+              </div>
+            ))}
+          </div>
+          <div className="form-gro">
+            <label htmlFor="date">Date:</label>
+            <input
+              type="date"
+              id="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              required
+            />
+          </div>
+          <button type="submit" className="submit-record">
+            {!initialRecord ? "Upload" : "Edit"}
+          </button>
+        </form>
       </div>
-      <form className="qq" onSubmit={handleSubmit}>
-        <div className="form-g">
-          <label htmlFor="measurement">Measurement:</label>
-          <input
-            type="number"
-            id="measurement"
-            value={measurement}
-            onChange={(e) => setMeasurement(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-gr">
-          <label htmlFor="notes">Notes:</label>
-          {notes?.map((note, index) => (
-            <div key={index} className="note-container">
-              <textarea
-                id={`note-${index}`}
-                value={note}
-                onChange={(e) => handleNoteChange(index, e.target.value)}
-              />
-              <button
-                type="button"
-                onClick={() => removeNoteField(index)}
-                className="remove-note-button"
-              >
-                <span role="img" aria-label="bin">
-                  🗑️
-                </span>
-              </button>
-            </div>
-          ))}
-        </div>
-        <div className="form-gro">
-          <label htmlFor="date">Date:</label>
-          <input
-            type="date"
-            id="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit" className="submit-record">
-          {!initialRecord ? "Upload" : "Edit"}
-        </button>
-      </form>
     </div>
   );
 };
