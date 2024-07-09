@@ -90,6 +90,8 @@ const AdminProfile = () => {
     }
   };
   return (
+
+  <div className="pa">
     <div className="react-admin-admin-profile-container">
       <div className="react-admin-profile-header">
         <div className="react-admin-profile-info">
@@ -163,6 +165,7 @@ const AdminProfile = () => {
         </div>
       )}
     </div>
+  </div>
   );
 };
 

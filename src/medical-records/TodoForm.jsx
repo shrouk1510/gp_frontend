@@ -141,16 +141,7 @@ const TodoForm = ({ setViewTable, setWarningMessage, initialRecord }) => {
   return (
     <div className="uu">
       <div className="todo-form-container">
-        <button
-          type="button"
-          className="submit-record"
-          style={{
-            width: "80%",
-          }}
-          onClick={() => setViewTable(true)}
-        >
-          show records
-        </button>
+        
         <div className="headeer">
           <div className="texxt">Upload Glucose Measure</div>
           <div className="underliney"></div>
@@ -202,6 +193,16 @@ const TodoForm = ({ setViewTable, setWarningMessage, initialRecord }) => {
             {!initialRecord ? "Upload" : "Edit"}
           </button>
         </form>
+        <button
+          type="button"
+          className="submit-record"
+          style={{
+            width: "80%",
+          }}
+          onClick={() => setViewTable(true)}
+        >
+          show records
+        </button>
       </div>
     </div>
   );

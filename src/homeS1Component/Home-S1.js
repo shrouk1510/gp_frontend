@@ -6,7 +6,7 @@ import './home1.css'
 function MainSection() {
   return (
     <section className="main2">
-      <div className="container">
+      <div className="containerh1">
         <div className="row align-items-center justify-content-center">
           <div className="col-lg-8">
             <div className="text">

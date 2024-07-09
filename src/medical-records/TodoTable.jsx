@@ -29,6 +29,7 @@ const TodoTable = ({
             <th>Measurement</th>
             <th>Notes</th>
             <th>Date</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
