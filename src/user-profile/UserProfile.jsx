@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import "./UserProfile.css";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuthContext } from "../contexts/auth-context";
+import { AuthContext } from "../contexts/auth-context";
 import {
   getAllUserNotificationsRequest,
   markAllNotificationsReadRequest,
@@ -9,12 +9,12 @@ import {
 } from "../lib/api/notification";
 import toast from "react-hot-toast";
 import { useNotificationStore } from "../hooks/use-notification-store";
-import { uploadUserPhotoRequest } from "../lib/api/user";
+// import { uploadUserPhotoRequest } from "../lib/api/user";
 import { convertImageBytesToUrl } from "../lib/helpers/convert-image-blob";
 
 const UserProfile = () => {
   const { activeUser, logoutUser, logoutAdmin, updateUserImage, role } =
-    useAuthContext();
+    useContext(AuthContext);
   const {
     notifications,
     setNotifications,
@@ -22,7 +22,7 @@ const UserProfile = () => {
     markAllNotificationAsRead,
   } = useNotificationStore();
 
-  const [errors, setErrors] = useState({});
+  // const [errors, setErrors] = useState({});
 
   const navigate = useNavigate();
 
@@ -30,20 +30,7 @@ const UserProfile = () => {
     e.preventDefault();
     const file = e.target.files[0];
 
-    try {
-      const updatedUser = await uploadUserPhotoRequest({ photo: file });
-
-      // console.log(updatedUser);
-      updateUserImage(updatedUser?.details?.profilePhoto);
-      // updateState({
-      //   type: "SET_USER",
-      //   payload: updatedUser,
-      //   role: "USER",
-      // });
-      toast.success("user image updated");
-    } catch (error) {
-      typeof error === "string" ? toast.error(error) : alert(error);
-    }
+    await updateUserImage(file);
   };
 
   const handleLogout = async () => {

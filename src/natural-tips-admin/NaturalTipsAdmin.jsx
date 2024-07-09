@@ -169,13 +169,15 @@ const NaturalTipsAdmin = () => {
               content: newTip.content,
               hide: newTip.hide,
               categoryId: NATURAL_TIPS_ID,
+              
             },
             newTip.articleId
           );
-
+console.log(updatedArticle)
           updateArticle(updatedArticle);
           toast.success("article updated");
 
+          console.log(articlePhoto);
           if (articlePhoto) {
             const updatedArticleImage = await uploadArticlePhotoRequest(
               { photo: articlePhoto },
@@ -262,7 +264,7 @@ const NaturalTipsAdmin = () => {
               src={
                 tip?.articlePhoto
                   ? convertImageBytesToUrl(tip?.articlePhoto || "")
-                  : aloeVera
+                  : "/imgs/logo.jpg"
               }
               alt={`Tip ${tip.name}`}
               className="tip-image"

@@ -74,7 +74,7 @@ const NaturalTips = () => {
               src={
                 tip?.articlePhoto
                   ? convertImageBytesToUrl(tip?.articlePhoto || "")
-                  : aloeVera
+                  : "/imgs/logo.jpg"
               }
               alt={`Tip ${index + 1}`}
               className="tip-image"

@@ -6,7 +6,7 @@ import api_root from '../axios';
 import { getAllCookies } from '../lib/helpers/get-all-cookies';
 import toast from 'react-hot-toast';
 import Cookies from 'js-cookie';
-import { getAllActiveSessionsRequest } from '../lib/api/user';
+import { getAllActiveSessionsRequest, uploadUserPhotoRequest } from '../lib/api/user';
 
 export const AuthContext = createContext();
 
@@ -33,9 +33,11 @@ export const AuthContextProvider = ({ children }) => {
                     };
 
                 case "UPDATE_USER_IMAGE":
+                    const updatedUser = { ...state.activeUser, details: { ...state.activeUser.details, profilePhoto: action.payload } }
+                    // console.log(updatedUser)
                     return {
                         ...state,
-                        activeUser: { ...state.activeUser, details: { ...state.activeUser.details, profilePhoto: action.payload } },
+                        activeUser: updatedUser
 
                     };
                 // case "SET_CURRENT_LANGUAGE":
@@ -258,8 +260,18 @@ export const AuthContextProvider = ({ children }) => {
 
 
 
-    const updateUserImage = (bytes) => {
-        dispatch({ type: "UPDATE_USER_IMAGE", payload: bytes, })
+    const updateUserImage = async (photo) => {
+
+        try {
+
+            const updatedUser = await uploadUserPhotoRequest({ photo })
+
+            dispatch({ type: "UPDATE_USER_IMAGE", payload: updatedUser?.details?.profilePhoto, })
+
+            toast.success("user image updated");
+        } catch (error) {
+            typeof error === "string" ? toast.error(error) : alert(error);
+        }
 
     }
 
