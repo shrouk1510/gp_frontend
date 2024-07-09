@@ -166,7 +166,7 @@ const AdminTips = () => {
                 </button>
                 <button
                   className="delete"
-                  onClick={() => handleDelete(article.id)}
+                  onClick={() => handleDelete(article.articleId)}
                 >
                   Delete
                 </button>
