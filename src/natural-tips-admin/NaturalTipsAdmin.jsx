@@ -129,13 +129,6 @@ const NaturalTipsAdmin = () => {
     } catch (error) {
       typeof error === "string" ? toast.error(error) : alert(error);
     }
-    // if (file) {
-    //   const reader = new FileReader();
-    //   reader.onloadend = () => {
-    //     setNewTip({ ...newTip, image: reader.result });
-    //   };
-    //   reader.readAsDataURL(file);
-    // }
   };
 
   const validateForm = () => {
