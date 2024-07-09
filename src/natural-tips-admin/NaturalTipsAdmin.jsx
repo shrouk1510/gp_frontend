@@ -19,7 +19,7 @@ import {
 } from "../lib/api/article";
 import { useArticleStore } from "../hooks/use-article-store";
 // import { backendBaseURL } from "../axios";
-import { convertImageBlobToUrl } from "../lib/helpers/convert-image-blob";
+import { convertImageBytesToUrl } from "../lib/helpers/convert-image-blob";
 
 // const tipsData = [
 //   {
@@ -169,13 +169,15 @@ const NaturalTipsAdmin = () => {
               content: newTip.content,
               hide: newTip.hide,
               categoryId: NATURAL_TIPS_ID,
+              
             },
             newTip.articleId
           );
-
+console.log(updatedArticle)
           updateArticle(updatedArticle);
           toast.success("article updated");
 
+          console.log(articlePhoto);
           if (articlePhoto) {
             const updatedArticleImage = await uploadArticlePhotoRequest(
               { photo: articlePhoto },
@@ -209,6 +211,7 @@ const NaturalTipsAdmin = () => {
 
         setIsAddingTip(false);
         setNewTip({ name: "", articlePhoto: "", content: "", hide: false });
+        setArticlePhoto(null);
       } catch (error) {
         typeof error === "string" ? toast.error(error) : alert(error);
       }
@@ -260,8 +263,8 @@ const NaturalTipsAdmin = () => {
             <img
               src={
                 tip?.articlePhoto
-                  ? convertImageBlobToUrl(tip?.articlePhoto || "")
-                  : aloeVera
+                  ? convertImageBytesToUrl(tip?.articlePhoto || "")
+                  : "/imgs/logo.jpg"
               }
               alt={`Tip ${tip.name}`}
               className="tip-image"
@@ -288,7 +291,11 @@ const NaturalTipsAdmin = () => {
           <div className="tip-card-admin new-tip-card-admin">
             {newTip?.articlePhoto && (
               <img
-                src={newTip?.articlePhoto || ""}
+                src={
+                  articlePhoto
+                    ? newTip.articlePhoto
+                    : convertImageBytesToUrl(newTip?.articlePhoto || "") || ""
+                }
                 alt={`tip image`}
                 style={{
                   width: "5rem",

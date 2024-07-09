@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import "./UserProfile.css";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuthContext } from "../contexts/auth-context";
+import { AuthContext } from "../contexts/auth-context";
 import {
   getAllUserNotificationsRequest,
   markAllNotificationsReadRequest,
@@ -9,11 +9,12 @@ import {
 } from "../lib/api/notification";
 import toast from "react-hot-toast";
 import { useNotificationStore } from "../hooks/use-notification-store";
-import { uploadUserPhotoRequest } from "../lib/api/user";
+// import { uploadUserPhotoRequest } from "../lib/api/user";
+import { convertImageBytesToUrl } from "../lib/helpers/convert-image-blob";
 
 const UserProfile = () => {
-  const { activeUser, logoutUser, logoutAdmin, updateUser, role } =
-    useAuthContext();
+  const { activeUser, logoutUser, logoutAdmin, updateUserImage, role } =
+    useContext(AuthContext);
   const {
     notifications,
     setNotifications,
@@ -21,7 +22,7 @@ const UserProfile = () => {
     markAllNotificationAsRead,
   } = useNotificationStore();
 
-  const [errors, setErrors] = useState({});
+  // const [errors, setErrors] = useState({});
 
   const navigate = useNavigate();
 
@@ -29,20 +30,7 @@ const UserProfile = () => {
     e.preventDefault();
     const file = e.target.files[0];
 
-    try {
-      await uploadUserPhotoRequest({ photo: file });
-      if (file) {
-        const reader = new FileReader();
-        reader.onloadend = () => {
-          // setUser({ ...user, profilePhoto: reader.result });
-          updateUser("profilePhoto", reader.result);
-        };
-        reader.readAsDataURL(file);
-      }
-      toast.success("user image updated");
-    } catch (error) {
-      typeof error === "string" ? toast.error(error) : alert(error);
-    }
+    await updateUserImage(file);
   };
 
   const handleLogout = async () => {
@@ -114,7 +102,13 @@ const UserProfile = () => {
       <div className="userprofileContainer">
         <div className="project-user-profile-profile-header">
           <img
-            src={activeUser?.profilePhoto ?? "/imgs/user.png"}
+            src={
+              activeUser?.details?.profilePhoto
+                ? convertImageBytesToUrl(
+                    activeUser?.details?.profilePhoto || ""
+                  )
+                : "/imgs/user.png"
+            }
             alt="User Avatar"
             className="project-user-profile-profile-avatar"
           />

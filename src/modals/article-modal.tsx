@@ -7,7 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "../components/ui/dialog";
-import { convertImageBlobToUrl } from "../lib/helpers/convert-image-blob";
+import { convertImageBytesToUrl } from "../lib/helpers/convert-image-blob";
 
 import { useModal } from "../hooks/use-modal-store";
 
@@ -17,7 +17,7 @@ const ShowArticleModal = () => {
   const isModalOpen = isOpen && type === "showArticle";
   const { article } = data;
 
-  const imageUrl = convertImageBlobToUrl(article?.articlePhoto || "");
+  const imageUrl = convertImageBytesToUrl(article?.articlePhoto || "");
   return (
     <Dialog open={isModalOpen} onOpenChange={onClose}>
       <DialogContent className="p-0">

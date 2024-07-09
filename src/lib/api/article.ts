@@ -117,7 +117,13 @@ export const addArticleRequest = async (
 };
 
 export const updateArticleRequest = async (
-  values: { name: string; content: string; categoryId: number; hide?: boolean },
+  values: {
+    name: string;
+    content: string;
+    categoryId: number;
+    hide?: boolean;
+    // articlePhoto?: string | null;
+  },
   articleId: number
 ) => {
   // try {

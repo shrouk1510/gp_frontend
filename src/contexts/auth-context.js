@@ -6,7 +6,7 @@ import api_root from '../axios';
 import { getAllCookies } from '../lib/helpers/get-all-cookies';
 import toast from 'react-hot-toast';
 import Cookies from 'js-cookie';
-import { getAllActiveSessionsRequest } from '../lib/api/user';
+import { getAllActiveSessionsRequest, uploadUserPhotoRequest } from '../lib/api/user';
 
 export const AuthContext = createContext();
 
@@ -30,6 +30,15 @@ export const AuthContextProvider = ({ children }) => {
                         ...state,
                         activeUser: null,
                         role: undefined
+                    };
+
+                case "UPDATE_USER_IMAGE":
+                    const updatedUser = { ...state.activeUser, details: { ...state.activeUser.details, profilePhoto: action.payload } }
+                    // console.log(updatedUser)
+                    return {
+                        ...state,
+                        activeUser: updatedUser
+
                     };
                 // case "SET_CURRENT_LANGUAGE":
                 //   const currentLanguage = state.languages?.find(
@@ -250,6 +259,23 @@ export const AuthContextProvider = ({ children }) => {
     };
 
 
+
+    const updateUserImage = async (photo) => {
+
+        try {
+
+            const updatedUser = await uploadUserPhotoRequest({ photo })
+
+            dispatch({ type: "UPDATE_USER_IMAGE", payload: updatedUser?.details?.profilePhoto, })
+
+            toast.success("user image updated");
+        } catch (error) {
+            typeof error === "string" ? toast.error(error) : alert(error);
+        }
+
+    }
+
+
     useEffect(() => {
         const fetchData = async () => {
             // const activeSession = Cookies.get(SESSION_KEY) || {}
@@ -286,7 +312,7 @@ export const AuthContextProvider = ({ children }) => {
 
     return (
 
-        <AuthContext.Provider value={{ ...state, updateState, updateUser, createUserData, createAdminData, loginUser, loginAdmin, logoutUser, logoutAdmin }}>
+        <AuthContext.Provider value={{ ...state, updateState, updateUser, createUserData, createAdminData, loginUser, loginAdmin, logoutUser, logoutAdmin, updateUserImage }}>
             {children}
         </AuthContext.Provider>
     );
