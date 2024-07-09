@@ -250,9 +250,6 @@ export const AuthContextProvider = ({ children }) => {
     };
 
 
-
-
-
     useEffect(() => {
         const fetchData = async () => {
             // const activeSession = Cookies.get(SESSION_KEY) || {}
