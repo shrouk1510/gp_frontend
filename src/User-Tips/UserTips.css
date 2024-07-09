@@ -3,8 +3,11 @@
   padding: 20px;
   justify-content: center; /* Center align items horizontally */
   align-items: center; /* Center align items vertically */
-  
 
+}
+
+.UserApp pre{
+  font-family: Arial, sans-serif;
 
 }
 

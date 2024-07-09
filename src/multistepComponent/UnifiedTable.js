@@ -46,7 +46,7 @@ const UnifiedTable = ({ handleUpdate }) => {
         </select>
         <button type='button' className='backButton' onClick={handleAdd}>add</button>
       </div>
-      <h2><strong>Health Data Schedule</strong></h2>
+      <h2>Health Data Schedule</h2>
       <table className="unified-table">
         <thead>
           <tr>

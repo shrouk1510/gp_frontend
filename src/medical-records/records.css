@@ -9,6 +9,12 @@
     align-items: center;
 }
 
+
+.uu .todo-form-container label{
+    color: #34495e;
+    font-weight: bold;
+
+}
 .uu .todo-form-container {
     display: flex;
     flex-direction: column;
@@ -29,7 +35,7 @@
 }
 
 .uu .todo-form-container .texxt {
-    color: #4CAF50;
+    color: #34495e;
     font-size: 48px;
     font-weight: 700;
 }
@@ -37,7 +43,7 @@
 .uu .todo-form-container .underliney {
     width: 61px;
     height: 6px;
-    background-color: #4CAF50;
+    background-color: #34495e;
     border-radius: 9px;
     margin: auto;
     margin-top: 10px;
@@ -154,14 +160,14 @@
 }
 
 .table-container th {
-    background-color: #4CAF50;
+    background-color:  #0775ec;
     color: white;
 }
 
 .table-container .back-button{
     margin-left: 16px;
     position: absolute;  
-    background-color: #4CAF50; 
+    background-color:  #0775ec;
     padding: 10px 13px; 
     border-radius: 4px; 
     color: white; 
@@ -169,7 +175,7 @@
 }
 
 .table-container .back-button:hover{
-    background-color: green;
+    background-color: #0056b3;
 }
 
 .glucose-message {
