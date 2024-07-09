@@ -10,9 +10,10 @@ import {
 import toast from "react-hot-toast";
 import { useNotificationStore } from "../hooks/use-notification-store";
 import { uploadUserPhotoRequest } from "../lib/api/user";
+import { convertImageBytesToUrl } from "../lib/helpers/convert-image-blob";
 
 const UserProfile = () => {
-  const { activeUser, logoutUser, logoutAdmin, updateUser, role } =
+  const { activeUser, logoutUser, logoutAdmin, updateUserImage, role } =
     useAuthContext();
   const {
     notifications,
@@ -30,15 +31,15 @@ const UserProfile = () => {
     const file = e.target.files[0];
 
     try {
-      await uploadUserPhotoRequest({ photo: file });
-      if (file) {
-        const reader = new FileReader();
-        reader.onloadend = () => {
-          // setUser({ ...user, profilePhoto: reader.result });
-          updateUser("profilePhoto", reader.result);
-        };
-        reader.readAsDataURL(file);
-      }
+      const updatedUser = await uploadUserPhotoRequest({ photo: file });
+
+      // console.log(updatedUser);
+      updateUserImage(updatedUser?.details?.profilePhoto);
+      // updateState({
+      //   type: "SET_USER",
+      //   payload: updatedUser,
+      //   role: "USER",
+      // });
       toast.success("user image updated");
     } catch (error) {
       typeof error === "string" ? toast.error(error) : alert(error);
@@ -114,7 +115,13 @@ const UserProfile = () => {
       <div className="userprofileContainer">
         <div className="project-user-profile-profile-header">
           <img
-            src={activeUser?.profilePhoto ?? "/imgs/user.png"}
+            src={
+              activeUser?.details?.profilePhoto
+                ? convertImageBytesToUrl(
+                    activeUser?.details?.profilePhoto || ""
+                  )
+                : "/imgs/user.png"
+            }
             alt="User Avatar"
             className="project-user-profile-profile-avatar"
           />

@@ -4,7 +4,7 @@ import aloeVera from "./Assets/aloe_vera.jpg";
 
 import { useArticleStore } from "../hooks/use-article-store";
 import { getAllArticlesByCatigoryIdRequest } from "../lib/api/article";
-import { convertImageBlobToUrl } from "../lib/helpers/convert-image-blob";
+import { convertImageBytesToUrl } from "../lib/helpers/convert-image-blob";
 
 // const tips = [
 //   {
@@ -73,7 +73,7 @@ const NaturalTips = () => {
             <img
               src={
                 tip?.articlePhoto
-                  ? convertImageBlobToUrl(tip?.articlePhoto || "")
+                  ? convertImageBytesToUrl(tip?.articlePhoto || "")
                   : aloeVera
               }
               alt={`Tip ${index + 1}`}

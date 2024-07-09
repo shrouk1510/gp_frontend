@@ -19,7 +19,7 @@ import {
 } from "../lib/api/article";
 import { useArticleStore } from "../hooks/use-article-store";
 // import { backendBaseURL } from "../axios";
-import { convertImageBlobToUrl } from "../lib/helpers/convert-image-blob";
+import { convertImageBytesToUrl } from "../lib/helpers/convert-image-blob";
 
 // const tipsData = [
 //   {
@@ -209,6 +209,7 @@ const NaturalTipsAdmin = () => {
 
         setIsAddingTip(false);
         setNewTip({ name: "", articlePhoto: "", content: "", hide: false });
+        setArticlePhoto(null);
       } catch (error) {
         typeof error === "string" ? toast.error(error) : alert(error);
       }
@@ -260,7 +261,7 @@ const NaturalTipsAdmin = () => {
             <img
               src={
                 tip?.articlePhoto
-                  ? convertImageBlobToUrl(tip?.articlePhoto || "")
+                  ? convertImageBytesToUrl(tip?.articlePhoto || "")
                   : aloeVera
               }
               alt={`Tip ${tip.name}`}
@@ -288,7 +289,11 @@ const NaturalTipsAdmin = () => {
           <div className="tip-card-admin new-tip-card-admin">
             {newTip?.articlePhoto && (
               <img
-                src={newTip?.articlePhoto || ""}
+                src={
+                  articlePhoto
+                    ? newTip.articlePhoto
+                    : convertImageBytesToUrl(newTip?.articlePhoto || "") || ""
+                }
                 alt={`tip image`}
                 style={{
                   width: "5rem",

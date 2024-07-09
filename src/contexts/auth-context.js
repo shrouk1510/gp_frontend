@@ -31,6 +31,13 @@ export const AuthContextProvider = ({ children }) => {
                         activeUser: null,
                         role: undefined
                     };
+
+                case "UPDATE_USER_IMAGE":
+                    return {
+                        ...state,
+                        activeUser: { ...state.activeUser, details: { ...state.activeUser.details, profilePhoto: action.payload } },
+
+                    };
                 // case "SET_CURRENT_LANGUAGE":
                 //   const currentLanguage = state.languages?.find(
                 //     (lang) => lang?.code === action.payload
@@ -251,6 +258,10 @@ export const AuthContextProvider = ({ children }) => {
 
 
 
+    const updateUserImage = (bytes) => {
+        dispatch({ type: "UPDATE_USER_IMAGE", payload: bytes, })
+
+    }
 
 
     useEffect(() => {
@@ -289,7 +300,7 @@ export const AuthContextProvider = ({ children }) => {
 
     return (
 
-        <AuthContext.Provider value={{ ...state, updateState, updateUser, createUserData, createAdminData, loginUser, loginAdmin, logoutUser, logoutAdmin }}>
+        <AuthContext.Provider value={{ ...state, updateState, updateUser, createUserData, createAdminData, loginUser, loginAdmin, logoutUser, logoutAdmin, updateUserImage }}>
             {children}
         </AuthContext.Provider>
     );
