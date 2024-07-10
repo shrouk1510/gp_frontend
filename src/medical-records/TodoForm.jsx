@@ -179,7 +179,7 @@ const TodoForm = ({ setViewTable, setWarningMessage, initialRecord }) => {
               </div>
             ))}
           </div>
-          <div className="form-gro">
+          {/* <div className="form-gro">
             <label htmlFor="date">Date:</label>
             <input
               type="date"
@@ -188,7 +188,7 @@ const TodoForm = ({ setViewTable, setWarningMessage, initialRecord }) => {
               onChange={(e) => setDate(e.target.value)}
               required
             />
-          </div>
+          </div> */}
           <button type="submit" className="submit-record">
             {!initialRecord ? "Upload" : "Edit"}
           </button>

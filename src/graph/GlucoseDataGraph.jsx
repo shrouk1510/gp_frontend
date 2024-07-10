@@ -133,7 +133,7 @@ const GlucoseDataGraph = () => {
       </form>
       {data && (
         <div className="chart">
-          <Line data={data} />
+          <Line data={data} options={{ maintainAspectRatio: false }}/>
         </div>
       )}
     </div>
